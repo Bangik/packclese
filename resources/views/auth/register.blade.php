@@ -57,11 +57,11 @@
         </div>
 
         <div class="form-group">
-          <input id="password" type="password" class="form-control form-control-user @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="password" autofocus aria-describedby="emailHelp" placeholder="Confirm Your password ...">
+          <input id="password-confirm" type="password" class="form-control form-control-user" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Your password ...">
         </div>
 
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg btn-block">
+          <button type="submit" class="btn btn-primary btn-user btn-block">
               {{ __('Register') }}
           </button>
         </div>

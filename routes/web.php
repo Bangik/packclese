@@ -19,4 +19,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['admin'])->group(function () {
+      Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+      Route::group(['prefix'=>'admin'], function(){
+        Route::get('/users', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('index-user');
+        Route::get('/users/delete/{id}', [App\Http\Controllers\Admin\UsersController::class, 'delete'])->name('delete-user');
+      });
+
+    });
+});
+
+Route::get('/dashboard', [App\Http\Controllers\UsersController::class, 'index'])->name('home-user');
