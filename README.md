@@ -6,3 +6,5 @@
 - setting nama_database di .env
 - php artisan key:generate
 - php artisan serve
+
+KALO ADA ERROR SHARE DI GRUP GESS
