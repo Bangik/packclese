@@ -17,7 +17,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-      if(Auth::user()->roles != "admin"){
+      if(Auth::user()->roles != "admin" && Auth::user()->roles != "superadmin"){
 
         return redirect()->route('home-user');
       }
