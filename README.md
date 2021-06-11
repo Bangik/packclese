@@ -8,4 +8,9 @@
 - php artisan db:seed UserSeeder
 - php artisan serve
 
+email - password untuk login
+user@gmail.com - user -> untuk user
+admin@gmail.com - admin -> untuk admin
+superadmin@gmail.com - superadmin -> untuk superadmin
+
 KALO ADA ERROR SHARE DI GRUP GESS
