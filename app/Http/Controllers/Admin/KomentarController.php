@@ -24,4 +24,9 @@ class KomentarController extends Controller
     return redirect()->route('index-komentar');
   }
 
+  public function trashed()
+  {
+    return view('admin.komentar.trashed');
+  }
+
 }

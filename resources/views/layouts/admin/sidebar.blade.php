@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{route('home')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -37,7 +37,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Pengguna</h6>
                 <a class="collapse-item" href="{{route('index-user')}}">List Pengguna</a>
-                <a class="collapse-item" href="{{route('index-komentar')}}">List Komentar Pengguna</a>
 
             </div>
         </div>
@@ -55,6 +54,23 @@
                 <h6 class="collapse-header">JenisLayanan</h6>
                 <a class="collapse-item" href="{{route('Home-JenisLayanan')}}">List Layanan</a>
                 <a class="collapse-item" href="{{route('Create-JenisLayanan')}}">Tambah Layanan</a>
+
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" type="button" data-toggle="collapse" data-target="#multiCollapseExample3"
+        aria-expanded="false" aria-controls="multiCollapseExample3">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Komentar</span>
+        </a>
+        <div id="multiCollapseExample3" class="collapse multi-collapse" >
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Komentar</h6>
+                <a class="collapse-item" href="{{route('index-komentar')}}">List Komentar Pengguna</a>
+                <a class="collapse-item" href="{{route('trashed-komentar')}}">Trashed Komentar</a>
 
             </div>
         </div>
