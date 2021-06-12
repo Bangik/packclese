@@ -14,8 +14,21 @@ class CreateDetailTransactionsTable extends Migration
     public function up()
     {
         Schema::create('detail_transactions', function (Blueprint $table) {
-          $table->integer('transaction_id');
-          $table->integer('services_id');
+          $table->id();
+          $table->foreignId('transaction_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+          $table->foreignId('service_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+          $table->string('address')->nullable();
+          $table->string('address_detail')->nullable();
+          $table->string('origin')->nullable();
+          $table->string('destination')->nullable();
+          $table->integer('weight')->nullable();
+          $table->string('courier')->nullable();
+          $table->string('space')->nullable();
+          $table->dateTime('schedule')->nullable();
+          $table->dateTime('start')->nullable();
+          $table->dateTime('end')->nullable();
+          $table->string('extra')->nullable();
+          $table->string('voucher_code')->nullable();
           $table->integer('quantity');
           $table->integer('subtotal');
           $table->timestamps();

@@ -15,11 +15,11 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
           $table->id();
-          $table->string('nama')->nullable();
-          $table->integer('jenisservices_id');
-          $table->text('deskripsi')->nullable();
+          $table->string('name')->nullable();
+          $table->foreignId('jenisservice_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+          $table->text('description')->nullable();
           $table->double('rate')->nullable();
-          $table->integer('harga')->nullable();
+          $table->integer('price')->nullable();
           $table->text('picturePath')->nullable();
           $table->softDeletes();
           $table->timestamps();
