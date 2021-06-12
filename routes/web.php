@@ -36,6 +36,15 @@ Route::middleware(['auth'])->group(function () {
       Route::post('/JenisLayanan/update/{id}', [App\Http\Controllers\Admin\JenisLayananController::class, 'update'])->name('Update-JenisLayanan');
       Route::get('/JenisLayanan/delete/{id}', [App\Http\Controllers\Admin\JenisLayananController::class, 'delete'])->name('Delete-JenisLayanan');
 
+      //Route-Layanan
+      Route::get('/Layanan', [App\Http\Controllers\Admin\LayananController::class, 'index'])->name('Home-Layanan');
+      Route::get('/Layanan/create', [App\Http\Controllers\Admin\LayananController::class, 'create'])->name('Create-Layanan');
+      Route::post('/Layanan/store', [App\Http\Controllers\Admin\LayananController::class, 'store'])->name('Store-Layanan');
+
+      Route::get('/Layanan/edit/{id}', [App\Http\Controllers\Admin\LayananController::class, 'edit'])->name('Edit-Layanan');
+      Route::post('/Layanan/update/{id}', [App\Http\Controllers\Admin\LayananController::class, 'update'])->name('Update-Layanan');
+      Route::get('/Layanan/delete/{id}', [App\Http\Controllers\Admin\LayananController::class, 'delete'])->name('Delete-Layanan');
+
       //route User
       Route::get('/users', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('index-user');
       Route::get('/users/delete/{id}', [App\Http\Controllers\Admin\UsersController::class, 'delete'])->name('delete-user');

@@ -52,8 +52,25 @@
         <div id="multiCollapseExample2" class="collapse multi-collapse" >
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">JenisLayanan</h6>
-                <a class="collapse-item" href="{{route('Home-JenisLayanan')}}">List Layanan</a>
-                <a class="collapse-item" href="{{route('Create-JenisLayanan')}}">Tambah Layanan</a>
+                <a class="collapse-item" href="{{route('Home-JenisLayanan')}}">List JenisLayanan</a>
+                <a class="collapse-item" href="{{route('Create-JenisLayanan')}}">Tambah JenisLayanan</a>
+
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" type="button" data-toggle="collapse" data-target="#multiCollapseExample4"
+        aria-expanded="false" aria-controls="multiCollapseExample4">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Layanan</span>
+        </a>
+        <div id="multiCollapseExample4" class="collapse multi-collapse" >
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Layanan</h6>
+                <a class="collapse-item" href="{{route('Home-Layanan')}}">List Layanan</a>
+                <a class="collapse-item" href="{{route('Create-Layanan')}}">Tambah Layanan</a>
 
             </div>
         </div>
