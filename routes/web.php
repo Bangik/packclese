@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
       Route::get('/JenisLayanan', [App\Http\Controllers\Admin\JenisLayananController::class, 'index'])->name('Home-JenisLayanan');
       Route::get('/JenisLayanan/create', [App\Http\Controllers\Admin\JenisLayananController::class, 'create'])->name('Create-JenisLayanan');
       Route::post('/JenisLayanan/store', [App\Http\Controllers\Admin\JenisLayananController::class, 'store'])->name('Store-JenisLayanan');
+
       Route::get('/JenisLayanan/edit/{id}', [App\Http\Controllers\Admin\JenisLayananController::class, 'edit'])->name('Edit-JenisLayanan');
       Route::post('/JenisLayanan/update/{id}', [App\Http\Controllers\Admin\JenisLayananController::class, 'update'])->name('Update-JenisLayanan');
       Route::get('/JenisLayanan/delete/{id}', [App\Http\Controllers\Admin\JenisLayananController::class, 'delete'])->name('Delete-JenisLayanan');
@@ -38,6 +39,15 @@ Route::middleware(['auth'])->group(function () {
       //route User
       Route::get('/users', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('index-user');
       Route::get('/users/delete/{id}', [App\Http\Controllers\Admin\UsersController::class, 'delete'])->name('delete-user');
+
+      //route Komentar
+      Route::get('/Komentar', [App\Http\Controllers\Admin\KomentarController::class, 'index'])->name('index-komentar');
+      Route::get('/Komentar/edit/{id}', [App\Http\Controllers\Admin\KomentarController::class, 'edit'])->name('edit-komentar');
+      Route::get('/Komentar/trash/{id}', [App\Http\Controllers\Admin\KomentarController::class, 'trash'])->name('trash_komentar');
+      Route::get('/Komentar/trashed}', [App\Http\Controllers\Admin\KomentarController::class, 'trashed'])->name('trashed_komentar');
+      Route::get('/Komentar/restore/{id}}', [App\Http\Controllers\Admin\KomentarController::class, 'restore'])->name('restore_komentar');
+      Route::get('/Komentar/delete/{id}}', [App\Http\Controllers\Admin\KomentarController::class, 'delete'])->name('delete_komentar');
+
     });
 });
 //Route-User
