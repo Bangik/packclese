@@ -29,7 +29,7 @@
               @foreach($Komentar as $Komentars)
               <td>{{$Komentars->id}}</td>
               <td>{{$Komentars->User->name}}</td>
-              <td>{{$Komentars->Layanan->name}}</td>
+              <td>{{$Komentars->Service->name}}</td>
               <td>{{$Komentars->comments_id}}</td>
               <td>{{$Komentars->komentar}}</td>
               <td><a href="#" class="btn btn-m btn-danger">Edit</a></td>

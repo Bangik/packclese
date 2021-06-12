@@ -28,8 +28,10 @@
             @foreach($Layanan as $Layanans)
             <tr>
               <td>{{$Layanans->name}}</td>
-              <td> <a href="{{route('Edit-Layanan', ['id' => $Layanan->id])}}" class="btn btn-m btn-danger">Edit</a> </td>
-              <td> <a href="{{route('Delete-Layanan', ['id' => $Layanan->id])}}" class="btn btn-m btn-danger">Hapus</a> </td>
+              <td>{{$Layanans->jenisservice_id->jenis}}</td>
+
+              <td> <a href="{{route('Edit-Layanan', ['id' => $Layanans->id])}}" class="btn btn-m btn-danger">Edit</a> </td>
+              <td> <a href="{{route('Delete-Layanan', ['id' => $Layanans->id])}}" class="btn btn-m btn-danger">Hapus</a> </td>
             </tr>
             @endforeach
           </tbody>

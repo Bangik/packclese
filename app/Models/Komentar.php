@@ -14,7 +14,7 @@ class Komentar extends Model
       'user_id','services_id','comments_id','komentar'
     ];
 
-    public function Layanan(){
+    public function Service(){
       return $this->belongsTo('App\Models\Layanan');
     }
 

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Layanan;
+use App\Models\JenisLayanan;
+use App\Models\Komentar;
+use App\Models\User;
 
 class LayananController extends Controller
 {
@@ -16,7 +19,10 @@ class LayananController extends Controller
   }
 
   public function create(){
-    return view('admin.Layanan.create');
+    $Layanan = Layanan::all();
+    $JenisLayanan = JenisLayanan::all();
+
+    return view('admin.Layanan.create',compact('Layanan','JenisLayanan'));
   }
 
   public function store(Request $Request){
