@@ -14,5 +14,9 @@ class JenisLayanan extends Model
       'jenis'
     ];
 
+    public function komentar(){
+      return $this->hasMany('App\Models\Komentar');
+    }
+
 
 }
