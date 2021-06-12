@@ -14,7 +14,7 @@ class KomentarController extends Controller
   public function index()
   {
     $Komentar = Komentar::all();
-    return view('admin.user.komentar')->with('Komentar', $Komentar);
+    return view('admin.komentar.index')->with('Komentar', $Komentar);
   }
 
   public function delete($id)
