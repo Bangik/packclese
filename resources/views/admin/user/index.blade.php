@@ -20,19 +20,19 @@
               <th>Nomor HP</th>
               <th>Email</th>
               <th>Roles</th>
-              <th>Delete</th>
+              <th>Aksi</th>
             </tr>
           </thead>
           <tbody>
             @foreach($listUser as $listUsers)
             <tr>
-              <td> <img class="img-profile rounded-circle" src="{{asset($listUsers->profile_photo_path)}}" alt="{{$listUsers->name}}"> </td>
+              <td> <img class="img-profile rounded-circle" src="{{asset($listUsers->profile_photo_path)}}" alt="{{$listUsers->name}}" width="50" height="50"> </td>
               <td>{{$listUsers->name}}</td>
               <td>{{$listUsers->address}}</td>
               <td>{{$listUsers->phoneNumber}}</td>
               <td>{{$listUsers->email}}</td>
               <td>{{$listUsers->roles}}</td>
-              <td> <a href="{{route('delete-user', ['id' => $listUsers->id])}}" class="btn btn-m btn-danger">Hapus</a> </td>
+              <td><a href="#" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $loop->iteration }}"> <i class="fas fa-trash"></i> </a></td>
             </tr>
             @endforeach
           </tbody>
@@ -42,3 +42,25 @@
   </div>
 </div>
 @endsection
+
+@foreach($listUser as $listUsers2)
+<div class="modal fade" id="exampleModal{{ $loop->iteration }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Hapus</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+          Apakah kamu yakin untuk menghapusnya ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <a href="{{route('delete-user', ['id' => $listUsers2->id])}}" class="btn btn-danger">Hapus</a>
+        </div>
+    </div>
+  </div>
+</div>
+@endforeach
