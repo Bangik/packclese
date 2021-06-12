@@ -26,13 +26,15 @@
           </thead>
           <tbody>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              @foreach($Komentar as $Komentars)
+              <td>{{$Komentars->id}}</td>
+              <td>{{$Komentars->User->name}}</td>
+              <td>{{$Komentars->JenisLayanan->jenis}}</td>
+              <td>{{$Komentars->comments_id}}</td>
+              <td>{{$Komentars->komentar}}</td>
               <td><a href="#" class="btn btn-m btn-danger">Edit</a></td>
               <td><a href="#" class="btn btn-m btn-danger">Hapus</a></td>
+              @endforeach
 
             </tr>
           </tbody>
