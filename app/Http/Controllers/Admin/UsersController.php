@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class UsersController extends Controller
 {
   public function index()
   {
-    $listUser = User::whereIn('roles', ['admin', 'user'])->orderByDesc('id')->get();
+    $listUser = User::whereIn('roles', ['admin', 'user'])->whereNotIn('id', [Auth::user()->id])->orderByDesc('id')->get();
     return view('admin.user.index', compact('listUser'));
   }
 

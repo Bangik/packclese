@@ -23,10 +23,10 @@ Auth::routes();
 
 //route admin
 Route::middleware(['auth'])->group(function () {
-  //route Home
-  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-  
   Route::group(['prefix'=>'admin', 'middleware' => 'admin'], function(){
+      //route Home
+      Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
       //Route-JenisLayanan
       Route::get('/JenisLayanan', [App\Http\Controllers\Admin\JenisLayananController::class, 'index'])->name('Home-JenisLayanan');
       Route::get('/JenisLayanan/create', [App\Http\Controllers\Admin\JenisLayananController::class, 'create'])->name('Create-JenisLayanan');
