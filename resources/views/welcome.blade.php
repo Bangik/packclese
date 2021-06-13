@@ -120,46 +120,19 @@
         <div class="container">
           <h2 class="text-center mb-3">Tampilan sementara</h2>
           <div class="row">
-            <div class="col-md-3">
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Laundry</h6>
-                </div>
-                <div class="card-body">
-                  deskripsinya ....
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Bersih bersih</h6>
-                </div>
-                <div class="card-body">
-                  deskripsinya ....
+
+            @foreach($jenisLayanan as $jenisLayanans)
+              <div class="col-md-3">
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">{{$jenisLayanans->jenis}}</h6>
+                  </div>
+                  <div class="card-body">
+                    deskripsinya ....
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-3">
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Kirim barang</h6>
-                </div>
-                <div class="card-body">
-                  deskripsinya ....
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">paketin</h6>
-                </div>
-                <div class="card-body">
-                  deskripsinya ....
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </section>
