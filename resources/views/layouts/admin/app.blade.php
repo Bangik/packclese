@@ -108,6 +108,13 @@
     <!-- <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script> -->
     <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
 
+    <!-- ckeditor -->
+    <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+
+    <!-- ckeditor -->
+    <script>
+      CKEDITOR.replace('editor');
+    </script>
 </body>
 
 </html>

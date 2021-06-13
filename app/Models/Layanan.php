@@ -20,8 +20,8 @@ class Layanan extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function JenisServiceAdd(){
-      return $this->belongsTo('App\Models\JenisLayanan');
+    public function jenisServices(){
+      return $this->belongsTo('App\Models\JenisLayanan', 'jenisservice_id');
     }
 
     public function Komentar(){

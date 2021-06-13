@@ -28,11 +28,12 @@ class LayananController extends Controller
   public function store(Request $Request){
 
     $this->validate($Request,[
-      'name' => 'required',
+      'name' => 'required|max:255',
       'jenisservice_id' => 'required',
       'description' => 'required',
       'rate' => 'required',
       'price' => 'required',
+      'picturePath' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
 
     ]);
 
@@ -45,10 +46,10 @@ class LayananController extends Controller
 
     $image_path = "";
     if($Request->hasFile('picturePath')){
-      $image = $Request->featured;
+      $image = $Request->picturePath;
       $image_name = time().$image->getClientOriginalName();
-      $image->move('uploads/Layanan/', $image_name);
-      $image_path = 'uploads/Layanan/'. $image_name;
+      $image->move('img/services/', $image_name);
+      $image_path = 'img/services/'. $image_name;
     }
 
     $Layanan->picturePath = $image_path;

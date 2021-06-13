@@ -15,7 +15,7 @@ class JenisLayanan extends Model
     ];
 
     public function Layanan(){
-      return $this->hasMany('App\Models\Layanan');
+      return $this->hasMany('App\Models\Layanan', 'id');
     }
 
 
