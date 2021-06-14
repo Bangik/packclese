@@ -63,4 +63,4 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/dashboard', [App\Http\Controllers\UsersController::class, 'index'])->name('home-user');
 
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
-Route::get('/laundry', [App\Http\Controllers\LaundryController::class, 'index'])->name('laundry');
+Route::get('/laundry', App\Http\Livewire\Laundry::class)->name('laundry');
