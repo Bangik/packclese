@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Layanan;
 use App\Models\JenisLayanan;
-use App\Models\Komentar;
-use App\Models\User;
 
 class LayananController extends Controller
 {
@@ -21,7 +19,6 @@ class LayananController extends Controller
   public function create(){
     $Layanan = Layanan::all();
     $JenisLayanan = JenisLayanan::all();
-
     return view('admin.Layanan.create',compact('Layanan','JenisLayanan'));
   }
 
@@ -54,7 +51,52 @@ class LayananController extends Controller
 
     $Layanan->picturePath = $image_path;
     $Layanan->save();
-    return redirect()->route('Home-JenisLayanan');
+    return redirect()->route('Home-Layanan');
+
+  }
+
+  public function edit($id)
+  {
+    $Layanan = Layanan::find($id);
+    $JenisLayanan = JenisLayanan::all();
+    return view('admin.Layanan.edit', compact('Layanan','JenisLayanan'));
+
+  }
+
+  public function update(Request $Request,$id)
+  {
+
+    $this->validate($Request,[
+      'name' => 'required|max:255',
+      'jenisservice_id' => 'required',
+      'description' => 'required',
+      'rate' => 'required',
+      'price' => 'required',
+
+    ]);
+
+    $Layanan = Layanan::find($id);
+    $Layanan->name = $Request->name;
+    $Layanan->jenisservice_id = $Request->jenisservice_id;
+    $Layanan->description = $Request->description;
+    $Layanan->rate = $Request->rate;
+    $Layanan->price = $Request->price;
+
+    if($Request->hasFile('picturePath')){
+      if (file_exists($Layanan->picturePath)) {
+        unlink($Layanan->picturePath);
+
+      }
+      $image = $Request->picturePath;
+      $image_name = time().$image->getClientOriginalName();
+      $image->move('img/services', $image_name);
+      $Layanan->picturePath = 'img/services'. $image_name;
+
+
+    }
+
+    $Layanan->save();
+    return redirect()->route('Home-Layanan');
 
   }
 
