@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Layanan;
 use App\Models\JenisLayanan;
+use Illuminate\Support\Str;
 
 class LayananController extends Controller
 {
@@ -99,6 +100,43 @@ class LayananController extends Controller
     return redirect()->route('Home-Layanan');
 
   }
+
+    public function trash($id)
+    {
+      $Layanan = Layanan::find($id);
+      $Layanan->delete();
+      return redirect()->route('Home-Layanan');
+    }
+
+    public function trashed()
+    {
+      $Layanan = Layanan::onlyTrashed()->get();
+      return view('admin.Layanan.trashed')->with('Layanan', $Layanan);
+
+    }
+
+    public function restore($id)
+    {
+      $Layanan = Layanan::withTrashed()->where('id',$id)->first();
+
+      $Layanan->restore();
+
+      return redirect()->route('Home-Layanan');
+    }
+
+    public function delete($id)
+    {
+      $Layanan = Layanan::withTrashed()->where('id',$id)->first();
+
+      if (file_exists($Layanan->picturePath)) {
+        unlink($Layanan->picturePath);
+
+      }
+
+
+      $Layanan->forceDelete();
+      return redirect()->route('Trashed-Layanan');
+    }
 
 
 }

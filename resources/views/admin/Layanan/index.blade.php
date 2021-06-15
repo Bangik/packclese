@@ -34,7 +34,7 @@
               <td> <img src="{{asset($Layanans->picturePath)}}" alt="{{$Layanans->picturePath}}" width="50" height="50"> </td>
               <td>
                 <a href="{{route('Edit-Layanan', ['id' => $Layanans->id])}}" class="btn btn-m btn-warning"><i class="fas fa-edit"></i></a>
-                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $loop->iteration }}"> <i class="fas fa-trash"></i> </a>
+                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-trash"></i> </a>
               </td>
             </tr>
             @endforeach
@@ -47,7 +47,7 @@
 @endsection
 
 @foreach($Layanan as $Layanans2)
-<div class="modal fade" id="exampleModal{{ $loop->iteration }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -61,7 +61,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-          <a href="{{route('Delete-Layanan', ['id' => $Layanans2->id])}}" class="btn btn-danger">Hapus</a>
+          <a href="{{route('Trash-Layanan', ['id' => $Layanans2->id])}}" class="btn btn-danger">Hapus</a>
         </div>
     </div>
   </div>

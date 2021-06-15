@@ -43,6 +43,10 @@ Route::middleware(['auth'])->group(function () {
 
       Route::get('/Layanan/edit/{id}', [App\Http\Controllers\Admin\LayananController::class, 'edit'])->name('Edit-Layanan');
       Route::post('/Layanan/update/{id}', [App\Http\Controllers\Admin\LayananController::class, 'update'])->name('Update-Layanan');
+
+      Route::get('/Layanan/trash/{id}', [App\Http\Controllers\Admin\LayananController::class, 'trash'])->name('Trash-Layanan');
+      Route::get('/Layanan/trashed}', [App\Http\Controllers\Admin\LayananController::class, 'trashed'])->name('Trashed-Layanan');
+      Route::get('/Layanan/restore/{id}}', [App\Http\Controllers\Admin\LayananController::class, 'restore'])->name('Restore-Layanan');
       Route::get('/Layanan/delete/{id}', [App\Http\Controllers\Admin\LayananController::class, 'delete'])->name('Delete-Layanan');
 
       //route User

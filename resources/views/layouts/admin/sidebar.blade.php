@@ -55,6 +55,7 @@
                 <a class="collapse-item" href="{{route('Home-JenisLayanan')}}">List JenisLayanan</a>
                 <a class="collapse-item" href="{{route('Create-JenisLayanan')}}">Tambah JenisLayanan</a>
 
+
             </div>
         </div>
     </li>
@@ -71,6 +72,7 @@
                 <h6 class="collapse-header">Layanan</h6>
                 <a class="collapse-item" href="{{route('Home-Layanan')}}">List Layanan</a>
                 <a class="collapse-item" href="{{route('Create-Layanan')}}">Tambah Layanan</a>
+                <a class="collapse-item" href="{{route('Trashed-Layanan')}}">Trashed JenisLayanan</a>
 
             </div>
         </div>
