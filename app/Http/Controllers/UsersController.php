@@ -13,6 +13,6 @@ class UsersController extends Controller
 
   public function index()
   {
-      return view('users.home.index');
+      return view('user.preview');
   }
 }
