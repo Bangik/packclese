@@ -12,8 +12,18 @@ class DetailTransaction extends Model
   protected $fillable = [
     'transaction_id',
     'service_id',
+    'address',
+    'address_detail',
+    'origin',
+    'destination',
+    'destination',
     'weight',
+    'courier',
+    'space',
+    'start',
+    'end',
     'extra',
+    'voucher_code',
     'quantity',
     'subtotal'
   ];

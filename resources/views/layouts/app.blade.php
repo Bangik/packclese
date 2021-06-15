@@ -77,6 +77,7 @@
 
         <!-- Core plugin JavaScript-->
         <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+        @yield('js')
         @livewireScripts
     </body>
 </html>
