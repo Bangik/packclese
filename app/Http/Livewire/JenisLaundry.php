@@ -24,9 +24,9 @@ class JenisLaundry extends Component
     public function render()
     {
       if (!empty($this->jenisLaundry) && !empty($this->weight)) {
-        $tes = Layanan::where('id', $this->jenisLaundry)->get();
-        $this->harga = $tes['0']->price;
-        $this->total = ($tes['0']->price * $this->weight) + $this->antar;
+        $tes = Layanan::where('id', $this->jenisLaundry)->first();
+        $this->harga = $tes->price;
+        $this->total = ($tes->price * $this->weight) + $this->antar;
       }
 
       $laundry = Layanan::where('jenisservice_id', 1)->get();

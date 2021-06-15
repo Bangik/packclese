@@ -90,8 +90,8 @@ class LayananController extends Controller
       }
       $image = $Request->picturePath;
       $image_name = time().$image->getClientOriginalName();
-      $image->move('img/services', $image_name);
-      $Layanan->picturePath = 'img/services'. $image_name;
+      $image->move('img/services/', $image_name);
+      $Layanan->picturePath = 'img/services/'. $image_name;
 
 
     }
