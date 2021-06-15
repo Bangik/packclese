@@ -26,14 +26,15 @@
             @csrf
           </form>
         </li>
-      @else
-        <li>
-          <a href="{{ route('login') }}">Log in</a>
-        </li>
-        @endauth
-        @endif
+      </ul>
+    @else
+      <li>
+        <a href="{{ route('login') }}">Log in</a>
+      </li>
+    @endauth
+    @endif
         <li><a href="contact.html">Contact Us</a></li>
-        </ul>
+
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
   </nav><!-- .navbar -->
