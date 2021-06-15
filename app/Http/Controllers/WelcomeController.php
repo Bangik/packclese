@@ -10,6 +10,6 @@ class WelcomeController extends Controller
   public function index()
   {
     $jenisLayanan = JenisLayanan::all();
-    return view('welcome', compact('jenisLayanan'));
+    return view('user.preview', compact('jenisLayanan'));
   }
 }

@@ -68,3 +68,4 @@ Route::get('/dashboard', [App\Http\Controllers\UsersController::class, 'index'])
 
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 Route::get('/laundry', App\Http\Livewire\Laundry::class)->name('laundry');
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
