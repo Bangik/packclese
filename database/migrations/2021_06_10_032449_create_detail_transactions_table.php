@@ -24,12 +24,10 @@ class CreateDetailTransactionsTable extends Migration
           $table->integer('weight')->nullable();
           $table->string('courier')->nullable();
           $table->string('space')->nullable();
-          $table->dateTime('schedule')->nullable();
-          $table->dateTime('start')->nullable();
-          $table->dateTime('end')->nullable();
+          $table->date('start')->nullable();
+          $table->date('end')->nullable();
           $table->string('extra')->nullable();
           $table->string('voucher_code')->nullable();
-          $table->integer('quantity');
           $table->integer('subtotal');
           $table->timestamps();
         });

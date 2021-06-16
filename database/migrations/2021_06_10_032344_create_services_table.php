@@ -20,7 +20,7 @@ class CreateServicesTable extends Migration
           $table->text('description')->nullable();
           $table->double('rate')->nullable();
           $table->integer('price')->nullable();
-          $table->text('picturePath')->nullable();
+          $table->string('picturePath')->nullable();
           $table->softDeletes();
           $table->timestamps();
         });

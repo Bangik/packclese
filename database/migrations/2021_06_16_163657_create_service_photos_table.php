@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVouchersTable extends Migration
+class CreateServicePhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateVouchersTable extends Migration
      */
     public function up()
     {
-        Schema::create('vouchers', function (Blueprint $table) {
+        Schema::create('service_photos', function (Blueprint $table) {
             $table->id();
-            $table->string('voucher_code')->unique();
-            $table->integer('discount');
-            $table->tinyInteger('status');
-            $table->date('expired');
+            $table->foreignId('service_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('picturePath');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateVouchersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vouchers');
+        Schema::dropIfExists('service_photos');
     }
 }

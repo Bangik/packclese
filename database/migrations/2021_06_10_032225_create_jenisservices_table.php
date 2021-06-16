@@ -16,6 +16,9 @@ class CreateJenisservicesTable extends Migration
         Schema::create('jenisservices', function (Blueprint $table) {
           $table->id();
           $table->string('jenis');
+          $table->string('slug');
+          $table->string('description')->nullable();
+          $table->string('picturePath')->nullable();
           $table->timestamps();
         });
     }
