@@ -48,13 +48,8 @@
         <button class="btn btn-outline-danger" type="button" wire:click="resetbtn">Reset</button>
         <button class="btn btn-outline-primary" type="button" wire:click="reedeem('{{$voucher}}')">Reedeem</button>
       </div>
-      <small class="text-danger">{{$message}}</small>
-      @error('voucher')
-          <span class="invalid-feedback" role="alert">
-              <strong>{{ $message }}</strong>
-          </span>
-      @enderror
     </div>
+    <small class="text-danger">{{$message}}</small>
   </div>
 
   <br>

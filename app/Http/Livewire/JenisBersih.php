@@ -57,12 +57,19 @@ class JenisBersih extends Component
   public function reedeem($voucher)
   {
     try {
-      $voucherAll = Voucher::where('status', 'aktif')->where('voucher_code', $voucher)->first();
-      $this->discount = $voucherAll->discount;
-      $this->reset('message');
+      $voucherAll = Voucher::where('status', 1)->where('voucher_code', $voucher)->first();
+
+      if (time() > strtotime($voucherAll->expired)) {
+        $this->message = "Kode Voucher kadaluarsa";
+      }else {
+        $this->discount = $voucherAll->discount;
+        $this->message = "Kode Voucher berhasil digunakan";
+        $this->voucher = $voucherAll->voucher_code;
+      }
+
     } catch (\Exception $e) {
       $this->discount = 0;
-      $this->message = "Kode Voucher tidak valid atau kadaluarsa";
+      $this->message = "Kode Voucher tidak valid";
     }
   }
 
@@ -93,10 +100,13 @@ class JenisBersih extends Component
       'service_id' => $this->idService,
       'address' => $this->address,
       'address_detail' => $this->address2,
-      'space' => $this->space,
+      'space' => $this->luas,
       'voucher_code' => $this->voucher,
-      'quantity' => 1,
       'subtotal' => $this->subtotal,
+    ]);
+
+    Voucher::where('voucher_code', $this->voucher)->update([
+      'status' => 0
     ]);
   }
 }
