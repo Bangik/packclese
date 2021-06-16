@@ -6,7 +6,7 @@
 - setting nama_database di .env
 - php artisan key:generate
 - php artisan db:seed UserSeeder
-- php artisan sd:seed JenisServiceSeeder
+- php artisan db:seed JenisServiceSeeder
 - php artisan serve
 
 email - password untuk login
