@@ -1,4 +1,4 @@
-## Instalasi
+## Instalasi (dilakukan di CMD)
 - git clone https://github.com/Bangik/packclese.git
 - cd packclese
 - composer install
@@ -6,6 +6,7 @@
 - setting nama_database di .env
 - php artisan key:generate
 - php artisan db:seed UserSeeder
+- php artisan sd:seed JenisServiceSeeder
 - php artisan serve
 
 email - password untuk login
