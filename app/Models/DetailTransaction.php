@@ -24,6 +24,7 @@ class DetailTransaction extends Model
     'end',
     'extra',
     'voucher_code',
+    'quantity',
     'subtotal'
   ];
 }
