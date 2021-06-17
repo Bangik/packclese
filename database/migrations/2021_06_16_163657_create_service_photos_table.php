@@ -16,7 +16,8 @@ class CreateServicePhotosTable extends Migration
         Schema::create('service_photos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('service_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('picturePath');
+            $table->string('picturePath')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

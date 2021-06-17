@@ -15,12 +15,11 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
           $table->id();
-          $table->string('name')->nullable();
+          $table->string('name', 100)->nullable();
           $table->foreignId('jenisservice_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
           $table->text('description')->nullable();
           $table->double('rate')->nullable();
           $table->integer('price')->nullable();
-          $table->string('picturePath')->nullable();
           $table->softDeletes();
           $table->timestamps();
         });
