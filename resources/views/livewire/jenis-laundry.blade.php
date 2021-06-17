@@ -1,5 +1,12 @@
 <form wire:submit.prevent="storeLaundry">
   @csrf
+  <div>
+    @if (session()->has('pesan'))
+      <div class="alert alert-success">
+          {{ session('pesan') }}
+      </div>
+    @endif
+  </div>
   <div class="form-group">
     <label for="">Pilih Laundry</label>
       <select wire:model="jenisLaundry" class="form-control @error('jenisservice_id') is-invalid @enderror" name="jenisservice_id" required>

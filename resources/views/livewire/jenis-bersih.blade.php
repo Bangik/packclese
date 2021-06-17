@@ -1,5 +1,12 @@
 <form wire:submit.prevent="storeBersih">
   @csrf
+  <div>
+    @if (session()->has('pesan'))
+      <div class="alert alert-success">
+          {{ session('pesan') }}
+      </div>
+    @endif
+  </div>
   <div class="form-group">
     <label for="">Masukkan alamat anda</label>
     <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required wire:model="address">

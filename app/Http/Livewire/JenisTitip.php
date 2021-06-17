@@ -137,5 +137,7 @@ class JenisTitip extends Component
     Voucher::where('voucher_code', $this->voucher)->update([
       'status' => 0
     ]);
+
+    session()->flash('pesan', 'Transaksi berhasil di proses');
   }
 }

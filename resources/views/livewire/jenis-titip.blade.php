@@ -1,5 +1,12 @@
 <form wire:submit.prevent="storeTitip">
   @csrf
+  <div>
+    @if (session()->has('pesan'))
+      <div class="alert alert-success">
+          {{ session('pesan') }}
+      </div>
+    @endif
+  </div>
   <div class="form-group">
     <label for="">Pilih Layanan Titip Barang</label>
       <select wire:model="jenisTitip" class="form-control @error('jenisTitip') is-invalid @enderror" name="jenisTitip" required>
