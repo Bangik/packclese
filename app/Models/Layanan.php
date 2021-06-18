@@ -28,5 +28,9 @@ class Layanan extends Model
       return $this->hasMany('App\Models\Komentar');
     }
 
+    public function transaction(){
+      return $this->belongsTo('App\Models\Transaction');
+    }
+
 
 }

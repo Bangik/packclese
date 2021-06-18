@@ -72,3 +72,8 @@ Route::get('/bersih', App\Http\Livewire\Bersih::class)->name('bersih');
 Route::get('/titip', App\Http\Livewire\Titip::class)->name('titip');
 Route::get('/paket', App\Http\Livewire\Paket::class)->name('paket');
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+
+// Midtrans Related
+Route::get('midtrans/success', [App\Http\Controllers\API\MidtransController::class, 'success']);
+Route::get('midtrans/unfinish', [App\Http\Controllers\API\MidtransController::class, 'unfinish']);
+Route::get('midtrans/error', [App\Http\Controllers\API\MidtransController::class, 'error']);

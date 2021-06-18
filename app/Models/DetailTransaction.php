@@ -27,4 +27,8 @@ class DetailTransaction extends Model
     'quantity',
     'subtotal'
   ];
+
+  public function transaction(){
+    return $this->belongsTo('App\Models\Transaction');
+  }
 }

@@ -17,8 +17,17 @@ class Transaction extends Model
 
   protected $dates = ['deleted_at'];
 
-  // public function detailTransaction(){
-  //   return $this->hasMany('App\Models\DetailTransaction');
-  // }
+  public function detailTransaction(){
+    return $this->hasMany('App\Models\DetailTransaction');
+  }
+
+  public function layanan(){
+    return $this->belongsTo('App\Models\Layanan');
+  }
+
+  public function user(){
+    return $this->belongsTo('App\Models\User');
+  }
+
 
 }

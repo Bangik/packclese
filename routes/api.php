@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('checkout', [App\Http\Livewire\Laundry::class, 'checkout']);
 });
+
+Route::post('midtrans/callback', [App\Http\Controllers\API\MidtransController::class, 'callback']);
