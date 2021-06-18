@@ -78,4 +78,4 @@ Route::get('midtrans/unfinish', [App\Http\Controllers\API\MidtransController::cl
 Route::get('midtrans/error', [App\Http\Controllers\API\MidtransController::class, 'error']);
 
 //layanan
-Route::get('/layanan', [App\Http\Controllers\User\LayanananUserController::class, 'index'])->name('Home-Layanan');
+Route::get('/layanan-user', [App\Http\Controllers\User\LayanananUserController::class, 'index'])->name('Home-Layanan');
