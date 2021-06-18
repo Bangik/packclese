@@ -1,6 +1,6 @@
 @extends('layouts.welcome')
 @section('section')
-  <main id="main">
+<main id="main">
 
   <!-- ======= Home Section ======= -->
   <section class="section">
@@ -85,10 +85,9 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-4 me-auto">
-          <h2 class="mb-4">Seamlessly Communicate</h2>
-          <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur at reprehenderit optio,
-            laudantium eius quod, eum maxime molestiae porro omnis. Dolores aspernatur delectus impedit incidunt
-            dolore mollitia esse natus beatae.</p>
+          <h3 class="mb-4">Layanan Bersih - Bersih</h3>
+          <p class="mb-4">Layanan pembersihan umum ruangan secara menyeluruh serta profesional meliputi
+            mengelap debu, mengepel lantai, merapikan kamar tidur/barang, dan membersihkan kamar mandi.</p>
           <p><a href="#" class="btn btn-primary">Download Now</a></p>
         </div>
         <div class="col-md-6" data-aos="fade-left">
@@ -102,10 +101,25 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-4 ms-auto order-2">
-          <h2 class="mb-4">Gather Feedback</h2>
-          <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur at reprehenderit optio,
-            laudantium eius quod, eum maxime molestiae porro omnis. Dolores aspernatur delectus impedit incidunt
-            dolore mollitia esse natus beatae.</p>
+          <h2 class="mb-4">Layanan Titip Barang</h2>
+          <p class="mb-4">Layanan penitipan barang seperti buku, baju, perabotan, dsb. Dalam layanan kami, keamanan dan kondisi barang
+            pelanggan sangat terjamin karena kami berorientasi pada kepuasan pelanggan.</p>
+          <p><a href="#" class="btn btn-primary">Download Now</a></p>
+        </div>
+        <div class="col-md-6" data-aos="fade-right">
+          <img src="{{asset('softland/assets/img/undraw_svg_3.svg')}}" alt="Image" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4 me-auto">
+          <h2 class="mb-4">Layanan Titip Motor</h2>
+          <p class="mb-4">Layanan penitipan motor dengan menjamin kondisi dan keamanan motor pelanggan dengan tawaran
+            biaya yang cukup terjangkau oleh masyarakat.</p>
           <p><a href="#" class="btn btn-primary">Download Now</a></p>
         </div>
         <div class="col-md-6" data-aos="fade-right">
