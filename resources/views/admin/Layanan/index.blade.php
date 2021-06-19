@@ -19,7 +19,6 @@
               <th>Deskripsi</th>
               <th>Rate</th>
               <th>Price</th>
-              <th>Gambar</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -31,7 +30,6 @@
               <td>{!!Str::limit($Layanans->description, '50')!!}</td>
               <td>{{$Layanans->rate}}</td>
               <td>{{$Layanans->price}}</td>
-              <td> <img src="{{asset($Layanans->picturePath)}}" alt="{{$Layanans->picturePath}}" width="50" height="50"> </td>
               <td>
                 <a href="{{route('Edit-Layanan', ['id' => $Layanans->id])}}" class="btn btn-m btn-warning"><i class="fas fa-edit"></i></a>
                 <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-trash"></i> </a>

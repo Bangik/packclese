@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Layanan;
+use App\Models\ServicePhoto;
 use App\Models\JenisLayanan;
 use Illuminate\Support\Str;
 
@@ -14,7 +15,7 @@ class LayananController extends Controller
   public function index()
   {
     $Layanan = Layanan::all();
-    return view('admin.Layanan.index')->with('Layanan',$Layanan);
+    return view('admin.Layanan.index', compact('Layanan'));
   }
 
   public function create(){
@@ -31,111 +32,122 @@ class LayananController extends Controller
       'description' => 'required',
       'rate' => 'required',
       'price' => 'required',
-      'picturePath' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-
+      'picturePath.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
     ]);
 
-    $Layanan = new Layanan();
-    $Layanan->name = $Request->name;
-    $Layanan->jenisservice_id = $Request->jenisservice_id;
-    $Layanan->description = $Request->description;
-    $Layanan->rate = $Request->rate;
-    $Layanan->price = $Request->price;
+    $layanan = Layanan::create([
+      'name' => $Request->name,
+      'jenisservice_id' => $Request->jenisservice_id,
+      'description' => $Request->description,
+      'rate' => $Request->rate,
+      'price' => $Request->price,
+    ]);
 
-    $image_path = "";
     if($Request->hasFile('picturePath')){
-      $image = $Request->picturePath;
-      $image_name = time().$image->getClientOriginalName();
-      $image->move('img/services/', $image_name);
-      $image_path = 'img/services/'. $image_name;
+      foreach ($Request->file('picturePath') as $file) {
+        $image_name = 'img/services/'.time().$file->getClientOriginalName();
+        $file->move('img/services/', $image_name);
+        $service_photo = ServicePhoto::create([
+          'service_id' => $layanan->id,
+          'picturePath' => $image_name,
+        ]);
+      }
     }
 
-    $Layanan->picturePath = $image_path;
-    $Layanan->save();
-    return redirect()->route('Home-Layanan');
+    toastr()->success('Data Berhasil Ditambahkan');
 
+    return redirect()->route('Home-Layanan');
   }
 
   public function edit($id)
   {
     $Layanan = Layanan::find($id);
     $JenisLayanan = JenisLayanan::all();
-    return view('admin.Layanan.edit', compact('Layanan','JenisLayanan'));
+    $service_photos = ServicePhoto::where('service_id', $id)->get();
 
+    return view('admin.Layanan.edit', compact('Layanan','JenisLayanan', 'service_photos'));
   }
 
   public function update(Request $Request,$id)
   {
-
     $this->validate($Request,[
       'name' => 'required|max:255',
       'jenisservice_id' => 'required',
       'description' => 'required',
       'rate' => 'required',
       'price' => 'required',
-
+      'picturePath.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
     ]);
 
-    $Layanan = Layanan::find($id);
-    $Layanan->name = $Request->name;
-    $Layanan->jenisservice_id = $Request->jenisservice_id;
-    $Layanan->description = $Request->description;
-    $Layanan->rate = $Request->rate;
-    $Layanan->price = $Request->price;
+    $service = Layanan::where('id', $id)->update([
+      'name' => $Request->name,
+      'jenisservice_id' => $Request->jenisservice_id,
+      'description' => $Request->description,
+      'rate' => $Request->rate,
+      'price' => $Request->price,
+    ]);
 
     if($Request->hasFile('picturePath')){
-      if (file_exists($Layanan->picturePath)) {
-        unlink($Layanan->picturePath);
-
+      foreach ($Request->file('picturePath') as $file) {
+        $image_name = 'img/services/'.time().$file->getClientOriginalName();
+        $file->move('img/services/', $image_name);
+        $service_photo = ServicePhoto::create([
+          'service_id' => $id,
+          'picturePath' => $image_name,
+        ]);
       }
-      $image = $Request->picturePath;
-      $image_name = time().$image->getClientOriginalName();
-      $image->move('img/services/', $image_name);
-      $Layanan->picturePath = 'img/services/'. $image_name;
-
-
     }
 
-    $Layanan->save();
-    return redirect()->route('Home-Layanan');
+    toastr()->success('Data Berhasil Diupdate');
 
+    return redirect()->route('Home-Layanan');
   }
 
     public function trash($id)
     {
       $Layanan = Layanan::find($id);
       $Layanan->delete();
+      toastr()->success('Data Berhasil Dihapus');
       return redirect()->route('Home-Layanan');
     }
 
     public function trashed()
     {
       $Layanan = Layanan::onlyTrashed()->get();
-      return view('admin.Layanan.trashed')->with('Layanan', $Layanan);
-
+      return view('admin.Layanan.trashed', compact('Layanan'));
     }
 
     public function restore($id)
     {
       $Layanan = Layanan::withTrashed()->where('id',$id)->first();
-
       $Layanan->restore();
-
+      toastr()->success('Data Berhasil Dipulihkan');
       return redirect()->route('Home-Layanan');
     }
 
     public function delete($id)
     {
       $Layanan = Layanan::withTrashed()->where('id',$id)->first();
-
-      if (file_exists($Layanan->picturePath)) {
-        unlink($Layanan->picturePath);
-
+      $service_photo = ServicePhoto::where('service_id', $id)->get();
+        foreach ($service_photo as $key) {
+          if (file_exists($key->picturePath)) {
+            unlink($key->picturePath);
+          }
       }
-
-
       $Layanan->forceDelete();
+      toastr()->success('Data Berhasil Dihapus Permanen');
       return redirect()->route('Trashed-Layanan');
+    }
+
+    public function deleteImage(Request $request){
+      $image = ServicePhoto::find($request->id);
+      if (file_exists($request->name)) {
+        unlink($request->name);
+      }
+      if($image->forceDelete())      
+        return response()->json(true);
+      else
+        return response()->json(false);
     }
 
 

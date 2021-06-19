@@ -36,14 +36,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Layanan', [App\Http\Controllers\Admin\LayananController::class, 'index'])->name('Home-Layanan');
     Route::get('/Layanan/create', [App\Http\Controllers\Admin\LayananController::class, 'create'])->name('Create-Layanan');
     Route::post('/Layanan/store', [App\Http\Controllers\Admin\LayananController::class, 'store'])->name('Store-Layanan');
-
     Route::get('/Layanan/edit/{id}', [App\Http\Controllers\Admin\LayananController::class, 'edit'])->name('Edit-Layanan');
     Route::post('/Layanan/update/{id}', [App\Http\Controllers\Admin\LayananController::class, 'update'])->name('Update-Layanan');
-
     Route::get('/Layanan/trash/{id}', [App\Http\Controllers\Admin\LayananController::class, 'trash'])->name('Trash-Layanan');
-    Route::get('/Layanan/trashed}', [App\Http\Controllers\Admin\LayananController::class, 'trashed'])->name('Trashed-Layanan');
-    Route::get('/Layanan/restore/{id}}', [App\Http\Controllers\Admin\LayananController::class, 'restore'])->name('Restore-Layanan');
+    Route::get('/Layanan/trashed', [App\Http\Controllers\Admin\LayananController::class, 'trashed'])->name('Trashed-Layanan');
+    Route::get('/Layanan/restore/{id}', [App\Http\Controllers\Admin\LayananController::class, 'restore'])->name('Restore-Layanan');
     Route::get('/Layanan/delete/{id}', [App\Http\Controllers\Admin\LayananController::class, 'delete'])->name('Delete-Layanan');
+    Route::delete('/Layanan/delete/image', [App\Http\Controllers\Admin\LayananController::class, 'deleteImage'])->name('delete-image');
 
     //route User
     Route::get('/users', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('index-user');
@@ -74,4 +73,4 @@ Route::get('midtrans/unfinish', [App\Http\Controllers\API\MidtransController::cl
 Route::get('midtrans/error', [App\Http\Controllers\API\MidtransController::class, 'error']);
 
 //layanan
-Route::get('/layanan-user', [App\Http\Controllers\User\LayanananUserController::class, 'index'])->name('Home-Layanan');
+// Route::get('/layanan-user', [App\Http\Controllers\User\LayanananUserController::class, 'index'])->name('Home-Layanan');

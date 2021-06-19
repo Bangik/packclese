@@ -32,5 +32,8 @@ class Layanan extends Model
       return $this->belongsTo('App\Models\Transaction');
     }
 
+    public function photos(){
+      return $this->hasMany('App\Models\ServicePhoto', 'id');
+    }
 
 }

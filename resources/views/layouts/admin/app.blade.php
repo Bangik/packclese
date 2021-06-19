@@ -19,6 +19,7 @@
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
     <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
+    @yield('style')
     @toastr_css
 
 </head>
@@ -114,10 +115,7 @@
     <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
 
     <!-- ckeditor -->
-    <script>
-      CKEDITOR.replace('editor');
-    </script>
-
+    @yield('script')
     @toastr_js
     @toastr_render
 </body>
