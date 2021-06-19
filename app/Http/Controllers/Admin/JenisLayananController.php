@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\JenisLayanan;
+use Illuminate\Support\Str;
 
 class JenisLayananController extends Controller
 {
@@ -12,45 +13,42 @@ class JenisLayananController extends Controller
   public function index()
   {
     $JenisLayanan = JenisLayanan::all();
-    return view('admin.JenisLayanan.index')->with('JenisLayanan',$JenisLayanan);
-  }
-
-  public function create(){
-    return view('admin.JenisLayanan.create');
-  }
-
-  public function store(Request $Request){
-
-    $this->validate($Request,[
-      'jenis' => 'required'
-    ]);
-
-    $JenisLayanan = new JenisLayanan();
-    $JenisLayanan->jenis = $Request->jenis;
-    $JenisLayanan->save();
-
-    return redirect()->route('Home-JenisLayanan');
+    return view('admin.JenisLayanan.index', compact('JenisLayanan'));
   }
 
   public function edit($id){
     $JenisLayanan = JenisLayanan::find($id);
-    return view('admin.JenisLayanan.edit')->with('JenisLayanan',$JenisLayanan);
-
+    return view('admin.JenisLayanan.edit', compact('JenisLayanan'));
   }
 
   public function update(Request $Request, $id)
   {
     $JenisLayanan = JenisLayanan::find($id);
+    $this->validate($Request,[
+      'jenis' => 'required|max:25',
+      'description' => 'required',
+      'picturePath' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+    ]);
 
     $JenisLayanan->jenis = $Request->jenis;
-    $JenisLayanan->save();
-    return redirect()->route('Home-JenisLayanan');
-  }
+    $JenisLayanan->slug = Str::slug($Request->jenis);
+    $JenisLayanan->description = $Request->description;
 
-  public function delete($id)
-  {
-    $JenisLayanan = JenisLayanan::find($id);
-    $JenisLayanan->delete();
+    $image_path = "";
+    if($Request->hasFile('picturePath')){
+      if (file_exists($JenisLayanan->picturePath)) {
+        unlink($JenisLayanan->picturePath);
+      }
+      $image = $Request->picturePath;
+      $image_name = time().$image->getClientOriginalName();
+      $image->move('img/services/', $image_name);
+      $image_path = 'img/services/'. $image_name;
+    }
+    $JenisLayanan->picturePath = $image_path;
+    $JenisLayanan->save();
+
+    toastr()->success('Data Berhasil Diupdate');
+
     return redirect()->route('Home-JenisLayanan');
   }
 

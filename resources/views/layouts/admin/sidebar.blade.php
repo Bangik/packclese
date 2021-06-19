@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Saya<sup>GoodLooking</sup></div>
+        <div class="sidebar-brand-text mx-3">Packclese<sup>Admin</sup></div>
     </a>
 
     <!-- Divider -->
@@ -47,15 +47,12 @@
         <a class="nav-link collapsed" type="button" data-toggle="collapse" data-target="#multiCollapseExample2"
         aria-expanded="false" aria-controls="multiCollapseExample2">
             <i class="fas fa-fw fa-folder"></i>
-            <span>JenisLayanan</span>
+            <span>Jenis Layanan</span>
         </a>
         <div id="multiCollapseExample2" class="collapse multi-collapse" >
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">JenisLayanan</h6>
-                <a class="collapse-item" href="{{route('Home-JenisLayanan')}}">List JenisLayanan</a>
-                <a class="collapse-item" href="{{route('Create-JenisLayanan')}}">Tambah JenisLayanan</a>
-
-
+                <h6 class="collapse-header">Jenis Layanan</h6>
+                <a class="collapse-item" href="{{route('Home-JenisLayanan')}}">List Jenis Layanan</a>
             </div>
         </div>
     </li>

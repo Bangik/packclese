@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Page - Dashboard</title>
+    <title>@yield('titles')</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -18,6 +18,8 @@
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
     <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+
+    @toastr_css
 
 </head>
 
@@ -115,6 +117,9 @@
     <script>
       CKEDITOR.replace('editor');
     </script>
+
+    @toastr_js
+    @toastr_render
 </body>
 
 </html>
