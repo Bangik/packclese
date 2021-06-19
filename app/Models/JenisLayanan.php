@@ -7,21 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class JenisLayanan extends Model
 {
+  protected $table = "jenisservices";
 
-    protected $table = "jenisservices";
+  protected $fillable = [
+    'jenis', 'slug', 'description', 'picturePath'
+  ];
 
-    protected $fillable = [
-      'jenis'
-    ];
-
-    public function Layanan(){
-      return $this->hasMany('App\Models\Layanan', 'id');
-    }
-
-
-    public function komentar(){
-      return $this->hasMany('App\Models\Komentar');
-    }
-
-
+  public function Layanan(){
+    return $this->hasMany('App\Models\Layanan', 'id');
+  }
 }

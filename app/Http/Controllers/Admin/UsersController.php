@@ -20,7 +20,7 @@ class UsersController extends Controller
   {
     $user = User::find($id);
     $user->delete();
-    // toastr()->success('Data has been deleted successfully!');
+    toastr()->success('Data Berhasil Dihapus');
     return redirect()->route('index-user');
   }
 }

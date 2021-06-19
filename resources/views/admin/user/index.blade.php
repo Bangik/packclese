@@ -1,4 +1,5 @@
 @extends('layouts.admin.app')
+@section('titles', 'Admin - List User')
 @section('maincontent')
 <div class="container-fluid">
   <!-- Page Heading -->
@@ -30,7 +31,7 @@
               <td>{{$listUsers->name}}</td>
               <td>{{$listUsers->address}}</td>
               <td>{{$listUsers->phoneNumber}}</td>
-              <td>{{$listUsers->email}}</td>
+              <td><a href="mailto:{{$listUsers->email}}" target="_blank">{{$listUsers->email}}</td>
               <td>{{$listUsers->roles}}</td>
               <td><a href="#" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $loop->iteration }}"> <i class="fas fa-trash"></i> </a></td>
             </tr>
