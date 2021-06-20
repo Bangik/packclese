@@ -49,12 +49,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/users/delete/{id}', [App\Http\Controllers\Admin\UsersController::class, 'delete'])->name('delete-user');
 
     //route Komentar
-    Route::get('/Komentar', [App\Http\Controllers\Admin\KomentarController::class, 'index'])->name('index-komentar');
-    Route::get('/Komentar/edit/{id}', [App\Http\Controllers\Admin\KomentarController::class, 'edit'])->name('edit-komentar');
-    Route::get('/Komentar/trash/{id}', [App\Http\Controllers\Admin\KomentarController::class, 'trash'])->name('trash-komentar');
-    Route::get('/Komentar/trashed}', [App\Http\Controllers\Admin\KomentarController::class, 'trashed'])->name('trashed-komentar');
-    Route::get('/Komentar/restore/{id}}', [App\Http\Controllers\Admin\KomentarController::class, 'restore'])->name('restore-komentar');
-    Route::get('/Komentar/delete/{id}}', [App\Http\Controllers\Admin\KomentarController::class, 'delete'])->name('delete-komentar');
+    Route::get('/komentar', [App\Http\Controllers\Admin\KomentarController::class, 'index'])->name('index-komentar');
+    Route::get('/komentar/delete/{id}', [App\Http\Controllers\Admin\KomentarController::class, 'delete'])->name('delete-komentar');
   });
 });
 //Route-User

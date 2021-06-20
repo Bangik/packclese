@@ -13,7 +13,7 @@ class KomentarController extends Controller
 
   public function index()
   {
-    $Komentar = Komentar::all();
+    $Komentar = Komentar::orderBy('id', 'desc')->get();
     return view('admin.komentar.index')->with('Komentar', $Komentar);
   }
 
@@ -21,12 +21,9 @@ class KomentarController extends Controller
   {
     $Komentar = Komentar::find($id);
     $Komentar->delete();
+
+    toastr()->success('Data Berhasil Dihapus');
+
     return redirect()->route('index-komentar');
   }
-
-  public function trashed()
-  {
-    return view('admin.komentar.trashed');
-  }
-
 }

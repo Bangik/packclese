@@ -86,8 +86,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Komentar</h6>
                 <a class="collapse-item" href="{{route('index-komentar')}}">List Komentar Pengguna</a>
-                <a class="collapse-item" href="{{route('trashed-komentar')}}">Trashed Komentar</a>
-
             </div>
         </div>
     </li>
