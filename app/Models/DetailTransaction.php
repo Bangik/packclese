@@ -31,4 +31,8 @@ class DetailTransaction extends Model
   public function transaction(){
     return $this->belongsTo('App\Models\Transaction');
   }
+
+  public function service(){
+    return $this->belongsTo('App\Models\Layanan', 'service_id');
+  }
 }

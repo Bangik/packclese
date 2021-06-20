@@ -28,6 +28,23 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
+        <a class="nav-link collapsed" data-toggle="collapse" href="#transaksi" role="button"
+        aria-expanded="false" aria-controls="multiCollapseExample1">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Transaksi</span>
+        </a>
+        <div id="transaksi" class="collapse multi-collapse" >
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Transaksi</h6>
+                <a class="collapse-item" href="{{route('index-transaksi')}}">List Transaksi</a>
+                <a class="collapse-item" href="{{route('trashed-transaksi')}}">List Sampah Transaksi</a>
+
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
         <a class="nav-link collapsed" data-toggle="collapse" href="#multiCollapseExample1" role="button"
         aria-expanded="false" aria-controls="multiCollapseExample1">
             <i class="fas fa-fw fa-folder"></i>

@@ -115,8 +115,6 @@ class JenisPaket extends Component
   {
     $this->validate([
       'address' => 'required',
-      'space' => 'required',
-      'space2' => 'required',
     ]);
 
     $transaksi = Transaction::create([
@@ -135,7 +133,8 @@ class JenisPaket extends Component
       'destination' => $this->destination,
       'weight' => $this->weight,
       'courier' => $this->courier,
-      'voucher_code' => $this->voucher,
+      'extra' => $this->ongkir,
+      'voucher_code' => $this->potongan,
       'subtotal' => $this->subtotal,
     ]);
 

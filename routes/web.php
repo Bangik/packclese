@@ -51,6 +51,14 @@ Route::middleware(['auth'])->group(function () {
     //route Komentar
     Route::get('/komentar', [App\Http\Controllers\Admin\KomentarController::class, 'index'])->name('index-komentar');
     Route::get('/komentar/delete/{id}', [App\Http\Controllers\Admin\KomentarController::class, 'delete'])->name('delete-komentar');
+
+    //route Transaksi
+    Route::get('/transaksi', [App\Http\Controllers\Admin\TransactionController::class, 'index'])->name('index-transaksi');
+    Route::get('/transaksi/detail/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'detail'])->name('detail-transaksi');
+    Route::get('/transaksi/trash/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'trash'])->name('trash-transaksi');
+    Route::get('/transaksi/trashed', [App\Http\Controllers\Admin\TransactionController::class, 'trashed'])->name('trashed-transaksi');
+    Route::get('/transaksi/restore/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'restore'])->name('restore-transaksi');
+    Route::get('/transaksi/delete/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'delete'])->name('delete-transaksi');
   });
 });
 //Route-User

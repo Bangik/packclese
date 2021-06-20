@@ -101,7 +101,7 @@ class JenisBersih extends Component
       'address' => $this->address,
       'address_detail' => $this->address2,
       'space' => $this->luas,
-      'voucher_code' => $this->voucher,
+      'voucher_code' => $this->potongan,
       'subtotal' => $this->subtotal,
     ]);
 

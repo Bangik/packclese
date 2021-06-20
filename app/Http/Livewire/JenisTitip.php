@@ -129,7 +129,7 @@ class JenisTitip extends Component
       'address_detail' => $this->address2,
       'start' => date('Y-m-d', strtotime($this->start)),
       'end' => date('Y-m-d', strtotime($this->ends)),
-      'voucher_code' => $this->voucher,
+      'voucher_code' => $this->potongan,
       'quantity' => $this->quantity,
       'subtotal' => $this->subtotal,
     ]);

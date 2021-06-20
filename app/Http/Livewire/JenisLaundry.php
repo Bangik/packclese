@@ -43,13 +43,7 @@ class JenisLaundry extends Component
         $this->total = $this->subtotal - $this->potongan;
 
       }else {
-        $this->reset('harga');
-        $this->reset('total');
-        $this->reset('subtotal');
-        $this->reset('potongan');
-        $this->reset('voucher');
-        $this->reset('message');
-        $this->reset('discount');
+        $this->reset(['harga', 'total', 'subtotal', 'potongan', 'message', 'discount']);
       }
 
       $laundry = Layanan::where('jenisservice_id', 1)->get();
@@ -103,7 +97,7 @@ class JenisLaundry extends Component
         'address' => $this->address,
         'address_detail' => $this->address2,
         'weight' => $this->weight,
-        'voucher_code' => $this->voucher,
+        'voucher_code' => $this->potongan,
         'extra' => $this->antar,
         'subtotal' => $this->total,
       ]);
