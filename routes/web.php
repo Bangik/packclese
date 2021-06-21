@@ -54,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
 
     //route Transaksi
     Route::get('/transaksi', [App\Http\Controllers\Admin\TransactionController::class, 'index'])->name('index-transaksi');
+    Route::get('/transaksi/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'jenisTransaction'])->name('jenisTransaction-transaksi');
     Route::get('/transaksi/detail/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'detail'])->name('detail-transaksi');
     Route::get('/transaksi/trash/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'trash'])->name('trash-transaksi');
     Route::get('/transaksi/trashed', [App\Http\Controllers\Admin\TransactionController::class, 'trashed'])->name('trashed-transaksi');

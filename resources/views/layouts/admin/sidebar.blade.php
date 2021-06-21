@@ -36,7 +36,11 @@
         <div id="transaksi" class="collapse multi-collapse" >
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Transaksi</h6>
-                <a class="collapse-item" href="{{route('index-transaksi')}}">List Transaksi</a>
+                <a class="collapse-item" href="{{route('index-transaksi')}}">List Semua Transaksi</a>
+                <a class="collapse-item" href="{{route('jenisTransaction-transaksi', ['id' => '1'])}}">List Transaksi Laundry</a>
+                <a class="collapse-item" href="{{route('jenisTransaction-transaksi', ['id' => '2'])}}">List Transaksi Bersihin</a>
+                <a class="collapse-item" href="{{route('jenisTransaction-transaksi', ['id' => '3'])}}">List Transaksi Paketin</a>
+                <a class="collapse-item" href="{{route('jenisTransaction-transaksi', ['id' => '4'])}}">List Transaksi Titipin</a>
                 <a class="collapse-item" href="{{route('trashed-transaksi')}}">List Sampah Transaksi</a>
 
             </div>

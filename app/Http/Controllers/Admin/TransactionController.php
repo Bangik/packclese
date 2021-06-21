@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use App\Models\DetailTransaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
@@ -30,6 +31,20 @@ class TransactionController extends Controller
     }elseif ($detailTransactions->service->jenisservice_id == 4) {
       return view('admin.transaksi.detailTitip', compact(['transaction', 'detailTransactions']));
     }
+  }
+
+  public function jenisTransaction($id)
+  {
+    $transactions = DB::table('transactions')
+    ->select('transactions.*', 'detail_transactions.transaction_id', 'services.jenisservice_id', 'users.name')
+    ->leftJoin('detail_transactions', 'detail_transactions.transaction_id', '=', 'transactions.id')
+    ->leftJoin('services', 'detail_transactions.service_id', '=', 'services.id')
+    ->leftJoin('users', 'transactions.user_id', '=', 'users.id')
+    ->where('services.jenisservice_id', '=', $id)
+    ->orderBy('transactions.id', 'desc')
+    ->get();
+    // dd($transactions);
+    return view('admin.transaksi.jenisTransaksi', compact('transactions'));
   }
 
   public function trash($id)
