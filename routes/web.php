@@ -69,7 +69,7 @@ Route::get('/laundry', App\Http\Livewire\Laundry::class)->name('laundry');
 Route::get('/bersih', App\Http\Livewire\Bersih::class)->name('bersih');
 Route::get('/titip', App\Http\Livewire\Titip::class)->name('titip');
 Route::get('/paket', App\Http\Livewire\Paket::class)->name('paket');
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+Route::get('/profile', App\Http\Livewire\Profile::class)->name('profile');
 
 // Midtrans Related
 Route::get('midtrans/success', [App\Http\Controllers\API\MidtransController::class, 'success']);
