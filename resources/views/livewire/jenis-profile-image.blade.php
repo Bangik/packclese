@@ -1,7 +1,7 @@
 <div>
   <div class="card-body pt-0 pt-md-4">
     @if ($image)
-    Photo Preview:<p><img src="{{ $image->temporaryUrl() }}" width="200"></p>
+    Photo Preview:<p><img src="{{ $image->temporaryUrl() }}" width="300"></p>
     @endif
     <input type="file" wire:model="image">
 
