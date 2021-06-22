@@ -4,17 +4,20 @@ namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Livewire\Component;
-
+use Livewire\WithFileUploads;
 class Profile extends Component
 {
 
   public $action;
+  public $image;
   public $selectedItem;
   public $selectedAction;
 
   protected $listeners = [
-      'refreshParent' => '$refresh'
+      'refreshParent' => '$refresh','fileChoosen'
   ];
+  use WithFileUploads;
+
 
   public function selectItem($itemId, $action)
   {
@@ -42,10 +45,17 @@ class Profile extends Component
 
       }
 
-      else {
+      elseif ($action == 'update_phoneNumber') {
         $this->emit('getModelId', $this->selectedItem);
         $this->emit('getActionId', $this->selectedAction);
         $this->dispatchBrowserEvent('openModal_phoneNumber');;
+
+      }
+
+      elseif ($action == 'update_image') {
+      $this->emit('getModelId', $this->selectedItem);
+      $this->emit('getActionId', $this->selectedAction);
+      $this->dispatchBrowserEvent('openModal_image');;
 
       }
 
@@ -53,7 +63,6 @@ class Profile extends Component
 
     public function render()
     {
-
         return view('livewire.profile')->extends('user.profile');
     }
 }

@@ -71,7 +71,8 @@
             <div class="col-lg-3 order-lg-2">
               <div class="card-profile-image">
                 <a href="#">
-                  <img src="{{Auth::user()->profile_photo_path}}" class="rounded-circle">
+
+                  <img src="{{asset('Storage/public/images/'.Auth::user()->profile_photo_path)}}" class="rounded-circle">
                 </a>
               </div>
             </div>
@@ -87,8 +88,7 @@
               <div class="col">
                 <div class="d-flex justify-content-center">
                   <div class="upload-btn-wrapper">
-                    <button class="btn1">Edit Profile Picture</button>
-                    <input type="file" name="myfile" />
+                    <button class="btn1" wire:click="selectItem({{ Auth::user()->id }}, 'update_image')">Edit Profile Picture</button>
                   </div>
                 </div>
 
@@ -252,6 +252,23 @@
               </div>
               <div class="modal-body">
                   @livewire('jenis-profile-phone')
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="update_image" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="imageModalLabel">Save Post</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  @livewire('jenis-profile-image')
               </div>
           </div>
       </div>

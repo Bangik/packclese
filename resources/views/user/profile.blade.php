@@ -32,7 +32,6 @@
   opacity: 0;
 }
 </style>
-
 @livewireStyles
 <!-- Bootstrap core JavaScript-->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
@@ -51,6 +50,7 @@
 <!-- Page level custom scripts -->
 <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
 <script>
+
 
     window.addEventListener('closeModal', event => {
         $("#modalForm").modal('hide');
@@ -84,9 +84,17 @@
         $("#update_phoneNumber").modal('show');
     })
 
-</script>
+    window.addEventListener('closeModal_image', event => {
+        $("#update_image").modal('hide');
+    })
 
+    window.addEventListener('openModal_image', event => {
+        $("#update_image").modal('show');
+    })
+
+</script>
 @livewireScripts
+
 <body>
 @yield('content')
 <footer class="footer">
