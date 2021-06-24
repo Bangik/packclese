@@ -8,10 +8,9 @@
 
   <nav id="navbar" class="navbar">
     <ul>
-      <li><a class="active " href="index.html">Home</a></li>
-      <li><a href="/layanan">Layanan</a></li>
+      <li><a class="active " href="/">Home</a></li>
       <li><a href="pricing.html">Riwayat Transaksi</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Hubungi Kami</a></li>
       @if (Route::has('login'))
       @auth
       <li class="dropdown"><a href="#">{{Auth::user()->name}}
@@ -32,7 +31,6 @@
     </li>
     @endauth
     @endif
-    <li><a href="contact.html">Contact Us</a></li>
 
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
