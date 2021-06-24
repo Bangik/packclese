@@ -50,7 +50,7 @@ class User extends Authenticatable
     }
 
     public function transaction(){
-        return $this->hasMany('App\Models\Transaction');
-      }
+      return $this->hasMany('App\Models\Transaction');
+    }
 
 }

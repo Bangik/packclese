@@ -22,6 +22,7 @@ class HomeController extends Controller
     ->where('services.jenisservice_id', '=', '1')
     ->count('detail_transactions.id');
 
+
     $earningBersih = DB::table('detail_transactions')
     ->leftJoin('services', 'detail_transactions.service_id', '=', 'services.id')
     ->where('services.jenisservice_id', '=', '2')
@@ -45,7 +46,12 @@ class HomeController extends Controller
       return Carbon::parse($d->created_at)->format('Y');
     });
 
-    $earningAnual = $earning2[Carbon::now()->format('Y')]->sum('total');
+    if (isset($earning2[Carbon::now()->format('Y')])) {
+      $earningAnual = $earning2[Carbon::now()->format('Y')]->sum('total');
+    }else {
+      $earningAnual = 0;
+    }
+
     $earningTotal = Transaction::sum('total');
     $totalOrder = Transaction::count('id');
     $userWeekly = User::where('created_at','>=',Carbon::today()->subDays(7))->count();
@@ -131,7 +137,7 @@ class HomeController extends Controller
 
     $monthly = [$jan, $feb, $mar, $apr, $may, $jun, $jul, $aug, $sep, $oct, $nov, $dec];
     $earningSource = [$earningLaundry, $earningBersih, $earningPaket, $earningTitip];
-    // dd($monthly);
+
 
     return view('admin.home', compact(
       'earningMonthly',
