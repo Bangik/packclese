@@ -109,7 +109,7 @@
                 <option value="2">Bersihin</option>
                 <option value="3">Paketin</option>
                 <option value="4">Titipin</option>
-              </select>s
+              </select>
           </div>
         </div>
         <div class="modal-footer">
