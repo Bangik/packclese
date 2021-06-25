@@ -16,5 +16,6 @@ return [
     */
 
     'driver' => 'imagick'
+    //'driver' => 'gd'
 
 ];
