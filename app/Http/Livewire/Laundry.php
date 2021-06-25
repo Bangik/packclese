@@ -9,8 +9,8 @@ class Laundry extends Component
 {
   public function render()
   {
-    return view('livewire.laundry', [
-      'laundry' => Layanan::where('jenisservice_id', 1)->get()
-    ])->extends('layouts.app');
+    $laundry = Layanan::all();
+    // dd($laundry);
+    return view('livewire.laundry', compact('laundry'))->extends('layouts.app');
   }
 }

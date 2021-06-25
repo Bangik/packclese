@@ -1,15 +1,15 @@
 <div class="container d-flex justify-content-between align-items-center">
 
   <div class="logo">
-    <h1><a href="index.html">Packclese</a></h1>
+    <h1><a href="/">Packclese</a></h1>
     <!-- Uncomment below if you prefer to use an image logo -->
     <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
   </div>
 
   <nav id="navbar" class="navbar">
     <ul>
-      <li><a class="active " href="/">Home</a></li>
-      <li><a href="pricing.html">Riwayat Transaksi</a></li>
+      <li><a class="{{request()->is('/') ? ' active' : ''}}" href="/">Home</a></li>
+      <li><a class="{{Str::contains(request()->path(), 'riwayat-transaksi')  ? ' active' : ''}}" href="{{route('riwayat-transaksi')}}">Riwayat Transaksi</a></li>
       <li><a href="contact.html">Hubungi Kami</a></li>
       @if (Route::has('login'))
       @auth

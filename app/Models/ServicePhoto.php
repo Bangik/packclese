@@ -20,6 +20,6 @@ class ServicePhoto extends Model
   ];
 
   public function service(){
-    return $this->belongsTo('App\Models\Layanan', 'service_id');
+    return $this->belongsTo('App\Models\Layanan', 'service_id', 'id');
   }
 }

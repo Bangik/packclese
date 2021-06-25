@@ -33,7 +33,7 @@ class Layanan extends Model
     }
 
     public function photos(){
-      return $this->hasMany('App\Models\ServicePhoto', 'id');
+      return $this->hasMany('App\Models\ServicePhoto', 'service_id', 'id');
     }
 
     public function detailTransaction(){
