@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,3 +85,8 @@ Route::get('midtrans/error', [App\Http\Controllers\API\MidtransController::class
 
 //layanan
 // Route::get('/layanan-user', [App\Http\Controllers\User\LayanananUserController::class, 'index'])->name('Home-Layanan');
+
+// Route Google-login
+// Google login
+Route::get('auth/google', 'App\Http\Controllers\Auth\GoogleController@redirectToGoogle');
+Route::get('auth/google/callback', 'App\Http\Controllers\Auth\GoogleController@handleGoogleCallback');

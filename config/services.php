@@ -38,4 +38,10 @@ return [
         'is3ds' => env('MIDTRANS_IS_3DS', true),
     ],
 
+    'google' => [
+        'client_id' => '476341413791-fpmrt3ovnv1eden4somedc6r2bcnu1ev.apps.googleusercontent.com',
+        'client_secret' => 'AUm1bBxEeDbgjZiIsBr0civ4',
+        'redirect' => 'http://localhost:8000/auth/google/callback',
+    ],
+
 ];

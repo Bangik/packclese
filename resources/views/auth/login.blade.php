@@ -37,10 +37,12 @@
             </label>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-user btn-block">
+        <button type="submit" class="btn btn-primary btn-user btn-block" >
             {{ __('Login') }}
         </button>
 
+      <a href="{{ url('auth/google') }}"class="btn btn-primary btn-user btn-block"> Google <i class="fab fa-google"></i>
+        
         @if (Route::has('password.request'))
             <a class="btn btn-link" href="{{ route('password.request') }}">
                 {{ __('Forgot Your Password?') }}
