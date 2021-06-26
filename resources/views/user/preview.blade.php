@@ -9,7 +9,9 @@
         <p>Tujuan yang akan dicapai adalah menyediakan jasa yang dapat membantu berjalannya kegiatan domestik dengan cepat dan terpercaya, sehingga pengguna dapat produktif beraktivitas seperti biasanya. PACKCLESE berusaha menjadi penyedia jasa bantu kegiatan domestik dengan ongkos yang terjangkau bagi mahasiswa dan masyarakat luas.</p>
       </div>
     </div>
+  </section>
 
+  <section class="section">
     <div class="container">
       <div class="row justify-content-center text-center mb-5" data-aos="fade">
         <div class="col-md-6 mb-5">
@@ -41,60 +43,65 @@
         </div>
       </div>
     </div>
+  </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-4 me-auto">
-            <h3 class="mb-4">{{$jenisLayanan[0]->jenis}}</h3>
-            <p class="mb-4">{{$jenisLayanan[0]->description}}</p>
-            <p><a href="" class="btn btn-primary">More</a></p>
-          </div>
-          <div class="col-md-6" data-aos="fade-left">
-            <img src="{{asset($jenisLayanan[0]->picturePath)}}" alt="Image" class="img-fluid">
-          </div>
+  <section class="section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4 me-auto">
+          <h3 class="mb-4">{{$jenisLayanan[0]->jenis}}</h3>
+          <p class="mb-4">{{$jenisLayanan[0]->description}}</p>
+          <p><a href="{{route('laundry')}}" class="btn btn-primary">Detail</a></p>
+        </div>
+        <div class="col-md-6" data-aos="fade-left">
+          <img src="{{asset($jenisLayanan[0]->picturePath)}}" alt="Image" class="img-fluid">
         </div>
       </div>
-
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-4 ms-auto order-2">
-            <h2 class="mb-4">{{$jenisLayanan[1]->jenis}}</h2>
-            <p class="mb-4">{{$jenisLayanan[1]->description}}</p>
-            <p><a href="#" class="btn btn-primary">More</a></p>
-          </div>
-          <div class="col-md-6" data-aos="fade-right">
-            <img src="{{asset($jenisLayanan[1]->picturePath)}}" alt="Image" class="img-fluid">
-          </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4 ms-auto order-2">
+          <h2 class="mb-4">{{$jenisLayanan[1]->jenis}}</h2>
+          <p class="mb-4">{{$jenisLayanan[1]->description}}</p>
+          <p><a href="{{route('bersih')}}" class="btn btn-primary">Detail</a></p>
+        </div>
+        <div class="col-md-6" data-aos="fade-right">
+          <img src="{{asset($jenisLayanan[1]->picturePath)}}" alt="Image" class="img-fluid">
         </div>
       </div>
-
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-4 me-auto">
-            <h2 class="mb-4">{{$jenisLayanan[2]->jenis}}</h2>
-            <p class="mb-4">{{$jenisLayanan[2]->description}}</p>
-            <p><a href="#" class="btn btn-primary">More</a></p>
-          </div>
-          <div class="col-md-6" data-aos="fade-right">
-            <img src="{{asset($jenisLayanan[2]->picturePath)}}" alt="Image" class="img-fluid">
-          </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4 me-auto">
+          <h2 class="mb-4">{{$jenisLayanan[2]->jenis}}</h2>
+          <p class="mb-4">{{$jenisLayanan[2]->description}}</p>
+          <p><a href="{{route('paket')}}" class="btn btn-primary">Detail</a></p>
+        </div>
+        <div class="col-md-6" data-aos="fade-right">
+          <img src="{{asset($jenisLayanan[2]->picturePath)}}" alt="Image" class="img-fluid">
         </div>
       </div>
-
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-4 ms-auto order-2">
-            <h2 class="mb-4">{{$jenisLayanan[3]->jenis}}</h2>
-            <p class="mb-4">{{$jenisLayanan[3]->description}}</p>
-            <p><a href="#" class="btn btn-primary">More</a></p>
-          </div>
-          <div class="col-md-6" data-aos="fade-right">
-            <img src="{{asset($jenisLayanan[3]->picturePath)}}" alt="Image" class="img-fluid">
-          </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4 ms-auto order-2">
+          <h2 class="mb-4">{{$jenisLayanan[3]->jenis}}</h2>
+          <p class="mb-4">{{$jenisLayanan[3]->description}}</p>
+          <p><a href="{{route('titip')}}" class="btn btn-primary">Detail</a></p>
+        </div>
+        <div class="col-md-6" data-aos="fade-right">
+          <img src="{{asset($jenisLayanan[3]->picturePath)}}" alt="Image" class="img-fluid">
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+
 
     <!-- ======= Testimonials Section ======= -->
     <section class="section border-top border-bottom">
@@ -109,17 +116,33 @@
 
             <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
               <div class="swiper-wrapper">
-
-                @foreach($komentar as $komen)
+                @if(count($komentar) == 0)
                 <div class="swiper-slide">
                   <div class="review text-center">
-                    <!-- <p class="stars">
+                    <p class="stars">
                       <span class="bi bi-star-fill"></span>
                       <span class="bi bi-star-fill"></span>
                       <span class="bi bi-star-fill"></span>
                       <span class="bi bi-star-fill"></span>
                       <span class="bi bi-star-fill muted"></span>
-                    </p> -->
+                    </p>
+                    <blockquote>
+                      <p>Komentar Customer</p>
+                    </blockquote>
+
+                    <p class="review-user">
+                      <img src="#" alt="Image" class="img-fluid rounded-circle mb-3">
+                      <span class="d-block">
+                        <span class="text-black">Anonymous</span>, &mdash; User
+                      </span>
+                    </p>
+
+                  </div>
+                </div><!-- End testimonial item -->
+                @else
+                @foreach($komentar as $komen)
+                <div class="swiper-slide">
+                  <div class="review text-center">
                     <blockquote>
                       <p>{{$komen->komentar}}</p>
                     </blockquote>
@@ -134,6 +157,7 @@
                   </div>
                 </div><!-- End testimonial item -->
                 @endforeach
+                @endif
 
               </div>
               <div class="swiper-pagination"></div>
@@ -142,7 +166,7 @@
         </div>
       </div>
     </section><!-- End Testimonials Section -->
-  </section>
+
   <!-- ======= CTA Section ======= -->
   <section class="section cta-section">
     <div class="container">
@@ -156,6 +180,8 @@
       </div>
     </div>
   </section><!-- End CTA Section -->
+
+
 
 </main><!-- End #main -->
 @endsection

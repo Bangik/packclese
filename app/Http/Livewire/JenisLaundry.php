@@ -22,7 +22,7 @@ class JenisLaundry extends Component
     public $voucher;
     public $discount;
     public $potongan;
-    public $message;
+    public $pesan;
     public $harga;
     public $subtotal;
     public $total;
@@ -43,7 +43,7 @@ class JenisLaundry extends Component
         $this->total = $this->subtotal - $this->potongan;
 
       }else {
-        $this->reset(['harga', 'total', 'subtotal', 'potongan', 'message', 'discount']);
+        $this->reset(['harga', 'total', 'subtotal', 'potongan', 'pesan', 'discount']);
       }
 
       $laundry = Layanan::where('jenisservice_id', 1)->get();
@@ -57,23 +57,23 @@ class JenisLaundry extends Component
         $voucherAll = Voucher::where('status', 1)->where('voucher_code', $voucher)->first();
 
         if (time() > strtotime($voucherAll->expired)) {
-          $this->message = "Kode Voucher kadaluarsa";
+          $this->pesan = "Kode Voucher kadaluarsa";
         }else {
           $this->discount = $voucherAll->discount;
-          $this->message = "Kode Voucher berhasil digunakan";
+          $this->pesan = "Kode Voucher berhasil digunakan";
           $this->voucher = $voucherAll->voucher_code;
         }
 
       } catch (\Exception $e) {
         $this->discount = 0;
-        $this->message = "Kode Voucher tidak valid";
+        $this->pesan = "Kode Voucher tidak valid";
       }
     }
 
     public function resetbtn()
     {
       $this->reset('voucher');
-      $this->reset('message');
+      $this->reset('pesan');
       $this->discount = 0;
     }
 
@@ -141,9 +141,5 @@ class JenisLaundry extends Component
     catch (Exception $e) {
         return ResponseFormatter::error($e->getMessage(),'Transaksi Gagal');
     }
-
-      // session()->flash('pesan', 'Transaksi berhasil di proses');
   }
-
-
 }

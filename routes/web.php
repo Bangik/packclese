@@ -62,16 +62,20 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/transaksi/restore/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'restore'])->name('restore-transaksi');
     Route::get('/transaksi/delete/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'delete'])->name('delete-transaksi');
   });
+
+  //Route Khusus User
+  Route::get('/profile', App\Http\Livewire\Profile::class)->name('profile');
+  Route::get('/profile/riwayat-transaksi', [App\Http\Controllers\Users\TransactionHistoryController::class, 'index'])->name('riwayat-transaksi');
+
+  //Route Transaksi Layanan
+  Route::get('/laundry-in-aja', App\Http\Livewire\Laundry::class)->name('laundry');
+  Route::get('/bersihin-yuk', App\Http\Livewire\Bersih::class)->name('bersih');
+  Route::get('/paketin-yuk', App\Http\Livewire\Titip::class)->name('titip');
+  Route::get('/titipin-sini-aja', App\Http\Livewire\Paket::class)->name('paket');
 });
 //Route-User
-Route::get('/dashboard', [App\Http\Controllers\UsersController::class, 'index'])->name('home-user');
 
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
-Route::get('/laundry', App\Http\Livewire\Laundry::class)->name('laundry');
-Route::get('/bersih', App\Http\Livewire\Bersih::class)->name('bersih');
-Route::get('/titip', App\Http\Livewire\Titip::class)->name('titip');
-Route::get('/paket', App\Http\Livewire\Paket::class)->name('paket');
-Route::get('/profile', App\Http\Livewire\Profile::class)->name('profile');
 
 // Midtrans Related
 Route::get('midtrans/success', [App\Http\Controllers\API\MidtransController::class, 'success']);
