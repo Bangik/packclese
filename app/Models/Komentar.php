@@ -11,7 +11,7 @@ class Komentar extends Model
     protected $table = "comments";
 
     protected $fillable = [
-      'user_id','services_id','comments_id','komentar'
+      'user_id','service_id','comment_id','komentar'
     ];
 
     public function Service(){
@@ -23,7 +23,7 @@ class Komentar extends Model
     }
 
     public function child(){
-      return $this->hasMany('App\Models\Komentar','comments_id');
+      return $this->hasMany('App\Models\Komentar','comment_id');
     }
 
 

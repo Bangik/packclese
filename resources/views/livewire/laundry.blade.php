@@ -34,12 +34,12 @@
           <div class="mt-3 mb-3">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-indicators">
-                @foreach ($laundry[0]->photos as $key => $photo)
+                @foreach ($laundry as $key => $photo)
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}"></button>
                 @endforeach
               </div>
               <div class="carousel-inner">
-                @foreach ($laundry[0]->photos as $key => $photo)
+                @foreach ($laundry as $key => $photo)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                   <img src="{{ asset($photo->picturePath) }}" class="d-block w-100" width="300" height="300">
                 </div>
@@ -65,6 +65,64 @@
               <span class="bi bi-star-fill muted"></span>
             </p>
             {!!$laundry[0]->description!!}
+          </div>
+          <div class="pt-5">
+            <h6 class="mb-5">Komentar</h6>
+            <div class="card border-0">
+              <div class="card-body">
+                <ul class="comment-list">
+                  @if(count($laundryPaginate) != 0)
+                  @foreach($laundryPaginate as $comment)
+                  <li class="comment border-bottom">
+                    <div class="vcard bio">
+                      <img src="{{asset('Storage/public/images/'.$comment->user->profile_photo_path)}}" alt="{{$comment->user->name}}">
+                    </div>
+                    <div class="comment-body">
+                      <h6>{{$comment->user->name}}</h6>
+                      <div class="meta">{{$comment->created_at->diffForHumans()}}</div>
+                      <p>{{$comment->komentar}}</p>
+                    </div>
+                    <ul class="children">
+                      @foreach($comment->child()->orderBy('created_at', 'desc')->get() as $nestedComment)
+                      <li class="comment">
+                        <div class="vcard bio">
+                          <img src="{{asset('Storage/public/images/'.$nestedComment->user->profile_photo_path)}}" alt="{{$nestedComment->user->name}}">
+                        </div>
+                        <div class="comment-body">
+                          <h6>{{$nestedComment->user->name}}</h6>
+                          <div class="meta">{{$nestedComment->created_at->diffForHumans()}}</div>
+                          <p>{{$nestedComment->komentar}}</p>
+                        </div>
+                      </li>
+                      @endforeach
+                    </ul>
+                  </li>
+                  <hr>
+                  @endforeach
+                  @else
+                  <li class="comment">Tidak Ada Komentar</li>
+                  @endif
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="float-end">
+                  {{ $laundryPaginate->links() }}
+                </div>
+              </div>
+            </div>
+            <div class="comment-form-wrap pt-5">
+              <h6 class="mb-5">Beri Komentar</h6>
+              <form wire:submit.prevent="saveComment">
+                @csrf
+                <div class="form-group mt-3">
+                  <label for="message">Komentar</label>
+                  <textarea name="comment" id="message" cols="30" rows="10" class="form-control" wire:model="comment"></textarea>
+                </div>
+                <div class="form-group mt-3">
+                  <button type="submit" name="button" class="btn btn-primary">Kirim</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
         <div class="col-md-6 sidebar">

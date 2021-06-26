@@ -25,7 +25,7 @@ class Layanan extends Model
     }
 
     public function Komentar(){
-      return $this->hasMany('App\Models\Komentar');
+      return $this->hasMany('App\Models\Komentar', 'service_id');
     }
 
     public function transaction(){
