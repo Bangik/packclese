@@ -33,7 +33,7 @@
               <td>{{$transaction->user->name}}</td>
               <td> <a href="{{$transaction->payment_url}}" target="_blank">link</a> </td>
               <td>{{$transaction->status}}</td>
-              <td>{{$transaction->total}}</td>
+              <td>@currency($transaction->total)</td>
               <td>
                 <a href="{{route('detail-transaksi', ['id' => $transaction->id])}}" class="btn btn-m btn-primary"><i class="fas fa-info-circle"></i></a>
                 <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$loop->iteration}}"> <i class="fas fa-trash"></i> </a>

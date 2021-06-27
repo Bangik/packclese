@@ -1,3 +1,4 @@
+@section('titless', 'Packlese - Titipin Sini Aja!')
 <main id="main">
   <!-- ======= Single Blog Section ======= -->
   <section class="hero-section inner-page">

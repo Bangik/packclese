@@ -1,4 +1,5 @@
 @extends('layouts.welcome')
+@section('titels', 'Packlese')
 @section('section')
 <main id="main">
   <!-- ======= Home Section ======= -->
