@@ -22,7 +22,7 @@
       @enderror
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <label for="">Jumlah Box / Motor</label><small class="text-danger"> *minimal 3 box</small>
     <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" required wire:model="quantity">
     @error('quantity')
@@ -32,7 +32,7 @@
     @enderror
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <label for="">Tanggal mulai titip</label>
     <input id="start" type="date" class="form-control @error('start') is-invalid @enderror" name="start" value="{{ old('start') }}" wire:model="start" required>
     @error('address')
@@ -41,7 +41,7 @@
         </span>
     @enderror
   </div>
-  <div class="form-group">
+  <div class="form-group mt-3">
     <label for="">Tanggal akhir titip</label>
     <input id="ends" type="date" class="form-control @error('ends') is-invalid @enderror" name="ends" value="{{ old('ends') }}" wire:model="ends" required>
     @error('address')
@@ -51,17 +51,17 @@
     @enderror
   </div>
 
-  <div class="form-group">
-    <label for="">Masukkan alamat anda</label><small class="text-danger"> *Kosongkan jika pilih jemput sendiri</small>
+  <div class="form-group mt-3">
+    <label for="">Masukkan alamat anda</label>
     <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" wire:model="address">
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <label for="">Perjelas alamat (nomor rumah, ancer ancer dll. boleh kosong)</label>
     <input id="address2" type="text" class="form-control @error('address2') is-invalid @enderror" name="address2" value="{{ old('address2') }}" wire:model="address2">
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <label for="">Kode Voucher (jika ada)</label>
     <div class="input-group">
       <input id="voucher" type="text" class="form-control @error('voucher') is-invalid @enderror" name="voucher" value="{{ old('voucher') }}" wire:model="voucher" aria-describedby="button-addon4">
@@ -73,17 +73,39 @@
     <small class="text-danger">{{$message}}</small>
   </div>
 
-  <br>
-  <h6>Detail transaksi</h6>
-
-  <p>{{$namaLayanan}} Rp. {{$harga}}</p>
-  <p>Waktu titip {{$waktuTitip}} {{$messageTime}}</p>
-  <p>Subtotal Rp. {{$subtotal}}</p>
-  <p>Diskon Voucher {{$discount}} % Rp. {{$potongan}}</p><br>
-  <p>Total Rp. {{$total}}</p>
+  <hr>
+  <h6 class="text-center">Detail transaksi</h6>
+  <div class="table-responsive">
+    <table class="table table-borderless table-sm" width="100%" cellspacing="0">
+      <tr>
+        <td width="50%">Layanan {{$namaLayanan}}</td>
+        <td width="50%">@currency($harga)</td>
+      </tr>
+      <tr>
+        <td width="50%">Jumlah Box / Motor</td>
+        <td width="50%">{{$quantity}}</td>
+      </tr>
+      <tr>
+        <td width="50%">Waktu Titip</td>
+        <td width="50%">{{$waktuTitip}} {{$messageTime}}</td>
+      </tr>
+      <tr>
+        <td width="50%">Subtotal</td>
+        <td width="50%">@currency($subtotal)</td>
+      </tr>
+      <tr>
+        <td width="50%">Diskon Voucher {{$discount}} %</td>
+        <td width="50%">@currency($potongan)</td>
+      </tr>
+      <tr class="border-top">
+        <th width="50%">Total</th>
+        <th width="50%">@currency($total)</th>
+      </tr>
+    </table>
+  </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary btn-user btn-block">
-        {{ __('Proses Order') }}
+      Proses Sekarang
     </button>
   </div>
 </form>

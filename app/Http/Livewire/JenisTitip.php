@@ -47,12 +47,12 @@ class JenisTitip extends Component
         $this->tambahanBox = 0;
       }
 
-      if (strpos($this->namaLayanan, 'harian') !== false) {
+      if (strpos(strtolower($this->namaLayanan), 'harian') !== false) {
         $this->waktuTitip = round(abs(strtotime($this->ends) - strtotime($this->start)) / 86400);
         $this->subtotal = $this->harga * $this->quantity * $this->waktuTitip;
         $this->messageTime = "Hari";
 
-      }elseif (strpos($this->namaLayanan, 'bulanan') !== false) {
+      }elseif (strpos(strtolower($this->namaLayanan), 'bulanan') !== false) {
         $this->waktuTitip = round(abs(strtotime($this->ends) - strtotime($this->start)) / 2629800);
 
         if ($this->waktuTitip < 1) {

@@ -18,7 +18,7 @@
         <div class="col-12">
           <div class="row justify-content-center">
             <div class="col-md-10 text-center hero-text">
-              <h1 data-aos="fade-up" data-aos-delay="">Layanan Laundry</h1>
+              <h1 data-aos="fade-up" data-aos-delay="">Laundry-in Yuk!</h1>
             </div>
           </div>
         </div>
@@ -30,8 +30,9 @@
   <section class="site-section mb-4">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 blog-content">
+        <div class="col-md-7 blog-content">
           <div class="mt-3 mb-3">
+            <h4>Layanan Laundry</h4>
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-indicators">
                 @foreach ($laundry as $key => $photo)
@@ -41,7 +42,7 @@
               <div class="carousel-inner">
                 @foreach ($laundry as $key => $photo)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                  <img src="{{ asset($photo->picturePath) }}" class="d-block w-100" width="300" height="300">
+                  <img src="{{ asset($photo->picturePath) }}" class="d-block w-100" width="500" height="350">
                 </div>
                 @endforeach
               </div>
@@ -56,7 +57,6 @@
             </div>
           </div>
           <div class="mb-3">
-            <h5>Laundry</h5>
             <p class="stars">
               <span class="bi bi-star-fill"></span>
               <span class="bi bi-star-fill"></span>
@@ -125,8 +125,11 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 sidebar">
-          @livewire('jenis-laundry')
+        <div class="col-md-5 sidebar">
+          <div class="mt-3 mb-3">
+            <h4>Pesan Sekarang</h4>
+            @livewire('jenis-laundry')
+          </div>
         </div>
       </div>
     </div>

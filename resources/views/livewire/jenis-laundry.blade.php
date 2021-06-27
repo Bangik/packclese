@@ -65,8 +65,8 @@
     <div class="input-group">
       <input id="voucher" type="text" class="form-control @error('voucher') is-invalid @enderror" name="voucher" value="{{ old('voucher') }}" wire:model="voucher" aria-describedby="button-addon4">
       <div class="input-group-append" id="button-addon4">
-        <button class="btn btn-danger btn-sm" type="button" wire:click="resetbtn">Reset</button>
-        <button class="btn btn-primary btn-sm" type="button" wire:click="reedeem('{{$voucher}}')">Reedeem</button>
+        <button class="btn btn-outline-danger btn-sm" type="button" wire:click="resetbtn">Reset</button>
+        <button class="btn btn-outline-primary btn-sm" type="button" wire:click="reedeem('{{$voucher}}')">Reedeem</button>
       </div>
     </div>
     <small class="text-danger">{{$pesan}}</small>
@@ -92,13 +92,13 @@
         <td width="50%">Diskon Voucher {{$discount}} %</td>
         <td width="50%">@currency($potongan)</td>
       </tr>
-      <tr>
+      <tr class="border-top">
         <th width="50%">Total</th>
         <th width="50%">@currency($total)</th>
       </tr>
     </table>
   </div>
   <button type="submit" class="btn btn-primary btn-sm btn-block">
-    {{ __('Proses Order') }}
+    Proses Sekarang
   </button>
 </form>

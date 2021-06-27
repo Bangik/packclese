@@ -71,8 +71,8 @@ Route::middleware(['auth'])->group(function () {
   //Route Transaksi Layanan
   Route::get('/laundry-in-aja', App\Http\Livewire\Laundry::class)->name('laundry');
   Route::get('/bersihin-yuk', App\Http\Livewire\Bersih::class)->name('bersih');
-  Route::get('/paketin-yuk', App\Http\Livewire\Titip::class)->name('titip');
-  Route::get('/titipin-sini-aja', App\Http\Livewire\Paket::class)->name('paket');
+  Route::get('/titipin-sini-aja', App\Http\Livewire\Titip::class)->name('titip');
+  Route::get('/paketin-yuk', App\Http\Livewire\Paket::class)->name('paket');
 });
 //Route-User
 
