@@ -67,6 +67,7 @@ Route::middleware(['auth'])->group(function () {
   //Route Khusus User
   Route::get('/profile', App\Http\Livewire\Profile::class)->name('profile');
   Route::get('/profile/riwayat-transaksi', [App\Http\Controllers\Users\TransactionHistoryController::class, 'index'])->name('riwayat-transaksi');
+  Route::get('/profile/detail-riwayat-transaksi/{id}', [App\Http\Controllers\Users\TransactionHistoryController::class, 'detail'])->name('detail-riwayat-transaksi');
 
   //Route Transaksi Layanan
   Route::get('/laundry-in-aja', App\Http\Livewire\Laundry::class)->name('laundry');
