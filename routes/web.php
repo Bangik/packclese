@@ -49,6 +49,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/users', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('index-user');
     Route::get('/users/delete/{id}', [App\Http\Controllers\Admin\UsersController::class, 'delete'])->name('delete-user');
 
+    //route Voucher
+    Route::get('/voucher', [App\Http\Controllers\Admin\VoucherController::class, 'index'])->name('index-voucher');
+    Route::get('/voucher/changeStatus', [App\Http\Controllers\Admin\VoucherController::class, 'changeStatus'])->name('ubahStatus');
+    Route::get('/voucher/create', [App\Http\Controllers\Admin\VoucherController::class, 'create'])->name('create-voucher');
+    Route::post('/voucher/store', [App\Http\Controllers\Admin\VoucherController::class, 'store'])->name('store-voucher');
+    Route::post('/voucher/update/{id}', [App\Http\Controllers\Admin\VoucherController::class, 'update'])->name('update-voucher');
+    Route::get('/voucher/delete/{id}', [App\Http\Controllers\Admin\VoucherController::class, 'delete'])->name('delete-voucher');
+
     //route Komentar
     Route::get('/komentar', [App\Http\Controllers\Admin\KomentarController::class, 'index'])->name('index-komentar');
     Route::get('/komentar/delete/{id}', [App\Http\Controllers\Admin\KomentarController::class, 'delete'])->name('delete-komentar');

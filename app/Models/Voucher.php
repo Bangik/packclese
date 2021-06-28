@@ -9,6 +9,9 @@ class Voucher extends Model
 {
   use HasFactory;
   protected $fillable = [
-    'voucher_code','discount','status','expired'
+      'voucher_code',
+      'discount',
+      'status',
+      'expired',
   ];
 }

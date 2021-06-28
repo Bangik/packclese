@@ -98,6 +98,22 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
+        <a class="nav-link collapsed" type="button" data-toggle="collapse" data-target="#vouchercollaps"
+        aria-expanded="false" aria-controls="vouchercollaps">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Voucher</span>
+        </a>
+        <div id="vouchercollaps" class="collapse multi-collapse" >
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Voucher</h6>
+                <a class="collapse-item" href="{{route('index-voucher')}}">List Voucher</a>
+                <a class="collapse-item" href="{{route('create-voucher')}}">Tambah Voucher</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
         <a class="nav-link collapsed" type="button" data-toggle="collapse" data-target="#multiCollapseExample3"
         aria-expanded="false" aria-controls="multiCollapseExample3">
             <i class="fas fa-fw fa-folder"></i>
