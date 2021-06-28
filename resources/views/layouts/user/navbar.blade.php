@@ -10,7 +10,7 @@
     <ul>
       <li><a class="{{request()->is('/') ? ' active' : ''}}" href="/">Home</a></li>
       <li><a class="{{Str::contains(request()->path(), 'riwayat-transaksi')  ? ' active' : ''}}" href="{{route('riwayat-transaksi')}}">Riwayat Transaksi</a></li>
-      <li><a href="contact.html">Hubungi Kami</a></li>
+      <li><a href="{{route('contact_us')}}">Hubungi Kami</a></li>
       @if (Route::has('login'))
       @auth
       <li class="dropdown"><a href="#">{{Auth::user()->name}}

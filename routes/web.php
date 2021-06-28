@@ -77,9 +77,9 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/paketin-yuk', App\Http\Livewire\Paket::class)->name('paket');
 });
 //Route-User
-
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
-
+//Route-contact_us
+Route::get('/contact-us', [App\Http\Controllers\WelcomeController::class, 'contact_us'])->name('contact_us');
 // Midtrans Related
 Route::get('midtrans/success', [App\Http\Controllers\API\MidtransController::class, 'success']);
 Route::get('midtrans/unfinish', [App\Http\Controllers\API\MidtransController::class, 'unfinish']);
