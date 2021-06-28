@@ -136,7 +136,7 @@
                 <h3 class="mb-0">My account</h3>
               </div>
               <div class="col-4 text-right">
-                <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                <a href="#" wire:click="setting('Setting')" class="btn btn-sm btn-primary">Settings</a>
               </div>
             </div>
           </div>
@@ -194,7 +194,7 @@
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Save Post</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Change Username</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                   </button>
@@ -211,7 +211,7 @@
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="emailModalLabel">Save Post</h5>
+                  <h5 class="modal-title" id="emailModalLabel">Change Email</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                   </button>
@@ -228,7 +228,7 @@
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="addressModalLabel">Save Post</h5>
+                  <h5 class="modal-title" id="addressModalLabel">Change Address</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                   </button>
@@ -245,7 +245,7 @@
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="phoneNumberModalLabel">Save Post</h5>
+                  <h5 class="modal-title" id="phoneNumberModalLabel">Change Phone Number</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                   </button>
@@ -262,13 +262,30 @@
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="imageModalLabel">Save Post</h5>
+                  <h5 class="modal-title" id="imageModalLabel">Change Photo Profile</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                   </button>
               </div>
               <div class="modal-body">
                   @livewire('jenis-profile-image')
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="update_setting" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="imageModalLabel">Change Password</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  @livewire('setting-user')
               </div>
           </div>
       </div>

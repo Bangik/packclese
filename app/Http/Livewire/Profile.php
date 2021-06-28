@@ -59,8 +59,17 @@ class Profile extends Component
 
       }
 
-  }
 
+  }
+  public function setting($action)
+  {
+
+      if ($action == 'Setting') {
+      $this->dispatchBrowserEvent('openModal_setting');;
+
+      }
+
+  }
     public function render()
     {
         return view('livewire.profile')->extends('user.profile');
