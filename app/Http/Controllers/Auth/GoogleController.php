@@ -46,7 +46,8 @@ class GoogleController extends Controller
                  'email' => $user->email,
                  'google_id'=> $user->id,
                  'roles'=> ('user'),
-                 'password' => encrypt('123456dummy')
+                 'password' => encrypt('123456dummy'),
+                 'profile_photo_path' => ('16248868071.jpg'),
              ]);
 
              Auth::login($newUser);

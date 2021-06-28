@@ -1,14 +1,4 @@
 <?php
-    //Koneksi SQLiteDatabase
-    $server = "localhost";
-    $user = "root";
-    $pass ="";
-    $database = "packclese";
-
-    $koneksi = mysqli_connect($server, $user, $pass, $database) or die(mysqli_error ($koneksi));
-
-
-
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

@@ -57,7 +57,7 @@
             <div class="col-lg-8 text-center text-lg-start">
               <h1 data-aos="fade-right">Packlese</h1>
               <p class="mb-5" data-aos="fade-right" data-aos-delay="100">Kemas, Ringkas, Tangkas!</p>
-              <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="#" class="btn btn-outline-white">Mulai</a></p>
+              <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="#service1" class="btn btn-outline-white">Mulai</a></p>
             </div>
             <div class="col-lg-4 iphone-wrap">
               <img src="{{asset('SoftLand/assets/img/phone_1.png')}}" alt="Image" class="phone-1" data-aos="fade-right">
