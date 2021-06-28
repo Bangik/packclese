@@ -22,7 +22,7 @@ class JenisLaundry extends Component
     public $voucher;
     public $discount;
     public $potongan;
-    public $message;
+    public $pesan;
     public $harga;
     public $subtotal;
     public $total;
@@ -43,7 +43,7 @@ class JenisLaundry extends Component
         $this->total = $this->subtotal - $this->potongan;
 
       }else {
-        $this->reset(['harga', 'total', 'subtotal', 'potongan', 'message', 'discount']);
+        $this->reset(['harga', 'total', 'subtotal', 'potongan', 'pesan', 'discount']);
       }
 
       $laundry = Layanan::where('jenisservice_id', 1)->get();
@@ -57,23 +57,23 @@ class JenisLaundry extends Component
         $voucherAll = Voucher::where('status', 1)->where('voucher_code', $voucher)->first();
 
         if (time() > strtotime($voucherAll->expired)) {
-          $this->message = "Kode Voucher kadaluarsa";
+          $this->pesan = "Kode Voucher kadaluarsa";
         }else {
           $this->discount = $voucherAll->discount;
-          $this->message = "Kode Voucher berhasil digunakan";
+          $this->pesan = "Kode Voucher berhasil digunakan";
           $this->voucher = $voucherAll->voucher_code;
         }
 
       } catch (\Exception $e) {
         $this->discount = 0;
-        $this->message = "Kode Voucher tidak valid";
+        $this->pesan = "Kode Voucher tidak valid";
       }
     }
 
     public function resetbtn()
     {
       $this->reset('voucher');
-      $this->reset('message');
+      $this->reset('pesan');
       $this->discount = 0;
     }
 
@@ -87,8 +87,7 @@ class JenisLaundry extends Component
       $transaksi = Transaction::create([
         'user_id' => Auth::user()->id,
         'total' => $this->total,
-        'status' => "menunggu pembayaran",
-        'payment_url' => "menunggu pembayaran",
+        'status' => "PROCESS",
       ]);
 
       DetailTransaction::create([
@@ -112,16 +111,47 @@ class JenisLaundry extends Component
       Config::$isSanitized = config('services.midtrans.isSanitized');
       Config::$is3ds = config('services.midtrans.is3ds');
 
-      $transaksi = Transaction::with(['detailTransaction','user', 'layanan'])->find($transaksi->id);
+      $transaksi = Transaction::with(['detailTransaction','user'])->find($transaksi->id);
+      // $nameService = Layanan::find($this->jenisLaundry);
 
       $midtrans = array(
         'transaction_details' => array(
         'order_id' =>  $transaksi->id,
         'gross_amount' => (int) $transaksi->total,
       ),
+      // 'item_details' => array(
+      //   array(
+      //     'id' => $nameService->id,
+      //     'price' => $nameService->price,
+      //     'quantity' => $this->weight,
+      //     'name' => $nameService->name,
+      //     'brand' => "Packclese",
+      //     'category' => "Laundry-in Yuk!",
+      //     'merchant_name' => "Packclese",
+      //   ),
+      //   array(
+      //     'id' => "Biaya Layanan",
+      //     'price' => $this->antar,
+      //     'quantity' => 1,
+      //     'name' => "Biaya Layanan",
+      //     'brand' => "Packclese",
+      //     'category' => "Laundry-in Yuk!",
+      //     'merchant_name' => "Packclese",
+      //   ),
+      //   array(
+      //     'id' => "Discount",
+      //     'price' => -1 * abs($this->subtotal * $this->discount / 100),
+      //     'quantity' => 1,
+      //     'name' => "Discount Voucher",
+      //     'brand' => "Packclese",
+      //     'category' => "Laundry-in Yuk!",
+      //     'merchant_name' => "Packclese",
+      //   ),
+      // ),
       'customer_details' => array(
         'first_name'    => $transaksi->user->name,
-        'email'         => $transaksi->user->email
+        'email'         => $transaksi->user->email,
+        'phone'         => $transaksi->user->phoneNumber,
       ),
         'enabled_payments' => array('gopay','bank_transfer'),
         'vtweb' => array(),
@@ -141,9 +171,5 @@ class JenisLaundry extends Component
     catch (Exception $e) {
         return ResponseFormatter::error($e->getMessage(),'Transaksi Gagal');
     }
-
-      // session()->flash('pesan', 'Transaksi berhasil di proses');
   }
-
-
 }

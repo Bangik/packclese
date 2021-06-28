@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,23 +55,30 @@ Route::middleware(['auth'])->group(function () {
 
     //route Transaksi
     Route::get('/transaksi', [App\Http\Controllers\Admin\TransactionController::class, 'index'])->name('index-transaksi');
-    Route::get('/transaksi/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'jenisTransaction'])->name('jenisTransaction-transaksi');
+    Route::get('/transaksi/layanan/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'jenisTransaction'])->name('jenisTransaction-transaksi');
     Route::get('/transaksi/detail/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'detail'])->name('detail-transaksi');
+    Route::post('/transaksi/laporan', [App\Http\Controllers\Admin\TransactionController::class, 'report'])->name('report-transaksi');
     Route::get('/transaksi/trash/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'trash'])->name('trash-transaksi');
     Route::get('/transaksi/trashed', [App\Http\Controllers\Admin\TransactionController::class, 'trashed'])->name('trashed-transaksi');
     Route::get('/transaksi/restore/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'restore'])->name('restore-transaksi');
     Route::get('/transaksi/delete/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'delete'])->name('delete-transaksi');
   });
+
+  //Route Khusus User
+  Route::get('/profile', App\Http\Livewire\Profile::class)->name('profile');
+  Route::get('/profile/setting', App\Http\Livewire\SettingUser::class)->name('setting-user');
+  Route::get('/profile/riwayat-transaksi', [App\Http\Controllers\Users\TransactionHistoryController::class, 'index'])->name('riwayat-transaksi');
+  Route::get('/profile/detail-riwayat-transaksi/{id}', [App\Http\Controllers\Users\TransactionHistoryController::class, 'detail'])->name('detail-riwayat-transaksi');
+
+  //Route Transaksi Layanan
+  Route::get('/laundry-in-aja', App\Http\Livewire\Laundry::class)->name('laundry');
+  Route::get('/bersihin-yuk', App\Http\Livewire\Bersih::class)->name('bersih');
+  Route::get('/titipin-sini-aja', App\Http\Livewire\Titip::class)->name('titip');
+  Route::get('/paketin-yuk', App\Http\Livewire\Paket::class)->name('paket');
 });
 //Route-User
-Route::get('/dashboard', [App\Http\Controllers\UsersController::class, 'index'])->name('home-user');
 
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
-Route::get('/laundry', App\Http\Livewire\Laundry::class)->name('laundry');
-Route::get('/bersih', App\Http\Livewire\Bersih::class)->name('bersih');
-Route::get('/titip', App\Http\Livewire\Titip::class)->name('titip');
-Route::get('/paket', App\Http\Livewire\Paket::class)->name('paket');
-Route::get('/profile', App\Http\Livewire\Profile::class)->name('profile');
 
 // Midtrans Related
 Route::get('midtrans/success', [App\Http\Controllers\API\MidtransController::class, 'success']);
@@ -79,3 +87,8 @@ Route::get('midtrans/error', [App\Http\Controllers\API\MidtransController::class
 
 //layanan
 // Route::get('/layanan-user', [App\Http\Controllers\User\LayanananUserController::class, 'index'])->name('Home-Layanan');
+
+// Route Google-login
+// Google login
+Route::get('auth/google', 'App\Http\Controllers\Auth\GoogleController@redirectToGoogle');
+Route::get('auth/google/callback', 'App\Http\Controllers\Auth\GoogleController@handleGoogleCallback');

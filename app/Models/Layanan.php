@@ -25,7 +25,7 @@ class Layanan extends Model
     }
 
     public function Komentar(){
-      return $this->hasMany('App\Models\Komentar');
+      return $this->hasMany('App\Models\Komentar', 'service_id');
     }
 
     public function transaction(){
@@ -33,7 +33,7 @@ class Layanan extends Model
     }
 
     public function photos(){
-      return $this->hasMany('App\Models\ServicePhoto', 'id');
+      return $this->hasMany('App\Models\ServicePhoto', 'service_id', 'id');
     }
 
     public function detailTransaction(){

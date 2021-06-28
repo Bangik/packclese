@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>SoftLand Bootstrap Template - Index</title>
+  <title>@yield('titels')</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{asset('SoftLand/assets/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('SoftLand/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{asset('img/favicons.png')}}" rel="icon">
+  <link href="{{asset('img/favicons.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -26,12 +26,6 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('SoftLand/assets/css/style.css')}}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: SoftLand - v4.3.0
-  * Template URL: https://bootstrapmade.com/softland-bootstrap-app-landing-page-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -61,10 +55,9 @@
         <div class="col-12 hero-text-image">
           <div class="row">
             <div class="col-lg-8 text-center text-lg-start">
-              <h1 data-aos="fade-right">Promote Your App with SoftLand</h1>
-              <p class="mb-5" data-aos="fade-right" data-aos-delay="100">Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit.</p>
-              <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="#" class="btn btn-outline-white">Get started</a></p>
+              <h1 data-aos="fade-right">Packlese</h1>
+              <p class="mb-5" data-aos="fade-right" data-aos-delay="100">Kemas, Ringkas, Tangkas!</p>
+              <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="#" class="btn btn-outline-white">Mulai</a></p>
             </div>
             <div class="col-lg-4 iphone-wrap">
               <img src="{{asset('SoftLand/assets/img/phone_1.png')}}" alt="Image" class="phone-1" data-aos="fade-right">
@@ -105,13 +98,6 @@
       <div class="col-md-7">
         <p class="copyright">&copy; Copyright Packclese. All Rights Reserved</p>
         <div class="credits">
-          <!--
-            All the links in the footer should remain intact.
-            You can delete the links only if you purchased the pro version.
-            Licensing information: https://bootstrapmade.com/license/
-            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=SoftLand
-          -->
-          Designed by <a href="https://bootstrapmade.com/">Nevermind</a>
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+<title>Profile</title>
 <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -7,6 +8,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <link href="{{asset('css/profile/profile.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('cropper/cropper.min.css')}}">
 <style media="screen" type="text/css">
 .upload-btn-wrapper {
   position: relative;
@@ -49,6 +51,7 @@
 
 <!-- Page level custom scripts -->
 <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
+<script src="{{asset('cropper/cropper.min.js')}}"></script>
 <script>
 
 
@@ -92,7 +95,16 @@
         $("#update_image").modal('show');
     })
 
+    window.addEventListener('closeModal_setting', event => {
+        $("#update_setting").modal('hide');
+    })
+
+    window.addEventListener('openModal_setting', event => {
+        $("#update_setting").modal('show');
+    })
+
 </script>
+
 @livewireScripts
 
 <body>

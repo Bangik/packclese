@@ -21,6 +21,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('checkout', [App\Http\Livewire\Laundry::class, 'checkout']);
+    Route::post('logout', [App\Http\Controllers\API\UserController::class, 'logout']);
+    Route::get('user', [App\Http\Controllers\API\UserController::class, 'fetch']);
 });
+
+Route::post('login', [App\Http\Controllers\API\UserController::class, 'login']);
+Route::post('register', [App\Http\Controllers\API\UserController::class, 'register']);
+Route::get('jenis-layanan', [App\Http\Controllers\API\JenisLayananController::class, 'all']);
 
 Route::post('midtrans/callback', [App\Http\Controllers\API\MidtransController::class, 'callback']);

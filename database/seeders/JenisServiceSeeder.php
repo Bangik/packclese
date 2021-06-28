@@ -21,7 +21,7 @@ class JenisServiceSeeder extends Seeder
         'jenis' => 'Laundry-in Aja!',
         'slug' => Str::slug('Laundry-in aja'),
         'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-        'picturePath' => '/img/services/laundry.png',
+        'picturePath' => '/img/services/laundry.svg',
         'created_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]);
 
@@ -30,7 +30,7 @@ class JenisServiceSeeder extends Seeder
         'jenis' => 'Bersihin Yuk!',
         'slug' => Str::slug('Bersihin Yuk'),
         'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-        'picturePath' => '/img/services/bersih.png',
+        'picturePath' => '/img/services/bersih.svg',
         'created_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]);
 
@@ -39,7 +39,7 @@ class JenisServiceSeeder extends Seeder
         'jenis' => 'Paketin Yuk!',
         'slug' => Str::slug('Paketin Yuk'),
         'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-        'picturePath' => '/img/services/paket.png',
+        'picturePath' => '/img/services/paket.svg',
         'created_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]);
 
@@ -48,7 +48,7 @@ class JenisServiceSeeder extends Seeder
         'jenis' => 'Titipin Sini Aja!',
         'slug' => Str::slug('Titipin Sini Aja'),
         'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-        'picturePath' => '/img/services/titip.png',
+        'picturePath' => '/img/services/titip.svg',
         'created_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]);
     }

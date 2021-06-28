@@ -1,83 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Layanan</title>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <title>@yield('titless')</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-        <!-- Custom styles for this template-->
-        <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
-        @livewireStyles
-    </head>
-    <body>
-        <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="#">Packclese</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home
-                      <span class="sr-only">(current)</span>
-                    </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Layanan</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Riwayat Transaksi</a>
-              </li>
-              @if (Route::has('login'))
-                @auth
-                  <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                      {{Auth::user()->name}}
-                      <img class="img-profile rounded-circle" src="{{asset(Auth::user()->profile_photo_path)}}" width="25" height="25">
-                    </a>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Profile</a>
-                      <a class="dropdown-item" href="#">Pengaturan</a>
-                      <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> Keluar</a>
-                    </div>
-                  </li>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                      @csrf
-                  </form>
-                @else
-                  <li class="nav-item">
-                    <a href="{{ route('login') }}" class="nav-link">Log in</a>
-                  </li>
-                @endauth
-              @endif
-            </ul>
+    <!-- Favicons -->
+    <link href="{{asset('img/favicons.png')}}" rel="icon">
+    <link href="{{asset('img/favicons.png')}}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{{asset('SoftLand/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+    <link href="{{asset('SoftLand/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('SoftLand/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{asset('SoftLand/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+    <link href="{{asset('SoftLand/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{asset('SoftLand/assets/css/style.css')}}" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+    @livewireStyles
+  </head>
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+      @include('layouts.user.navbar')
+    </header><!-- End Header -->
+
+    @yield('content')
+
+    <!-- ======= Footer ======= -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h3>About Packclese</h3>
+            <p>Packlese adalah Jasa layanan jasa penitipan barang, motor, bersih - bersih rumah, laundry dan lain sebagainya</p>
+          </div>
+          <div class="col-md-auto ms-auto">
+            <a href="#"><span class="bi bi-envelope"> packclese2021@gmail.com</span></a>
+            <div class="col-md-auto ms-auto">
+              <a href="#"><span class="bi bi-facebook"> PACKCLESE</span></a>
+              <div class="col-md-auto ms-auto">
+                <a href="#"><span class="bi bi-whatsapp"> +6281411822</span></a>
+                <div class="col-md-auto ms-auto">
+                  <a href="#"><span class="bi bi-instagram"> @packclese</span></a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        </nav>
-        <!-- Page Content-->
-        <div class="container px-4 px-lg-5">
-          @yield('content')
+      </div>
+
+      <div class="row justify-content-center text-center">
+        <div class="col-md-7">
+          <p class="copyright">&copy; Copyright Packclese. All Rights Reserved</p>
+          <div class="credits">
+          </div>
         </div>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
-        </footer>
+      </div>
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-        <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+      </div>
+    </footer>
 
-        <!-- Core plugin JavaScript-->
-        <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-        @yield('js')
-        @livewireScripts
-    </body>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{{asset('SoftLand/assets/vendor/aos/aos.js')}}"></script>
+    <script src="{{asset('SoftLand/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('SoftLand/assets/vendor/php-email-form/validate.js')}}"></script>
+    <script src="{{asset('SoftLand/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{asset('SoftLand/assets/js/main.js')}}"></script>
+    @yield('js')
+    @livewireScripts
+  </body>
 </html>

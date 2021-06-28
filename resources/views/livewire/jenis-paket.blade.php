@@ -1,4 +1,4 @@
-<form wire:submit.prevent="storePaket">
+<form wire:submit.prevent="storePaket" class="row">
   @csrf
   <div>
     @if (session()->has('pesan'))
@@ -8,55 +8,51 @@
     @endif
   </div>
 
-  <div class="form-row">
-    <div class="form-group col-sm-6">
-      <label for="">Pilih Provinsi Asal</label>
-        <select wire:model="provinsi1" class="form-control" name="provinsi1" required>
-          <option value="0">-- Pilih Provinsi --</option>
-            @foreach($listProvinsi as $key => $provinsi)
-              <option value="{{$provinsi['province_id']}}">{{$provinsi['province']}}</option>
-            @endforeach
-        </select>
-    </div>
-
-    <div class="form-group col-sm-6">
-      <label for="">Pilih Kota Asal</label>
-        <select wire:model="origin" class="form-control" name="origin" required>
-          @if(count($listKota) == 0)
-            <option value="0">-- Pilih Kota --</option>
-          @endif
-          @foreach($listKota as $key => $kota)
-            <option value="{{$kota['city_id']}}">{{$kota['city_name']}}</option>
+  <div class="col-md-6 mt-3">
+    <label for="">Pilih Provinsi Asal</label>
+      <select wire:model="provinsi1" class="form-control" name="provinsi1" required>
+        <option value="0">-- Pilih Provinsi --</option>
+          @foreach($listProvinsi as $key => $provinsi)
+            <option value="{{$provinsi['province_id']}}">{{$provinsi['province']}}</option>
           @endforeach
-        </select>
-    </div>
+      </select>
   </div>
 
-  <div class="form-row">
-    <div class="form-group col-sm-6">
-      <label for="">Pilih Provinsi Tujuan</label>
-        <select wire:model="provinsi2" class="form-control" name="provinsi2" required>
-          <option value="0">-- Pilih Provinsi --</option>
-            @foreach($listProvinsi as $key => $provinsi2)
-              <option value="{{$provinsi2['province_id']}}">{{$provinsi2['province']}}</option>
-            @endforeach
-        </select>
-    </div>
-
-    <div class="form-group col-sm-6">
-      <label for="">Pilih Kota Tujuan</label>
-        <select wire:model="destination" class="form-control" name="destination" required>
-          @if(count($listKota2) == 0)
-            <option value="0">-- Pilih Kota --</option>
-          @endif
-          @foreach($listKota2 as $key => $kota2)
-            <option value="{{$kota2['city_id']}}">{{$kota2['city_name']}}</option>
-          @endforeach
-        </select>
-    </div>
+  <div class="col-md-6 mt-3">
+    <label for="">Pilih Kota Asal</label>
+      <select wire:model="origin" class="form-control" name="origin" required>
+        @if(count($listKota) == 0)
+          <option value="0">-- Pilih Kota --</option>
+        @endif
+        @foreach($listKota as $key => $kota)
+          <option value="{{$kota['city_id']}}">{{$kota['city_name']}}</option>
+        @endforeach
+      </select>
   </div>
 
-  <div class="form-group">
+  <div class="col-md-6 mt-3">
+    <label for="">Pilih Provinsi Tujuan</label>
+      <select wire:model="provinsi2" class="form-control" name="provinsi2" required>
+        <option value="0">-- Pilih Provinsi --</option>
+          @foreach($listProvinsi as $key => $provinsi2)
+            <option value="{{$provinsi2['province_id']}}">{{$provinsi2['province']}}</option>
+          @endforeach
+      </select>
+  </div>
+
+  <div class="col-md-6 mt-3">
+    <label for="">Pilih Kota Tujuan</label>
+      <select wire:model="destination" class="form-control" name="destination" required>
+        @if(count($listKota2) == 0)
+          <option value="0">-- Pilih Kota --</option>
+        @endif
+        @foreach($listKota2 as $key => $kota2)
+          <option value="{{$kota2['city_id']}}">{{$kota2['city_name']}}</option>
+        @endforeach
+      </select>
+  </div>
+
+  <div class="col-md-12 mt-3">
     <label for="">Pilih Kurir</label>
       <select wire:model="courier" class="form-control" name="courier" required>
         <option value="">-- Pilih Kurir --</option>
@@ -67,7 +63,7 @@
   </div>
 
 
-  <div class="form-group">
+  <div class="col-md-12 mt-3">
     <label for="">Berat (gram)</label>
     <input id="weight" type="number" class="form-control @error('weight') is-invalid @enderror" name="weight" value="{{ old('weight') }}" required wire:model="weight">
     @error('weight')
@@ -77,7 +73,7 @@
     @enderror
   </div>
 
-  <div class="form-group">
+  <div class="col-md-12 mt-3">
     <label for="">Pilih Layanan Kurir {{strtoupper($courier)}}</label>
       <select wire:model="layananCourier" class="form-control" name="layananCourier" required>
         @if(!empty($listLayananCourier))
@@ -90,8 +86,8 @@
       </select>
   </div>
 
-  <div class="form-group">
-    <label for="address">Masukkan Tujuan dengan lengkap</label>
+  <div class="col-md-12 mt-3">
+    <label for="address">Masukkan Alamat Tujuan dengan lengkap</label>
     <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" wire:model="address" required>
     @error('address')
         <span class="invalid-feedback" role="alert">
@@ -100,12 +96,12 @@
     @enderror
   </div>
 
-  <div class="form-group">
+  <div class="col-md-12 mt-3">
     <label for="">Perjelas alamat (nomor rumah, ancer ancer dll, boleh kosong)</label>
     <input id="address2" type="text" class="form-control @error('address2') is-invalid @enderror" name="address2" value="{{ old('address2') }}" wire:model="address2" >
   </div>
 
-  <div class="form-group">
+  <div class="col-md-12 mt-3">
     <label for="">Kode Voucher (jika ada)</label>
     <div class="input-group">
       <input id="voucher" type="text" class="form-control @error('voucher') is-invalid @enderror" name="voucher" value="{{ old('voucher') }}" wire:model="voucher" aria-describedby="button-addon4">
@@ -117,17 +113,38 @@
     <small class="text-danger">{{$message}}</small>
   </div>
 
-  <br>
-  <h6>Detail transaksi</h6>
+  <hr class="mt-3">
+  <div class="col-md-12">
+    <h6 class="text-center">Detail transaksi</h6>
+    <div class="table-responsive">
+      <table class="table table-borderless table-sm" width="100%" cellspacing="0">
+        <tr>
+          <td width="50%">Ongkir</td>
+          <td width="50%">@currency($ongkir)</td>
+        </tr>
+        <tr>
+          <td width="50%">Biaya Layanan</td>
+          <td width="50%">@currency($harga)</td>
+        </tr>
+        <tr>
+          <td width="50%">Sub Total</td>
+          <td width="50%">@currency($subtotal)</td>
+        </tr>
+        <tr>
+          <td width="50%">Diskon Voucher {{$discount}} %</td>
+          <td width="50%">@currency($potongan)</td>
+        </tr>
+        <tr class="border-top">
+          <th width="50%">Total</th>
+          <th width="50%">@currency($total)</th>
+        </tr>
+      </table>
+    </div>
+  </div>
 
-  <p>Ongkir Rp. {{$ongkir}}</p>
-  <p>Biaya Layanan Rp. {{$harga}}</p>
-  <p>Subtotal Rp. {{$subtotal}}</p>
-  <p>Diskon Voucher {{$discount}} % Rp. {{$potongan}}</p><br>
-  <p>Total Rp. {{$total}}</p>
-  <div class="form-group">
+  <div class="col-md-12">
     <button type="submit" class="btn btn-primary btn-user btn-block">
-        {{ __('Proses Order') }}
+      Proses Sekarang
     </button>
   </div>
 </form>

@@ -4,42 +4,54 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Storage;
 
 class JenisProfileImage extends Component
 {
     use WithFileUploads;
 
-    public $image;
+    public $avatar;
 
     public function save($id)
     {
 
       $dataimage = User::find($id);
 
-      $this->validate([
-        'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-      ]);
-
+      $data = $this->validate([
+             'avatar' => 'nullable|image|max:1024', // 2MB Max
+         ]);
       $image_path = "";
 
         if (file_exists($dataimage->profile_photo_path)) {
           unlink($dataimage->profile_photo_path);
         }
-        $varimage = $this->image;
+        $varimage = $this->avatar;
         $image_name = time().$varimage->getClientOriginalName();
+        $this->avatar->storeAs('public/images/', $image_name);
 
-        $this->image->storeAs('public/images/', $image_name);
+        $img = Image::make($varimage->getRealPath())->encode('jpg', 65)->fit(760, null, function ($c) {
+                    $c->aspectRatio();
+                    $c->upsize();
+                });
+        $img->stream();
+
+        Storage::disk('public')->put('public/images' . '/' . $image_name, $img, 'public');
 
       $dataimage->profile_photo_path = $image_name;
       $dataimage->save();
 
       $this->emit('refreshParent');
       $this->dispatchBrowserEvent('closeModal_image');
+      $this->cleanVars();
 
 
     }
 
-
+    public function cleanvars()
+    {
+      $this->avatar = null;
+    }
 
 
     public function render()
