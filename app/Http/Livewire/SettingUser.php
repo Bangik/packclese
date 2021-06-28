@@ -15,7 +15,7 @@ class SettingUser extends Component
 
     protected $rules = [
       'old_password' => 'required',
-      'new_password' => ['required', 'string', 'min:8'],
+      'new_password' => ['required_with:confirm_password', 'string', 'min:8'],
       'confirm_password' => 'required',
 
    ];
