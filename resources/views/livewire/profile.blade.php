@@ -136,7 +136,7 @@
                 <h3 class="mb-0">My account</h3>
               </div>
               <div class="col-4 text-right">
-                <a href="#" wire:click="setting('Setting')" class="btn btn-sm btn-primary">Settings</a>
+                <a href="#" wire:click="setting('Setting')" class="btn btn-sm btn-primary">Change Password</a>
               </div>
             </div>
           </div>

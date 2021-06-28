@@ -11,6 +11,11 @@ class JenisProfileEmail extends Component
     public $modelId;
     public $actionId;
 
+    protected $rules = [
+      'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
+
+   ];
+
     protected $listeners = [
         'getModelId','getActionId',
     ];
@@ -40,7 +45,7 @@ class JenisProfileEmail extends Component
     public function save()
     {
 
-
+        $this->validate();
         // Default data
         $data = [
             'email' => $this->email,

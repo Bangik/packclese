@@ -11,6 +11,11 @@ class JenisProfilePhone extends Component
     public $modelId;
     public $actionId;
 
+    protected $rules = [
+      'phoneNumber' => 'required|min:11|numeric',
+
+   ];
+
     protected $listeners = [
         'getModelId','getActionId',
     ];
@@ -40,6 +45,7 @@ class JenisProfilePhone extends Component
     public function save()
     {
 
+        $this->validate();
 
         // Default data
         $data = [

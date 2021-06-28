@@ -11,6 +11,10 @@ class JenisProfileAddress extends Component
     public $modelId;
     public $actionId;
 
+    protected $rules = [
+      'address' => ['required', 'string', 'max:35'],
+   ];
+
     protected $listeners = [
         'getModelId','getActionId',
     ];
@@ -40,6 +44,7 @@ class JenisProfileAddress extends Component
     public function save()
     {
 
+        $this->validate();
 
         // Default data
         $data = [
