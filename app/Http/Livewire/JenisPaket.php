@@ -9,6 +9,9 @@ use App\Models\DetailTransaction;
 use App\Models\Voucher;
 use Illuminate\Support\Facades\Auth;
 use Kavist\RajaOngkir\Facades\RajaOngkir;
+use Midtrans\Config;
+use Midtrans\Snap;
+use App\Helpers\ResponseFormatter;
 
 class JenisPaket extends Component
 {
@@ -120,8 +123,7 @@ class JenisPaket extends Component
     $transaksi = Transaction::create([
       'user_id' => Auth::user()->id,
       'total' => $this->total,
-      'status' => "menunggu pembayaran",
-      'payment_url' => "menunggu pembayaran",
+      'status' => "PROCESS",
     ]);
 
     DetailTransaction::create([
@@ -142,6 +144,41 @@ class JenisPaket extends Component
       'status' => 0
     ]);
 
-    session()->flash('pesan', 'Transaksi berhasil di proses');
+    // Konfigurasi midtrans
+    Config::$serverKey = config('services.midtrans.serverKey');
+    Config::$isProduction = config('services.midtrans.isProduction');
+    Config::$isSanitized = config('services.midtrans.isSanitized');
+    Config::$is3ds = config('services.midtrans.is3ds');
+
+    $transaksi = Transaction::with('user')->find($transaksi->id);
+
+    $midtrans = array(
+      'transaction_details' => array(
+      'order_id' =>  $transaksi->id,
+      'gross_amount' => (int) $transaksi->total,
+    ),
+    'customer_details' => array(
+      'first_name'    => $transaksi->user->name,
+      'email'         => $transaksi->user->email,
+      'phone'         => $transaksi->user->phoneNumber,
+    ),
+      'enabled_payments' => array('gopay','bank_transfer'),
+      'vtweb' => array(),
+    );
+
+    try {
+      // Ambil halaman payment midtrans
+      $paymentUrl = Snap::createTransaction($midtrans)->redirect_url;
+
+      $transaksi->payment_url = $paymentUrl;
+      $transaksi->save();
+
+      // Redirect ke halaman midtrans
+      return redirect($paymentUrl);
+      // ResponseFormatter::success($transaksi,'Transaksi berhasil');
+    }
+    catch (Exception $e) {
+        return ResponseFormatter::error($e->getMessage(),'Transaksi Gagal');
+    }
   }
 }
