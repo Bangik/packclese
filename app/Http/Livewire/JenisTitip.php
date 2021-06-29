@@ -25,6 +25,7 @@ class JenisTitip extends Component
   public $quantity;
   public $voucher;
   public $potongan;
+  public $paymentMethod;
   public $discount;
   public $harga;
   public $subtotal;
@@ -35,6 +36,7 @@ class JenisTitip extends Component
   public function mount()
   {
     $this->message = "";
+    $this->paymentMethod = 0;
   }
 
   public function render()
@@ -121,8 +123,8 @@ class JenisTitip extends Component
     $transaksi = Transaction::create([
       'user_id' => Auth::user()->id,
       'total' => $this->total,
-      'status' => "menunggu pembayaran",
-      'payment_url' => "menunggu pembayaran",
+      'status' => "PROCESS",
+      'payment_url' => "COD",
     ]);
 
     DetailTransaction::create([
@@ -141,41 +143,45 @@ class JenisTitip extends Component
       'status' => 0
     ]);
 
-    // Konfigurasi midtrans
-    Config::$serverKey = config('services.midtrans.serverKey');
-    Config::$isProduction = config('services.midtrans.isProduction');
-    Config::$isSanitized = config('services.midtrans.isSanitized');
-    Config::$is3ds = config('services.midtrans.is3ds');
+    if ($this->paymentMethod == 1) {
+      // Konfigurasi midtrans
+      Config::$serverKey = config('services.midtrans.serverKey');
+      Config::$isProduction = config('services.midtrans.isProduction');
+      Config::$isSanitized = config('services.midtrans.isSanitized');
+      Config::$is3ds = config('services.midtrans.is3ds');
 
-    $transaksi = Transaction::with('user')->find($transaksi->id);
+      $transaksi = Transaction::with('user')->find($transaksi->id);
 
-    $midtrans = array(
-      'transaction_details' => array(
-      'order_id' =>  $transaksi->id,
-      'gross_amount' => (int) $transaksi->total,
-    ),
-    'customer_details' => array(
-      'first_name'    => $transaksi->user->name,
-      'email'         => $transaksi->user->email,
-      'phone'         => $transaksi->user->phoneNumber,
-    ),
-      'enabled_payments' => array('gopay','bank_transfer'),
-      'vtweb' => array(),
-    );
+      $midtrans = array(
+        'transaction_details' => array(
+        'order_id' =>  $transaksi->id,
+        'gross_amount' => (int) $transaksi->total,
+      ),
+      'customer_details' => array(
+        'first_name'    => $transaksi->user->name,
+        'email'         => $transaksi->user->email,
+        'phone'         => $transaksi->user->phoneNumber,
+      ),
+        'enabled_payments' => array('gopay','bank_transfer'),
+        'vtweb' => array(),
+      );
 
-    try {
-      // Ambil halaman payment midtrans
-      $paymentUrl = Snap::createTransaction($midtrans)->redirect_url;
+      try {
+        // Ambil halaman payment midtrans
+        $paymentUrl = Snap::createTransaction($midtrans)->redirect_url;
 
-      $transaksi->payment_url = $paymentUrl;
-      $transaksi->save();
+        $transaksi->payment_url = $paymentUrl;
+        $transaksi->save();
 
-      // Redirect ke halaman midtrans
-      return redirect($paymentUrl);
-      // ResponseFormatter::success($transaksi,'Transaksi berhasil');
-    }
-    catch (Exception $e) {
-        return ResponseFormatter::error($e->getMessage(),'Transaksi Gagal');
+        // Redirect ke halaman midtrans
+        return redirect($paymentUrl);
+        // ResponseFormatter::success($transaksi,'Transaksi berhasil');
+      }
+      catch (Exception $e) {
+          return ResponseFormatter::error($e->getMessage(),'Transaksi Gagal');
+      }
+    }else {
+      return redirect()->route('riwayat-transaksi');
     }
   }
 }

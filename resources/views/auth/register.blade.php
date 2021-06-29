@@ -1,5 +1,5 @@
 @extends('layouts.auth.app')
-
+@section('titleAuth', 'Packclese - Register')
 @section('content')
 <div class="row">
   <div class="col-lg-12">

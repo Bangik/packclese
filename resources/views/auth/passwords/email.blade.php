@@ -1,5 +1,5 @@
 @extends('layouts.auth.app')
-
+@section('titleAuth', 'Packclese - Reset Password')
 @section('content')
 <div class="card card-primary">
     <div class="card-header"> <h4>{{ __('Reset Password') }}</h4> </div>

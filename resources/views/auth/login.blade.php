@@ -1,5 +1,5 @@
 @extends('layouts.auth.app')
-
+@section('titleAuth', 'Packclese - Login')
 @section('content')
 <!-- Nested Row within Card Body -->
 <div class="row">
@@ -42,7 +42,7 @@
         </button>
 
       <a href="{{ url('auth/google') }}"class="btn btn-primary btn-user btn-block"> Google <i class="fab fa-google"></i>
-        
+
         @if (Route::has('password.request'))
             <a class="btn btn-link" href="{{ route('password.request') }}">
                 {{ __('Forgot Your Password?') }}

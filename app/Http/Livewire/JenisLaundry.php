@@ -23,6 +23,7 @@ class JenisLaundry extends Component
     public $discount;
     public $potongan;
     public $pesan;
+    public $paymentMethod;
     public $harga;
     public $subtotal;
     public $total;
@@ -30,6 +31,8 @@ class JenisLaundry extends Component
     public function mount()
     {
       $this->weight = 1;
+      $this->paymentMethod = 0;
+      $this->antar = 2000;
     }
 
     public function render()
@@ -88,6 +91,7 @@ class JenisLaundry extends Component
         'user_id' => Auth::user()->id,
         'total' => $this->total,
         'status' => "PROCESS",
+        'payment_url' => "COD",
       ]);
 
       DetailTransaction::create([
@@ -105,71 +109,46 @@ class JenisLaundry extends Component
         'status' => 0
       ]);
 
-      // Konfigurasi midtrans
-      Config::$serverKey = config('services.midtrans.serverKey');
-      Config::$isProduction = config('services.midtrans.isProduction');
-      Config::$isSanitized = config('services.midtrans.isSanitized');
-      Config::$is3ds = config('services.midtrans.is3ds');
+      if ($this->paymentMethod == 1) {
+        // Konfigurasi midtrans
+        Config::$serverKey = config('services.midtrans.serverKey');
+        Config::$isProduction = config('services.midtrans.isProduction');
+        Config::$isSanitized = config('services.midtrans.isSanitized');
+        Config::$is3ds = config('services.midtrans.is3ds');
 
-      $transaksi = Transaction::with(['detailTransaction','user'])->find($transaksi->id);
-      // $nameService = Layanan::find($this->jenisLaundry);
+        $transaksi = Transaction::with(['detailTransaction','user'])->find($transaksi->id);
+        // $nameService = Layanan::find($this->jenisLaundry);
 
-      $midtrans = array(
-        'transaction_details' => array(
-        'order_id' =>  $transaksi->id,
-        'gross_amount' => (int) $transaksi->total,
-      ),
-      // 'item_details' => array(
-      //   array(
-      //     'id' => $nameService->id,
-      //     'price' => $nameService->price,
-      //     'quantity' => $this->weight,
-      //     'name' => $nameService->name,
-      //     'brand' => "Packclese",
-      //     'category' => "Laundry-in Yuk!",
-      //     'merchant_name' => "Packclese",
-      //   ),
-      //   array(
-      //     'id' => "Biaya Layanan",
-      //     'price' => $this->antar,
-      //     'quantity' => 1,
-      //     'name' => "Biaya Layanan",
-      //     'brand' => "Packclese",
-      //     'category' => "Laundry-in Yuk!",
-      //     'merchant_name' => "Packclese",
-      //   ),
-      //   array(
-      //     'id' => "Discount",
-      //     'price' => -1 * abs($this->subtotal * $this->discount / 100),
-      //     'quantity' => 1,
-      //     'name' => "Discount Voucher",
-      //     'brand' => "Packclese",
-      //     'category' => "Laundry-in Yuk!",
-      //     'merchant_name' => "Packclese",
-      //   ),
-      // ),
-      'customer_details' => array(
-        'first_name'    => $transaksi->user->name,
-        'email'         => $transaksi->user->email,
-        'phone'         => $transaksi->user->phoneNumber,
-      ),
-        'enabled_payments' => array('gopay','bank_transfer'),
-        'vtweb' => array(),
-    );
+        $midtrans = array(
+          'transaction_details' => array(
+            'order_id' =>  $transaksi->id,
+            'gross_amount' => (int) $transaksi->total,
+          ),
+          'customer_details' => array(
+            'first_name'    => $transaksi->user->name,
+            'email'         => $transaksi->user->email,
+            'phone'         => $transaksi->user->phoneNumber,
+          ),
+          'enabled_payments' => array('gopay','bank_transfer'),
+          'vtweb' => array(),
+        );
 
-    try {
-      // Ambil halaman payment midtrans
-      $paymentUrl = Snap::createTransaction($midtrans)->redirect_url;
+        try {
+          // Ambil halaman payment midtrans
+          $paymentUrl = Snap::createTransaction($midtrans)->redirect_url;
 
-      $transaksi->payment_url = $paymentUrl;
-      $transaksi->save();
+          $transaksi->payment_url = $paymentUrl;
+          $transaksi->save();
 
-      // Redirect ke halaman midtrans
-      return redirect($paymentUrl);
-      // ResponseFormatter::success($transaksi,'Transaksi berhasil');
-    }
-    catch (Exception $e) {
-        return ResponseFormatter::error($e->getMessage(),'Transaksi Gagal');
-    }
+          // Redirect ke halaman midtrans
+          return redirect($paymentUrl);
+          // ResponseFormatter::success($transaksi,'Transaksi berhasil');
+        }
+        catch (Exception $e) {
+          return ResponseFormatter::error($e->getMessage(),'Transaksi Gagal');
+        }
+      }else {
+        return redirect()->route('riwayat-transaksi');
+      }
   }
 }

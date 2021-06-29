@@ -113,6 +113,22 @@
     <small class="text-danger">{{$message}}</small>
   </div>
 
+  <div class="form-group mt-3">
+    <label for="">Pilih Metode Pembayaran</label>
+    <div class="form-check">
+      <input class="form-check-input radio1" type="radio" name="radioMetode" id="radioMetode1" value="0" checked wire:model="paymentMethod">
+      <label class="form-check-label" for="radioMetode1">
+        COD
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input radio2" type="radio" name="radioMetode" id="radioMetode2" value="1" wire:model="paymentMethod">
+      <label class="form-check-label" for="radioMetode2">
+        Midtrans Payment Gateway (Gopay / Bank Transfer)
+      </label>
+    </div>
+  </div>
+
   <hr class="mt-3">
   <div class="col-md-12">
     <h6 class="text-center">Detail transaksi</h6>

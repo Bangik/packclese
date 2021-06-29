@@ -23,7 +23,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Master
+        Navigation
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->

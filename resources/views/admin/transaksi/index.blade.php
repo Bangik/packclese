@@ -9,7 +9,7 @@
   <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
       <h6 class="m-0 font-weight-bold text-primary">List Transaksi</h6>
-      <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="" data-toggle="modal" data-target="#modalReport"><i class="fas fa-chart-line fa-sm text-white-50"></i>Tampilkan Laporan</a>
+      <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="" data-toggle="modal" data-target="#modalReport"><i class="fas fa-chart-line fa-sm text-white-50"></i>Cetak Laporan</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">

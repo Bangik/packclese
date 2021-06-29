@@ -18,7 +18,6 @@
           <i class="bi bi-chevron-down"></i></a>
         <ul>
           <li><a href="{{route('profile')}}">Profile</a></li>
-          <li><a href="#">Pengaturan</a></li>
           <a href="#" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> Keluar</a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf

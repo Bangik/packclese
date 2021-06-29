@@ -13,8 +13,6 @@ class WelcomeController extends Controller
     $jenisLayanan = JenisLayanan::all();
     $komentar = Komentar::all()->take(-3);
 
-    // dd($komentar);
-
     return view('user.preview', compact('jenisLayanan', 'komentar'));
   }
 
@@ -22,8 +20,6 @@ class WelcomeController extends Controller
   {
     $jenisLayanan = JenisLayanan::all();
     $komentar = Komentar::all()->take(-3);
-
-    // dd($komentar);
 
     return view('user.contact-us', compact('jenisLayanan', 'komentar'));
   }
