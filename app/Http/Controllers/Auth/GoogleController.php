@@ -38,7 +38,7 @@ class GoogleController extends Controller
 
              Auth::login($finduser);
 
-             return redirect('/');
+             return redirect()->route('welcome');
 
          }else{
              $newUser = User::create([
@@ -52,7 +52,7 @@ class GoogleController extends Controller
 
              Auth::login($newUser);
 
-             return redirect('/');
+             return redirect()->route('welcome');
          }
 
      } catch (Exception $e) {

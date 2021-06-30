@@ -19,6 +19,7 @@ use Laravel\Socialite\Facades\Socialite;
 // });
 
 Auth::routes();
+Auth::routes(['verify' => true]);
 
 
 
