@@ -72,7 +72,7 @@
               <div class="card-profile-image">
                 <a href="#">
 
-                  <img src="{{asset('Storage/public/images/'.Auth::user()->profile_photo_path)}}" class="rounded-circle">
+                  <img src="{{asset('storage/'.Auth::user()->profile_photo_path)}}" class="rounded-circle">
                 </a>
               </div>
             </div>
