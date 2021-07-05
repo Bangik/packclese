@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'phoneNumber' => $data['phonenumber'],
             'roles' => "user",
-            'profile_photo_path' => "img/profile/undraw_profile.svg",
+            'profile_photo_path' => "16248868071.jpg",
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
