@@ -16,4 +16,16 @@ class JenisLayanan extends Model
   public function Layanan(){
     return $this->hasMany('App\Models\Layanan', 'id');
   }
+
+  public function toArray()
+  {
+      $toArray = parent::toArray();
+      $toArray['picturePath'] = $this->picturePath;
+      return $toArray;
+  }
+
+  public function getPicturePathAttribute()
+  {
+      return config('app.url') . $this->attributes['picturePath'];
+  }
 }

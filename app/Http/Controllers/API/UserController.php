@@ -92,4 +92,27 @@ class UserController extends Controller
 
     return ResponseFormatter::success($token,'Token Revoked');
   }
+
+  public function updatePhoto(Request $request)
+  {
+      $validator = Validator::make($request->all(), [
+          'file' => 'required|image|max:5120',
+      ]);
+
+      if ($validator->fails()) {
+          return ResponseFormatter::error(['error'=>$validator->errors()], 'Update Photo Fails', 401);
+      }
+
+      if ($request->file('file')) {
+
+          $file = $request->file->store('public/images', 'public');
+
+          //store your file into database
+          $user = Auth::user();
+          $user->profile_photo_path = $file;
+          $user->update();
+
+          return ResponseFormatter::success([$file],'File successfully uploaded');
+      }
+  }
 }

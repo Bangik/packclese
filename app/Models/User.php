@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -48,12 +49,24 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public function toArray()
+    {
+        $toArray = parent::toArray();
+        $toArray['profile_photo_path'] = $this->picturePath;
+        return $toArray;
+    }
+
     public function komentar(){
       return $this->hasMany('App\Models\Komentar');
     }
 
     public function transaction(){
       return $this->hasMany('App\Models\Transaction');
+    }
+
+    public function getPicturePathAttribute()
+    {
+        return config('app.url') . Storage::url($this->attributes['profile_photo_path']);
     }
 
 }

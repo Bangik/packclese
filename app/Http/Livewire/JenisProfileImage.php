@@ -38,7 +38,7 @@ class JenisProfileImage extends Component
 
         Storage::disk('public')->put('public/images' . '/' . $image_name, $img, 'public');
 
-      $dataimage->profile_photo_path = $image_name;
+      $dataimage->profile_photo_path = 'public/images/'.$image_name;
       $dataimage->save();
 
       $this->emit('refreshParent');
