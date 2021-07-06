@@ -66,7 +66,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getPicturePathAttribute()
     {
-        return config('app.url') . Storage::url($this->attributes['profile_photo_path']);
+        return config('app.url') . Storage::url('public/'.$this->attributes['profile_photo_path']);
     }
 
 }
