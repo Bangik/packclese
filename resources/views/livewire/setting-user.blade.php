@@ -8,16 +8,16 @@
  @enderror
  <p></p>
     <label>New Password</label>
-    <input type="password" name="new_password" wire:model="new_password" class="form-control">
-    @error('new_password')           <span class="eror" role="alert">
+    <input type="password" name="password" wire:model="password" class="form-control">
+    @error('password')           <span class="eror" role="alert">
                   <strong>{{ $message }}</strong>
               </span>
 </span> @enderror
 <p></p>
     <label>Confirm Password</label>
-    <input type="password" name="confirm_password" wire:model="confirm_password" class="form-control">
+    <input type="password" name="password_confirmation" wire:model="password_confirmation" class="form-control">
 
-    @error('confirm_password')           <span class="eror" role="alert">
+    @error('password_confirmation')           <span class="eror" role="alert">
                   <strong>{{ $message }}</strong>
               </span>
  @enderror

@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Hash;
 class SettingUser extends Component
 {
     public $old_password;
-    public $confirm_password;
-    public $new_password;
+    public $password_confirmation;
+    public $password;
 
     protected $rules = [
       'old_password' => 'required',
-      'new_password' => ['required_with:confirm_password', 'string', 'min:8'],
-      'confirm_password' => 'required',
+      'password' => ['required', 'min:8','confirmed'],
+      'password_confirmation' => 'required',
 
    ];
 
@@ -30,7 +30,7 @@ class SettingUser extends Component
 
 
         User::where('id',$id)->update([
-          'password' => Hash::make($this->new_password),
+          'password' => Hash::make($this->password),
         ]);
 
 
