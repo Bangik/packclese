@@ -41,8 +41,8 @@ class JenisLayananController extends Controller
       }
       $image = $Request->picturePath;
       $image_name = time().$image->getClientOriginalName();
-      $image->move('img/services/', $image_name);
-      $image_path = 'img/services/'. $image_name;
+      $image->move('/img/services/', $image_name);
+      $image_path = '/img/services/'. $image_name;
     }
     $JenisLayanan->picturePath = $image_path;
     $JenisLayanan->save();
