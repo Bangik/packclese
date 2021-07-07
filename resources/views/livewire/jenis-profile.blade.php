@@ -8,3 +8,11 @@
 </div>
 <button wire:click="save" class="btn btn-primary">Save</button>
 </div>
+<script type="text/javascript">
+
+window.addEventListener('save_berhasil', event => {
+  toastr.success('Data Disimpan');
+})
+
+</script>
+@livewireScripts

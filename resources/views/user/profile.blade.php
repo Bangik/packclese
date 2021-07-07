@@ -34,6 +34,7 @@
   opacity: 0;
 }
 </style>
+@toastr_css
 @livewireStyles
 <!-- Bootstrap core JavaScript-->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
@@ -104,7 +105,8 @@
     })
 
 </script>
-
+@toastr_js
+@toastr_render
 @livewireScripts
 
 <body>

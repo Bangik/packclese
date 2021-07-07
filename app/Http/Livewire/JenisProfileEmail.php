@@ -12,7 +12,7 @@ class JenisProfileEmail extends Component
     public $actionId;
 
     protected $rules = [
-      'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
+      'email' => ['required', 'string', 'email', 'max:50'],
 
    ];
 
@@ -57,6 +57,8 @@ class JenisProfileEmail extends Component
 
         $this->emit('refreshParent');
         $this->dispatchBrowserEvent('closeModal_email');
+        $this->dispatchBrowserEvent('save_berhasil');
+
     }
 
 

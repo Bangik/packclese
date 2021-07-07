@@ -57,6 +57,8 @@ class JenisProfileAddress extends Component
 
         $this->emit('refreshParent');
         $this->dispatchBrowserEvent('closeModal_address');
+        $this->dispatchBrowserEvent('save_berhasil');
+
     }
 
 

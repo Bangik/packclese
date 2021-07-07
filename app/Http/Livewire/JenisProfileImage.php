@@ -44,6 +44,7 @@ class JenisProfileImage extends Component
       $this->emit('refreshParent');
       $this->dispatchBrowserEvent('closeModal_image');
       $this->cleanVars();
+      $this->dispatchBrowserEvent('save_berhasil');
 
 
     }

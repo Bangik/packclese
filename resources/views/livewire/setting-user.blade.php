@@ -30,11 +30,11 @@
 
 
 window.addEventListener('berhasil', event => {
-    alert('berhasil');
+  toastr.success('Password Has Changed');
 })
 
 window.addEventListener('gagal', event => {
-    alert('Password Lama Salah');
+  toastr.error('Invalid Credentials');
 })
 
 </script>

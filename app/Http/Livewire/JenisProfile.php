@@ -59,6 +59,8 @@ class JenisProfile extends Component
 
         $this->emit('refreshParent');
         $this->dispatchBrowserEvent('closeModal');
+        $this->dispatchBrowserEvent('save_berhasil');
+
     }
 
 

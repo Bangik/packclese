@@ -58,6 +58,8 @@ class JenisProfilePhone extends Component
 
         $this->emit('refreshParent');
         $this->dispatchBrowserEvent('closeModal_phoneNumber');
+        $this->dispatchBrowserEvent('save_berhasil');
+
     }
 
 
