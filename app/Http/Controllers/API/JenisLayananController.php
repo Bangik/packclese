@@ -45,4 +45,22 @@ class JenisLayananController extends Controller
       );
     }
   }
+
+  public function bersih()
+  {
+    $bersih = Layanan::where('jenisservice_id', 2)->paginate();
+
+    if ($bersih) {
+      return ResponseFormatter::success(
+          $bersih,
+          'Data berhasil diambil'
+      );
+    }else {
+      return ResponseFormatter::error(
+        null,
+        'Data produk tidak ada',
+        404
+      );
+    }
+  }
 }
