@@ -28,31 +28,14 @@ class JenisLayananController extends Controller
     }
   }
 
-  public function laundry()
+  public function dataService(Request $request)
   {
-    $laundry = Layanan::where('jenisservice_id', 1)->paginate();
+
+    $laundry = Layanan::where('jenisservice_id', $request->input('id'))->paginate();
 
     if ($laundry) {
       return ResponseFormatter::success(
           $laundry,
-          'Data berhasil diambil'
-      );
-    }else {
-      return ResponseFormatter::error(
-        null,
-        'Data produk tidak ada',
-        404
-      );
-    }
-  }
-
-  public function bersih()
-  {
-    $bersih = Layanan::where('jenisservice_id', 2)->paginate();
-
-    if ($bersih) {
-      return ResponseFormatter::success(
-          $bersih,
           'Data berhasil diambil'
       );
     }else {

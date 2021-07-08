@@ -31,7 +31,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::post('login', [App\Http\Controllers\API\UserController::class, 'login']);
 Route::post('register', [App\Http\Controllers\API\UserController::class, 'register']);
 Route::get('jenis-layanan', [App\Http\Controllers\API\JenisLayananController::class, 'all']);
-Route::get('laundry', [App\Http\Controllers\API\JenisLayananController::class, 'laundry']);
-Route::get('bersih', [App\Http\Controllers\API\JenisLayananController::class, 'bersih']);
+Route::get('data-services', [App\Http\Controllers\API\JenisLayananController::class, 'dataService']);
 
 Route::post('midtrans/callback', [App\Http\Controllers\API\MidtransController::class, 'callback']);
