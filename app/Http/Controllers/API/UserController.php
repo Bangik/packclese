@@ -117,7 +117,6 @@ class UserController extends Controller
   }
 
   public function edit(Request $request){
-    $id = Auth::user()->id;
 
     try {
 
@@ -129,7 +128,7 @@ class UserController extends Controller
 
       ]);
 
-      $user = User::find($id);
+      $user = User::find($request->id);
       $user->name = $request->name;
       $user->email = $request->email;
       $user->address = $request->address;
@@ -137,15 +136,11 @@ class UserController extends Controller
 
       $user->save();
 
-      return ResponseFormatter::success([
-          'user' => $user,
-          'message' => 'Success',
-      ],'User Updated',200);
-  } catch (Exception $error) {
-      return ResponseFormatter::error([
-          'message' => 'Something went wrong',
-          'error' => $error,
-      ],'Authentication Failed', 500);
+      return ResponseFormatter::success($user,'Update Data Berhasil');
+
+    } catch (Exception $error) {
+    return ResponseFormatter::error($e->getMessage(),'Update Data Gagal');
+
     }
   }
 
