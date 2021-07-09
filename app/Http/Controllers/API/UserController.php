@@ -115,4 +115,39 @@ class UserController extends Controller
           return ResponseFormatter::success([$file],'File successfully uploaded');
       }
   }
+
+  public function edit(Request $request){
+    $id = Auth::user()->id;
+
+    try {
+
+
+      $request->validate([
+        'name' => ['nullable', 'string', 'max:35'],
+        'address' => ['nullable', 'string'],
+        'phoneNumber' => ['nullable', 'string'],
+
+      ]);
+
+      $user = User::find($id);
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $user->address = $request->address;
+      $user->phoneNumber = $request->phoneNumber;
+
+      $user->save();
+
+      return ResponseFormatter::success([
+          'user' => $user,
+          'message' => 'Success',
+      ],'User Updated',200);
+  } catch (Exception $error) {
+      return ResponseFormatter::error([
+          'message' => 'Something went wrong',
+          'error' => $error,
+      ],'Authentication Failed', 500);
+    }
+  }
+
+
 }
