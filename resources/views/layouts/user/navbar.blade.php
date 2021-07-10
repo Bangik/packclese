@@ -14,7 +14,8 @@
       @if (Route::has('login'))
       @auth
       <li class="dropdown"><a href="#">{{Auth::user()->name}}
-          <img class="img-profile rounded-circle" src="{{asset('Storage/public/images/'.Auth::user()->profile_photo_path)}}" width="25" height="25">
+          <img class="img-profile rounded-circle" src="{{asset('storage/'.Auth::user()->profile_photo_path)}}" width="25" height="25">
+
           <i class="bi bi-chevron-down"></i></a>
         <ul>
           <li><a href="{{route('profile')}}">Profile</a></li>
