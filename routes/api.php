@@ -29,6 +29,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('checkout-titip', [App\Http\Controllers\API\TransactionController::class, 'storeTitip']);
     Route::get('history-transactions', [App\Http\Controllers\API\TransactionController::class, 'history']);
     Route::post('user/edit',[App\Http\Controllers\API\UserController::class, 'edit']);
+    Route::post('user/updatePhoto',[App\Http\Controllers\API\UserController::class, 'updateUser']);
+
+
 
 });
 

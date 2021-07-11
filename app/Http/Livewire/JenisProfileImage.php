@@ -23,8 +23,8 @@ class JenisProfileImage extends Component
          ]);
       $image_path = "";
 
-        if (is_file('Storage/public/images/'.$dataimage->profile_photo_path)) {
-          unlink('Storage/public/images/'.$dataimage->profile_photo_path);
+        if (is_file('storage/'.$dataimage->profile_photo_path)) {
+          unlink('storage/'.$dataimage->profile_photo_path);
         }
         $varimage = $this->avatar;
         $image_name = time().$varimage->getClientOriginalName();
