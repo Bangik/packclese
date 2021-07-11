@@ -9,6 +9,7 @@ use App\Models\DetailTransaction;
 use Midtrans\Config;
 use Midtrans\Snap;
 use App\Helpers\ResponseFormatter;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -209,6 +210,22 @@ class TransactionController extends Controller
     }else {
       $data = array_merge($transaksi->toArray(), $detailTransaksi->toArray());
       return ResponseFormatter::success($data,'Transaksi berhasil');
+    }
+  }
+
+  public function history()
+  {
+    $transactions = Transaction::with('detailTransaction', 'detailTransaction.service')->where('user_id', Auth::user()->id)->paginate();
+    // $detailTransactions = DetailTransaction::all();
+    if ($transactions) {
+      // $data = array_merge($transactions->toArray(), $detailTransactions->toArray());
+      return ResponseFormatter::success($transactions, 'Data Bershasil diambil');
+    }else{
+      return ResponseFormatter::error(
+        null,
+        'Data tidak ada',
+        404
+      );
     }
   }
 }
