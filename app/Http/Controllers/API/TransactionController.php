@@ -215,7 +215,7 @@ class TransactionController extends Controller
 
   public function history()
   {
-    $transactions = Transaction::with('detailTransaction', 'detailTransaction.service')->where('user_id', Auth::user()->id)->paginate();
+    $transactions = Transaction::with('detailTransaction', 'detailTransaction.service')->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate();
     // $detailTransactions = DetailTransaction::all();
     if ($transactions) {
       // $data = array_merge($transactions->toArray(), $detailTransactions->toArray());
