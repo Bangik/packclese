@@ -136,7 +136,10 @@ class UserController extends Controller
 
       $user->save();
 
-      return ResponseFormatter::success($user,'Update Data Berhasil');
+      return ResponseFormatter::success([
+        'token_type' => 'Bearer',
+        'user' => $user
+        ],'Update Data Berhasil');
 
     } catch (Exception $error) {
     return ResponseFormatter::error($e->getMessage(),'Update Data Gagal');
