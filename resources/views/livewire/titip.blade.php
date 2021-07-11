@@ -76,7 +76,7 @@
                   @foreach($titipPaginate as $comment)
                   <li class="comment border-bottom">
                     <div class="vcard bio">
-                      <img src="{{asset('Storage/public/images/'.$comment->user->profile_photo_path)}}" alt="{{$comment->user->name}}">
+                      <img src="{{asset('storage/'.$comment->user->profile_photo_path)}}" alt="{{$comment->user->name}}">
                     </div>
                     <div class="comment-body">
                       <h6>{{$comment->user->name}}</h6>
@@ -87,7 +87,7 @@
                       @foreach($comment->child()->orderBy('created_at', 'desc')->get() as $nestedComment)
                       <li class="comment">
                         <div class="vcard bio">
-                          <img src="{{asset('Storage/public/images/'.$nestedComment->user->profile_photo_path)}}" alt="{{$nestedComment->user->name}}">
+                          <img src="{{asset('storage/'.$nestedComment->user->profile_photo_path)}}" alt="{{$nestedComment->user->name}}">
                         </div>
                         <div class="comment-body">
                           <h6>{{$nestedComment->user->name}}</h6>

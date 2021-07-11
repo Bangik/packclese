@@ -149,7 +149,7 @@
                     </blockquote>
 
                     <p class="review-user">
-                      <img src="{{asset('Storage/public/images/'.$komen->User->profile_photo_path)}}" alt="Image" class="img-fluid rounded-circle mb-3">
+                      <img src="{{asset('storage/'.$komen->User->profile_photo_path)}}" alt="Image" class="img-fluid rounded-circle mb-3">
                       <span class="d-block">
                         <span class="text-black">{{$komen->User->name}}</span>, &mdash; User
                       </span>

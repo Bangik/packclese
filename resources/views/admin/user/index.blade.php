@@ -27,7 +27,7 @@
           <tbody>
             @foreach($listUser as $listUsers)
             <tr>
-              <td><img class="img-profile rounded-circle"  src="{{asset('Storage/public/images/'.$listUsers->profile_photo_path)}}" alt="{{$listUsers->name}}" width="50" height="50"></td>
+              <td><img class="img-profile rounded-circle"  src="{{asset('storage/'.$listUsers->profile_photo_path)}}" alt="{{$listUsers->name}}" width="50" height="50"></td>
               <td>{{$listUsers->name}}</td>
               <td>{{$listUsers->address}}</td>
               <td>{{$listUsers->phoneNumber}}</td>
