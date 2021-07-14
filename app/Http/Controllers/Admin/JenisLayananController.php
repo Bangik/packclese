@@ -35,16 +35,15 @@ class JenisLayananController extends Controller
     $JenisLayanan->description = $Request->description;
 
     if($Request->hasFile('picturePath')){
-      if (file_exists($JenisLayanan->picturePath)) {
-        unlink($JenisLayanan->picturePath);
+      $pictureFrom = str_replace(config('app.url'), "", $JenisLayanan->picturePath);
+      if (file_exists($pictureFrom)) {
+        unlink($pictureFrom);
       }
-
-        $image = $Request->picturePath;
-        $image_name = time().$image->getClientOriginalName();
-        $image->move('img/services/', $image_name);
-        $image_path = 'img/services/'. $image_name;
-        $JenisLayanan->picturePath = $image_path;
-
+      $image = $Request->picturePath;
+      $image_name = time().$image->getClientOriginalName();
+      $image->move('img/services/', $image_name);
+      $image_path = 'img/services/'. $image_name;
+      $JenisLayanan->picturePath = $image_path;
     }
 
     $JenisLayanan->save();
