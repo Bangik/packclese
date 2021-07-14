@@ -26,6 +26,6 @@ class JenisLayanan extends Model
 
   public function getPicturePathAttribute()
   {
-      return config('app.url') . $this->attributes['picturePath'];
+      return $this->attributes['picturePath'];
   }
 }

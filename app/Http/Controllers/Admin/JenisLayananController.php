@@ -34,17 +34,19 @@ class JenisLayananController extends Controller
     $JenisLayanan->slug = Str::slug($Request->jenis);
     $JenisLayanan->description = $Request->description;
 
-    $image_path = "";
     if($Request->hasFile('picturePath')){
       if (file_exists($JenisLayanan->picturePath)) {
         unlink($JenisLayanan->picturePath);
       }
-      $image = $Request->picturePath;
-      $image_name = time().$image->getClientOriginalName();
-      $image->move('img/services/', $image_name);
-      $image_path = '/img/services/'. $image_name;
+
+        $image = $Request->picturePath;
+        $image_name = time().$image->getClientOriginalName();
+        $image->move('img/services/', $image_name);
+        $image_path = 'img/services/'. $image_name;
+        $JenisLayanan->picturePath = $image_path;
+
     }
-    $JenisLayanan->picturePath = $image_path;
+
     $JenisLayanan->save();
 
     toastr()->success('Data Berhasil Diupdate');
