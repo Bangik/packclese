@@ -20,8 +20,8 @@ class JenisServiceSeeder extends Seeder
         'id' => 1,
         'jenis' => 'Laundry-in Aja!',
         'slug' => Str::slug('Laundry-in aja'),
-        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-        'picturePath' => '/img/services/laundry.svg',
+        'description' => 'layanan laundry mulai dari cuci sampai setrika dengan beberapa penawaran paket',
+        'picturePath' => '/img/services/laundry.png',
         'created_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]);
 
@@ -29,8 +29,8 @@ class JenisServiceSeeder extends Seeder
         'id' => 2,
         'jenis' => 'Bersihin Yuk!',
         'slug' => Str::slug('Bersihin Yuk'),
-        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-        'picturePath' => '/img/services/bersih.svg',
+        'description' => 'Layanan pembersihan umum ruangan secara menyeluruh serta profesional meliputi mengelap debu, mengepel lantai, merapikan kamar tidur/barang, dan membersihkan kamar mandi',
+        'picturePath' => '/img/services/bersih.png',
         'created_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]);
 
@@ -38,8 +38,8 @@ class JenisServiceSeeder extends Seeder
         'id' => 3,
         'jenis' => 'Paketin Yuk!',
         'slug' => Str::slug('Paketin Yuk'),
-        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-        'picturePath' => '/img/services/paket.svg',
+        'description' => 'Layanan paket barang pelanggan, bekerja sama dengan jasa pengiriman seperti JNE, JNT, POS dan lain sebagainya. Pelanggan dapat memilih sendiri jasa pengiriman sesuai minat',
+        'picturePath' => '/img/services/paket.png',
         'created_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]);
 
@@ -47,8 +47,8 @@ class JenisServiceSeeder extends Seeder
         'id' => 4,
         'jenis' => 'Titipin Sini Aja!',
         'slug' => Str::slug('Titipin Sini Aja'),
-        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-        'picturePath' => '/img/services/titip.svg',
+        'description' => 'Layanan penitipan barang seperti buku, baju, perabotan, dsb. Dalam layanan kami, keamanan dan kondisi barang pelanggan sangat terjamin karena kami beorientasi pada kepuasan pelanggan',
+        'picturePath' => '/img/services/titip.png',
         'created_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]);
     }

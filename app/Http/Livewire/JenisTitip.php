@@ -54,6 +54,10 @@ class JenisTitip extends Component
 
       if (strpos(strtolower($this->namaLayanan), 'harian') !== false) {
         $this->waktuTitip = round(abs(strtotime($this->ends) - strtotime($this->start)) / 86400);
+        if ($this->waktuTitip < 1) {
+          $this->waktuTitip = 1;
+        }
+        
         $this->subtotal = $this->harga * $this->quantity * $this->waktuTitip;
         $this->messageTime = "Hari";
 

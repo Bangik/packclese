@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Database\Seeders\UserSeeder;
 
 class CreateUsersTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name', 35);
-            $table->string('address', 100)->nullable();
+            $table->string('address', 200)->nullable();
             $table->string('phoneNumber', 15)->nullable();
             $table->string('email', 50)->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -26,8 +27,11 @@ class CreateUsersTable extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('google_id')->nullable();
             $table->timestamps();
-            
+
         });
+
+        $seed = new UserSeeder;
+        $seed->run();
     }
 
     /**

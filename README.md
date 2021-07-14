@@ -5,8 +5,7 @@
 - cp .env.example .env
 - setting nama_database di .env
 - php artisan key:generate
-- php artisan db:seed UserSeeder
-- php artisan db:seed JenisServiceSeeder
+- php artisan migrate
 - php artisan serve
 
 email - password untuk login

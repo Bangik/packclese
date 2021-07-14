@@ -19,7 +19,7 @@
               <th>User</th>
               <th>Total</th>
               <th>Status</th>
-              <th>Payment URL</th>
+              <th>Payment</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -30,7 +30,7 @@
               <td>{{$transaction->user->name}}</td>
               <td>{{$transaction->total}}</td>
               <td>{{$transaction->status}}</td>
-              <td> <a href="{{$transaction->payment_url}}" target="_blank">link</a> </td>
+              <td>{{Str::limit($transaction->payment_url, 10)}}</td>
               <td>
                 <a href="{{route('restore-transaksi', ['id' => $transaction->id])}}" class="btn btn-m btn-primary"><i class="fas fa-trash-restore"></i></a>
                 <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$loop->iteration}}"> <i class="fas fa-trash"></i> </a>

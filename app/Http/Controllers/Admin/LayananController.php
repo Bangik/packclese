@@ -27,7 +27,7 @@ class LayananController extends Controller
   public function store(Request $Request){
 
     $this->validate($Request,[
-      'name' => 'required|max:255',
+      'name' => 'required|max:100',
       'jenisservice_id' => 'required',
       'description' => 'required',
       'rate' => 'required',
@@ -144,7 +144,7 @@ class LayananController extends Controller
       if (file_exists($request->name)) {
         unlink($request->name);
       }
-      if($image->forceDelete())      
+      if($image->forceDelete())
         return response()->json(true);
       else
         return response()->json(false);

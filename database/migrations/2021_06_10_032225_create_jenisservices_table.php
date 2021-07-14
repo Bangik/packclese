@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Database\Seeders\JenisServiceSeeder;
 
 class CreateJenisservicesTable extends Migration
 {
@@ -21,6 +22,9 @@ class CreateJenisservicesTable extends Migration
           $table->string('picturePath')->nullable();
           $table->timestamps();
         });
+
+        $seed = new JenisServiceSeeder;
+        $seed->run();
     }
 
     /**

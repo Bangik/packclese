@@ -18,7 +18,7 @@
               <th>ID</th>
               <th>Tanggal Order</th>
               <th>User</th>
-              <th>Payment URL</th>
+              <th>Payment</th>
               <th>Status</th>
               <th>Total</th>
               <th>Aksi</th>
@@ -30,7 +30,7 @@
               <td>{{$transaction->id}}</td>
               <td>{{date('d-M-y, H.i', strtotime($transaction->created_at))}}</td>
               <td>{{$transaction->name}}</td>
-              <td> <a href="{{$transaction->payment_url}}" target="_blank">link</a> </td>
+              <td>{{Str::limit($transaction->payment_url, 10)}}</td>
               <td>{{$transaction->status}}</td>
               <td>@currency($transaction->total)</td>
               <td>

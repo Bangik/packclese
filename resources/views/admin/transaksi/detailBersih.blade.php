@@ -14,6 +14,10 @@
       <div class="table-responsive">
         <table class="table table-bordered" width="100%" cellspacing="0">
           <tr>
+            <th class="table-primary text-dark" width="35%">ID Transaksi</th>
+            <td width="65%">{{$detailTransactions->transaction_id}}</td>
+          </tr>
+          <tr>
             <th class="table-primary text-dark" width="35%">Tanggal Transaksi</th>
             <td width="65%">{{date('l, d M Y - H.i', strtotime($detailTransactions->created_at))}}</td>
           </tr>

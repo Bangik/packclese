@@ -6,7 +6,7 @@
   <section class="section">
     <div class="row justify-content-center text-center mb-5">
       <div class="col-md-5" data-aos="fade-up">
-        <h2 class="section-heading">Packclese</h2><br>
+        <h2 class="section-heading" id="section-heading">Packclese</h2><br>
         <p>Tujuan yang akan dicapai adalah menyediakan jasa yang dapat membantu berjalannya kegiatan domestik dengan cepat dan terpercaya, sehingga pengguna dapat produktif beraktivitas seperti biasanya. PACKCLESE berusaha menjadi penyedia jasa bantu kegiatan domestik dengan ongkos yang terjangkau bagi mahasiswa dan masyarakat luas.</p>
       </div>
     </div>

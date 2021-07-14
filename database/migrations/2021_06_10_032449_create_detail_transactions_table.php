@@ -17,12 +17,12 @@ class CreateDetailTransactionsTable extends Migration
           $table->id();
           $table->foreignId('transaction_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
           $table->foreignId('service_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-          $table->string('address', 100)->nullable();
+          $table->string('address', 200)->nullable();
           $table->string('address_detail', 50)->nullable();
-          $table->string('origin', 50)->nullable();
-          $table->string('destination', 50)->nullable();
+          $table->string('origin', 150)->nullable();
+          $table->string('destination', 150)->nullable();
           $table->smallInteger('weight')->nullable();
-          $table->string('courier', 15)->nullable();
+          $table->string('courier', 50)->nullable();
           $table->string('space', 15)->nullable();
           $table->date('start')->nullable();
           $table->date('end')->nullable();

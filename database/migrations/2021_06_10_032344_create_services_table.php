@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Database\Seeders\ServiceSeeder;
 
 class CreateServicesTable extends Migration
 {
@@ -23,6 +24,9 @@ class CreateServicesTable extends Migration
           $table->softDeletes();
           $table->timestamps();
         });
+
+        $seed = new ServiceSeeder;
+        $seed->run();
     }
 
     /**

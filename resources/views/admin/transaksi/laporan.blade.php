@@ -37,12 +37,12 @@
                   <td>{{$transaction->user->email}}</td>
                   <td>{{$transaction->payment_url}}</td>
                   <td>{{$transaction->status}}</td>
-                  <td>{{$transaction->total}}</td>
+                  <td>@currency($transaction->total)</td>
                 </tr>
                 @endforeach
                 <tr>
                   <td colspan="6" class="font-weight-bold text-center">TOTAL</td>
-                  <td class="font-weight-bold text-center">{{$total}}</td>
+                  <td class="font-weight-bold text-center">@currency($total)</td>
                 </tr>
               </tbody>
             </table>
