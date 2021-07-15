@@ -104,7 +104,9 @@ class UserController extends Controller
       }
 
       if ($request->file('file')) {
-
+        if (file_exists('storage/'.Auth::user()->profile_photo_path)) {
+          unlink('storage/'.Auth::user()->profile_photo_path);
+        }
           $file = $request->file->store('public/images', 'public');
 
           //store your file into database
@@ -116,35 +118,35 @@ class UserController extends Controller
       }
   }
 
-  public function updateUser(Request $request)
-  {
-      $user = User::find($request->id);
-
-      $validator = Validator::make($request->all(), [
-
-          'file' => 'required|image|max:5120',
-      ]);
-
-      if ($validator->fails()) {
-          return ResponseFormatter::error(['error'=>$validator->errors()], 'Update Photo Fails', 401);
-      }
-
-
-      if ($request->file('file')) {
-        if (file_exists('storage/'.$user->profile_photo_path)) {
-          unlink('storage/'.$user->profile_photo_path);
-        }
-
-        $image_name = time().$request->file->getClientOriginalName();
-        $request->file->storeAs('public/images/', $image_name);
-
-          //store your file into database
-          $user->profile_photo_path = 'public/images/'.$image_name;
-          $user->update();
-
-          return ResponseFormatter::success([$image_name],'File successfully uploaded');
-      }
-  }
+  // public function updateUser(Request $request)
+  // {
+  //     $user = User::find($request->id);
+  //
+  //     $validator = Validator::make($request->all(), [
+  //
+  //         'file' => 'required|image|max:5120',
+  //     ]);
+  //
+  //     if ($validator->fails()) {
+  //         return ResponseFormatter::error(['error'=>$validator->errors()], 'Update Photo Fails', 401);
+  //     }
+  //
+  //
+  //     if ($request->file('file')) {
+  //       if (file_exists('storage/'.$user->profile_photo_path)) {
+  //         unlink('storage/'.$user->profile_photo_path);
+  //       }
+  //
+  //       $image_name = time().$request->file->getClientOriginalName();
+  //       $request->file->storeAs('public/images/', $image_name);
+  //
+  //         //store your file into database
+  //         $user->profile_photo_path = 'public/images/'.$image_name;
+  //         $user->update();
+  //
+  //         return ResponseFormatter::success([$image_name],'File successfully uploaded');
+  //     }
+  // }
 
   public function edit(Request $request){
 
