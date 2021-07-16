@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Helpers\ResponseFormatter;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -116,7 +117,7 @@ class UserController extends Controller
           $user->profile_photo_path = $file;
           $user->update();
 
-          return ResponseFormatter::success([$file],'File successfully uploaded');
+          return ResponseFormatter::success(['file' => Storage::url($file)],'File successfully uploaded');
       }
   }
 
