@@ -104,8 +104,10 @@ class UserController extends Controller
       }
 
       if ($request->file('file')) {
-        if (file_exists('storage/'.Auth::user()->profile_photo_path)) {
-          unlink('storage/'.Auth::user()->profile_photo_path);
+        if (Auth::user()->profile_photo_path != null) {
+          if (file_exists('storage/'.Auth::user()->profile_photo_path)) {
+            unlink('storage/'.Auth::user()->profile_photo_path);
+          }
         }
           $file = $request->file->store('public/images', 'public');
 
