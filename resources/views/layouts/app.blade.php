@@ -77,7 +77,6 @@
     <!-- Vendor JS Files -->
     <script src="{{asset('SoftLand/assets/vendor/aos/aos.js')}}"></script>
     <script src="{{asset('SoftLand/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('SoftLand/assets/vendor/php-email-form/validate.js')}}"></script>
     <script src="{{asset('SoftLand/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
 
     <!-- Template Main JS File -->
