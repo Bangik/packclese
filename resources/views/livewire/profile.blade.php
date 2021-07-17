@@ -92,7 +92,7 @@
                   </div>
                 </div>
 
-                <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                <div class="card-profile-stats d-flex justify-content-center mt-md-1">
                   <div>
                     <span class="heading">22</span>
                     <span class="description">Friends</span>
@@ -112,18 +112,17 @@
               <h3>
                 {{Auth::user()->name}}
               </h3>
-              <div class="h5 font-weight-300">
+              <div class="h3 font-weight-500">
                 <i class="ni location_pin mr-2"></i>{{Auth::user()->email}}
               </div>
-              <div class="h5 mt-4">
+              <div class="h3 mt-1">
                 <i class="ni business_briefcase-24 mr-2"></i>{{Auth::user()->address}}
               </div>
               <div>
                 <i class="ni education_hat mr-2"></i>{{Auth::user()->phoneNumber}}
               </div>
               <hr class="my-4">
-              <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
-              <a href="#">Show more</a>
+              <p>Cara Edit Profile Anda Adalah Dengan Menekan Label Edit Pada Data Yang Ingin Anda Ubah</p>
             </div>
           </div>
         </div>

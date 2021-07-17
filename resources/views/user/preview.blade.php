@@ -46,7 +46,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="service1">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-4 me-auto">
@@ -60,7 +60,7 @@
       </div>
     </div>
   </section>
-  <section class="section" id="service1">
+  <section class="section" >
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-4 ms-auto order-2">
