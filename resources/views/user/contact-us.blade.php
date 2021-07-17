@@ -84,6 +84,7 @@
                 <div class="loading">Loading</div>
                   <div class="col-md-12 mb-3">
                       <div class="sent-message">Your message has been sent. Thank you!</div>
+                      <div class="error-message"></div>
                   </div>
 
 
