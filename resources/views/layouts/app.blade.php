@@ -25,6 +25,7 @@
 
     <!-- Template Main CSS File -->
     <link href="{{asset('SoftLand/assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('css/loading.css')}}" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
     @livewireStyles

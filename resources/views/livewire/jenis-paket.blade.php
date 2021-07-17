@@ -20,6 +20,10 @@
 
   <div class="col-md-6 mt-3">
     <label for="">Pilih Kota Asal</label>
+    <div wire:loading wire:target="provinsi1" class="la-ball-clip-rotate-multiple la-dark la-sm">
+        <div></div>
+        <div></div>
+    </div>
       <select wire:model="origin" class="form-control" name="origin" required>
         @if(count($listKota) == 0)
           <option value="0">-- Pilih Kota --</option>
@@ -42,6 +46,10 @@
 
   <div class="col-md-6 mt-3">
     <label for="">Pilih Kota Tujuan</label>
+    <div wire:loading wire:target="provinsi2" class="la-ball-clip-rotate-multiple la-dark la-sm">
+        <div></div>
+        <div></div>
+    </div>
       <select wire:model="destination" class="form-control" name="destination" required>
         @if(count($listKota2) == 0)
           <option value="0">-- Pilih Kota --</option>
@@ -75,6 +83,14 @@
 
   <div class="col-md-12 mt-3">
     <label for="">Pilih Layanan Kurir {{strtoupper($courier)}}</label>
+    <div wire:loading wire:target="weight" class="la-ball-clip-rotate-multiple la-dark la-sm">
+        <div></div>
+        <div></div>
+    </div>
+    <div wire:loading wire:target="courier" class="la-ball-clip-rotate-multiple la-dark la-sm">
+        <div></div>
+        <div></div>
+    </div>
       <select wire:model="layananCourier" class="form-control" name="layananCourier" required>
         @if(!empty($listLayananCourier))
         @foreach($listLayananCourier as $layananCourir)
@@ -103,6 +119,10 @@
 
   <div class="col-md-12 mt-3">
     <label for="">Kode Voucher (jika ada)</label>
+    <div wire:loading wire:target="reedeem('{{$voucher}}')" class="la-ball-clip-rotate-multiple la-dark la-sm">
+        <div></div>
+        <div></div>
+    </div>
     <div class="input-group">
       <input id="voucher" type="text" class="form-control @error('voucher') is-invalid @enderror" name="voucher" value="{{ old('voucher') }}" wire:model="voucher" aria-describedby="button-addon4">
       <div class="input-group-append" id="button-addon4">

@@ -51,6 +51,10 @@
 
   <div class="col-md-12 mt-3">
     <label for="">Kode Voucher (jika ada)</label>
+    <div wire:loading wire:target="reedeem('{{$voucher}}')" class="la-ball-clip-rotate-multiple la-dark la-sm">
+        <div></div>
+        <div></div>
+    </div>
     <div class="input-group">
       <input id="voucher" type="text" class="form-control @error('voucher') is-invalid @enderror" name="voucher" value="{{ old('voucher') }}" wire:model="voucher" aria-describedby="button-addon4">
       <div class="input-group-append" id="button-addon4">
