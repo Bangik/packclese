@@ -16,11 +16,4 @@ class WelcomeController extends Controller
     return view('user.preview', compact('jenisLayanan', 'komentar'));
   }
 
-  public function contact_us()
-  {
-    $jenisLayanan = JenisLayanan::all();
-    $komentar = Komentar::all()->take(-3);
-
-    return view('user.contact-us', compact('jenisLayanan', 'komentar'));
-  }
 }

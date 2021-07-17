@@ -60,7 +60,8 @@
           </div>
 
           <div class="col-md-6 mb-5 mb-md-0" data-aos="fade-up">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="{{route('contact_us-post')}}" method="post" role="form" class="php-email-form">
+              {{csrf_field()}}
 
               <div class="row">
                 <div class="col-md-6 form-group">
@@ -77,14 +78,15 @@
                 </div>
                 <div class="col-md-12 form-group mt-3">
                   <label for="name">Message</label>
-                  <textarea class="form-control" name="message" required></textarea>
+                  <textarea class="form-control" name="message1" required></textarea>
                 </div>
 
-                <div class="col-md-12 mb-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div>
+                <div class="loading">Loading</div>
+                  <div class="col-md-12 mb-3">
+                      <div class="sent-message">Your message has been sent. Thank you!</div>
+                      <div class="error-message"></div>
+                  </div>
+
 
                 <div class="col-md-6 form-group">
                   <input type="submit" class="btn btn-primary d-block w-100" value="Send Message">

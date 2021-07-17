@@ -88,7 +88,9 @@ Route::middleware(['auth'])->group(function () {
 //Route-User
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 //Route-contact_us
-Route::get('/contact-us', [App\Http\Controllers\WelcomeController::class, 'contact_us'])->name('contact_us');
+Route::get('/contact-us', [App\Http\Controllers\ContactController::class, 'contact_us'])->name('contact_us');
+Route::post('/contact-us/post', [App\Http\Controllers\ContactController::class, 'post_contact'])->name('contact_us-post');
+
 // Midtrans Related
 Route::get('midtrans/success', [App\Http\Controllers\API\MidtransController::class, 'success']);
 Route::get('midtrans/unfinish', [App\Http\Controllers\API\MidtransController::class, 'unfinish']);
