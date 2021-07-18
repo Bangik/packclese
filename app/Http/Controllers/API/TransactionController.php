@@ -283,10 +283,8 @@ class TransactionController extends Controller
 
   public function history()
   {
-    $transactions = Transaction::with('detailTransaction', 'detailTransaction.service')->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate();
-    // $detailTransactions = DetailTransaction::all();
+    $transactions = Transaction::with('detailTransaction', 'detailTransaction.service.jenisServices')->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate();
     if ($transactions) {
-      // $data = array_merge($transactions->toArray(), $detailTransactions->toArray());
       return ResponseFormatter::success($transactions, 'Data Bershasil diambil');
     }else{
       return ResponseFormatter::error(
