@@ -18,6 +18,7 @@ class CreateJenisservicesTable extends Migration
           $table->id();
           $table->string('jenis', 25);
           $table->string('slug', 50);
+          $table->double('rate')->nullable();
           $table->text('description')->nullable();
           $table->string('picturePath')->nullable();
           $table->timestamps();
