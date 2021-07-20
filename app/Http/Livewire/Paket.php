@@ -28,14 +28,14 @@ class Paket extends Component
     ->where('services.jenisservice_id', '=', 3)
     ->get();
 
-    $rate1 = Rating::where('jenisservice_id',1)->sum('rate');
-    $jum_rate = Rating::where('jenisservice_id',1)->count('id');
+    $rate1 = Rating::where('jenisservice_id',3)->sum('rate');
+    $jum_rate = Rating::where('jenisservice_id',3)->count('id');
 
     $paket2 = Layanan::where('jenisservice_id', 3)->first();
 
     $total_rate = $rate1 / $jum_rate;
 
-    $jenis_service = JenisLayanan::where('id', '1')->first();
+    $jenis_service = JenisLayanan::where('id', '3')->first();
 
     $jenis_service->rate = $total_rate;
     $jenis_service->save();
@@ -43,7 +43,7 @@ class Paket extends Component
     $paketPaginate = $paket2->Komentar()->where('comment_id', null)->orderBy('created_at', 'desc')->paginate(3);
     $this->service_id = $paket2->id;
 
-    return view('livewire.paket', compact('paket', 'paketPaginate'))->extends('layouts.app');
+    return view('livewire.paket', compact('paket', 'paketPaginate','jenis_service'))->extends('layouts.app');
   }
 
   public function saveComment()
