@@ -58,13 +58,8 @@
             </div>
           </div>
           <div class="mb-3">
-            <p class="stars">
-              <span class="bi bi-star-fill"></span>
-              <span class="bi bi-star-fill"></span>
-              <span class="bi bi-star-fill"></span>
-              <span class="bi bi-star-fill"></span>
-              <span class="bi bi-star-fill muted"></span>
-            </p>
+            <input type="hidden" value="{{$jenis_service->rate}}" id="ratingme" name="ratingme" />
+            <a href="#"><i class="far fa-edit"></i></a>
             {!!$paket[0]->description!!}
           </div>
           <div class="pt-5">

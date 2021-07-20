@@ -8,6 +8,8 @@ use App\Models\Komentar;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
+use App\Models\JenisLayanan;
+use App\Models\Rating;
 
 class Bersih extends Component
 {
@@ -15,6 +17,7 @@ class Bersih extends Component
   protected $paginationTheme = 'bootstrap';
   public $comment;
   public $service_id;
+  public $total_rate;
 
   public function render()
   {
@@ -25,11 +28,22 @@ class Bersih extends Component
     ->where('services.jenisservice_id', '=', 2)
     ->get();
 
+    $rate1 = Rating::where('jenisservice_id',2)->sum('rate');
+    $jum_rate = Rating::where('jenisservice_id',2)->count('id');
+
     $bersih2 = Layanan::where('jenisservice_id', 2)->first();
+
+    $total_rate = $rate1 / $jum_rate;
+
+    $jenis_service = JenisLayanan::where('id', '2')->first();
+
+    $jenis_service->rate = $total_rate;
+    $jenis_service->save();
+
     $bersihPaginate = $bersih2->Komentar()->where('comment_id', null)->orderBy('created_at', 'desc')->paginate(3);
     $this->service_id = $bersih2->id;
 
-    return view('livewire.bersih', compact('bersih', 'bersihPaginate'))->extends('layouts.app');
+    return view('livewire.bersih', compact('bersih', 'bersihPaginate','jenis_service'))->extends('layouts.app');
   }
 
   public function saveComment()

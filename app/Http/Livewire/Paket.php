@@ -8,6 +8,8 @@ use App\Models\Komentar;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
+use App\Models\JenisLayanan;
+use App\Models\Rating;
 
 class Paket extends Component
 {
@@ -15,6 +17,7 @@ class Paket extends Component
   protected $paginationTheme = 'bootstrap';
   public $comment;
   public $service_id;
+  public $total_rate;
 
   public function render()
   {
@@ -25,7 +28,18 @@ class Paket extends Component
     ->where('services.jenisservice_id', '=', 3)
     ->get();
 
+    $rate1 = Rating::where('jenisservice_id',1)->sum('rate');
+    $jum_rate = Rating::where('jenisservice_id',1)->count('id');
+
     $paket2 = Layanan::where('jenisservice_id', 3)->first();
+
+    $total_rate = $rate1 / $jum_rate;
+
+    $jenis_service = JenisLayanan::where('id', '1')->first();
+
+    $jenis_service->rate = $total_rate;
+    $jenis_service->save();
+
     $paketPaginate = $paket2->Komentar()->where('comment_id', null)->orderBy('created_at', 'desc')->paginate(3);
     $this->service_id = $paket2->id;
 
