@@ -60,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
 
     //route Komentar
     Route::get('/komentar', [App\Http\Controllers\Admin\KomentarController::class, 'index'])->name('index-komentar');
+    Route::post('/komentar/balas', [App\Http\Controllers\Admin\KomentarController::class, 'reply'])->name('reply-komentar');
     Route::get('/komentar/delete/{id}', [App\Http\Controllers\Admin\KomentarController::class, 'delete'])->name('delete-komentar');
 
     //route Transaksi
