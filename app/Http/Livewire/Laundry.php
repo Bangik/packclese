@@ -4,7 +4,9 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Layanan;
+use App\Models\JenisLayanan;
 use App\Models\Komentar;
+use App\Models\Rating;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
@@ -15,6 +17,7 @@ class Laundry extends Component
   protected $paginationTheme = 'bootstrap';
   public $comment;
   public $service_id;
+  public $total_rate;
 
   public function render()
   {
@@ -25,11 +28,21 @@ class Laundry extends Component
     ->where('services.jenisservice_id', '=', 1)
     ->get();
 
+    $rate1 = Rating::where('jenisservice_id',1)->sum('rate');
+    $jum_rate = Rating::where('jenisservice_id',1)->count('id');
     $laundry2 = Layanan::where('jenisservice_id', 1)->first();
+
+    $total_rate = $rate1 / $jum_rate;
+
+    $jenis_service = JenisLayanan::where('id', '1')->first();
+
+    $jenis_service->rate = $total_rate;
+    $jenis_service->save();
+
     $laundryPaginate = $laundry2->Komentar()->where('comment_id', null)->orderBy('created_at', 'desc')->paginate(3);
     $this->service_id = $laundry2->id;
 
-    return view('livewire.laundry', compact('laundry', 'laundryPaginate','laundry2'))->extends('layouts.app');
+    return view('livewire.laundry', compact('laundry', 'laundryPaginate','laundry2','jenis_service'))->extends('layouts.app');
   }
 
   public function saveComment()

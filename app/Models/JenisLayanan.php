@@ -10,7 +10,7 @@ class JenisLayanan extends Model
   protected $table = "jenisservices";
 
   protected $fillable = [
-    'jenis', 'slug', 'description', 'picturePath'
+    'jenis', 'slug', 'description','rate', 'picturePath'
   ];
 
   public function Layanan(){

@@ -15,7 +15,7 @@ class Layanan extends Model
     use SoftDeletes;
 
     protected $fillable = [
-      'name','jenisservice_id','description','rate','price','picturePath'
+      'name','jenisservice_id','description','price','picturePath'
     ];
 
     protected $dates = ['deleted_at'];
@@ -40,4 +40,7 @@ class Layanan extends Model
       return $this->hasMany('App\Models\DetailTransaction', 'id');
     }
 
+    public function rating(){
+      return $this->belongsToMany('App\Models\Rating', 'jenisservice_id');
+    }
 }
