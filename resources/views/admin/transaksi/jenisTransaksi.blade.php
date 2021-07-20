@@ -30,7 +30,13 @@
               <td>{{$transaction->id}}</td>
               <td>{{date('d-M-y, H.i', strtotime($transaction->created_at))}}</td>
               <td>{{$transaction->name}}</td>
-              <td>{{Str::limit($transaction->payment_url, 10)}}</td>
+              <td>
+                @if(strpos(strtolower($transaction->payment_url), 'http') !== false)
+                <a href="{{$transaction->payment_url}}" target="_blank">Midtrans</a>
+                @else
+                {{$transaction->payment_url}}
+                @endif
+              </td>
               <td>{{$transaction->status}}</td>
               <td>@currency($transaction->total)</td>
               <td>

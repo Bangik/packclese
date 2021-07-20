@@ -59,7 +59,13 @@
                   </tr>
                   <tr>
                     <th class="table-primary text-dark">Metode Pembayaran</th>
-                    <td>{{$transaction->payment_url}}</td>
+                    <td>
+                      @if(strpos(strtolower($transaction->payment_url), 'http') !== false)
+                      <a href="{{$transaction->payment_url}}" target="_blank">Midtrans</a>
+                      @else
+                      {{$transaction->payment_url}}
+                      @endif
+                    </td>
                   </tr>
                   <tr>
                     <th class="table-primary text-dark">Status</th>

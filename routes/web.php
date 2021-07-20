@@ -67,6 +67,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/transaksi/layanan/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'jenisTransaction'])->name('jenisTransaction-transaksi');
     Route::get('/transaksi/detail/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'detail'])->name('detail-transaksi');
     Route::post('/transaksi/laporan', [App\Http\Controllers\Admin\TransactionController::class, 'report'])->name('report-transaksi');
+    Route::post('/transaksi/status', [App\Http\Controllers\Admin\TransactionController::class, 'status'])->name('status-transaksi');
     Route::get('/transaksi/trash/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'trash'])->name('trash-transaksi');
     Route::get('/transaksi/trashed', [App\Http\Controllers\Admin\TransactionController::class, 'trashed'])->name('trashed-transaksi');
     Route::get('/transaksi/restore/{id}', [App\Http\Controllers\Admin\TransactionController::class, 'restore'])->name('restore-transaksi');

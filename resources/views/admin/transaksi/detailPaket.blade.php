@@ -7,10 +7,19 @@
   <p class="mb-4">Data Detail Transaksi</p>
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
-    <div class="card-header py-3">
+    <div class="card-header py-3 py-3 d-flex flex-row align-items-center justify-content-between">
       <h6 class="m-0 font-weight-bold text-primary">Detail Transaksi</h6>
+      <div class="dropdown no-arrow">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item cetak" href="#">Cetak Detail Transaksi</a>
+          <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#status">Ubah Status</a>
+        </div>
+      </div>
     </div>
-    <div class="card-body">
+    <div class="card-body" id="card">
       <div class="table-responsive">
         <table class="table table-bordered" width="100%" cellspacing="0">
           <tr>
@@ -39,11 +48,17 @@
           </tr>
           <tr>
             <th class="table-primary text-dark">Metode Pembayaran</th>
-            <td>{{$transaction->payment_url}}</td>
+            <td>
+              @if(strpos(strtolower($transaction->payment_url), 'http') !== false)
+              <a href="{{$transaction->payment_url}}" target="_blank">Midtrans</a>
+              @else
+              {{$transaction->payment_url}}
+              @endif
+            </td>
           </tr>
           <tr>
             <th class="table-primary text-dark">Status</th>
-            <td>{{$transaction->status}}</td>
+            <td class="show-status">{{$transaction->status}}</td>
           </tr>
         </table>
       </div>
@@ -84,4 +99,69 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="status" tabindex="-1" aria-labelledby="status" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="status">Ubah Status Transaksi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form class="updateStatus">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="layanan">Status</label>
+            <select class="form-control statuss">
+              <option value="PROCESS">PROCESS</option>
+              <option value="PENDING">PENDING</option>
+              <option value="SUCCESS">SUCCESS</option>
+              <option value="CANCELED">CANCELED</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-primary" name="action">Ubah</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+@endsection
+
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js" integrity="sha512-mPA/BA22QPGx1iuaMpZdSsXVsHUTr9OisxHDtdsYj73eDGWG2bTSTLTUOb4TG40JvUyjoTcLF+2srfRchwbodg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.updateStatus').submit(function(e){
+      e.preventDefault();
+      let id = {{$detailTransactions->transaction_id}};
+      let status = $('.statuss').val();
+      $.ajax({
+        headers: {
+          'X-CSRF-TOKEN': '{{csrf_token()}}'
+        },
+        type : 'POST',
+        url : '{{route('status-transaksi')}}',
+        data : {
+          id : id,
+          status : status
+        },
+        success : function(status){
+          $('.show-status').text(status);
+          $('#status').modal('hide');
+        }
+      });
+    });
+
+    $('.cetak').click(function(){
+      var mode = 'iframe'; //popup
+      var close = mode == "popup";
+      var options = { mode : mode, popClose : close};
+      $("#card").printArea( options );
+    });
+  });
+</script>
 @endsection

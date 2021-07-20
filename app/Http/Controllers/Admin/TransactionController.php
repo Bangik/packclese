@@ -95,6 +95,20 @@ class TransactionController extends Controller
     }
   }
 
+  public function status(Request $Request)
+  {
+    $this->validate($Request,[
+      'id' => 'required',
+      'status' => 'required',
+    ]);
+
+    Transaction::where('id', $Request->id)->update([
+      'status' => $Request->status
+    ]);
+    $status = $Request->status;
+    return $status;
+  }
+
   public function trash($id)
   {
     $transaction = Transaction::find($id);
