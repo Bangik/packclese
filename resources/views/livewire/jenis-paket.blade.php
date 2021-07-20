@@ -29,7 +29,7 @@
           <option value="0">-- Pilih Kota --</option>
         @endif
         @foreach($listKota as $key => $kota)
-          <option value="{{$kota['city_id']}}">{{$kota['city_name']}}</option>
+          <option value="{{$kota['city_id']}}">{{$kota['type']." ".$kota['city_name']}}</option>
         @endforeach
       </select>
   </div>
@@ -55,7 +55,7 @@
           <option value="0">-- Pilih Kota --</option>
         @endif
         @foreach($listKota2 as $key => $kota2)
-          <option value="{{$kota2['city_id']}}">{{$kota2['city_name']}}</option>
+          <option value="{{$kota2['city_id']}}">{{$kota2['type']." ".$kota2['city_name']}}</option>
         @endforeach
       </select>
   </div>
@@ -156,7 +156,13 @@
       <table class="table table-borderless table-sm" width="100%" cellspacing="0">
         <tr>
           <td width="50%">Ongkir</td>
-          <td width="50%">@currency($ongkir)</td>
+          <td width="50%">
+            @currency($ongkir)
+            <div wire:loading wire:target="layananCourier" class="la-ball-clip-rotate-multiple la-dark la-sm">
+                <div></div>
+                <div></div>
+            </div>
+          </td>
         </tr>
         <tr>
           <td width="50%">Biaya Layanan</td>
@@ -182,5 +188,9 @@
     <button type="submit" class="btn btn-primary btn-user btn-block">
       Proses Sekarang
     </button>
+    <div wire:loading wire:target="storePaket" class="la-ball-clip-rotate-multiple la-dark la-sm">
+        <div></div>
+        <div></div>
+    </div>
   </div>
 </form>

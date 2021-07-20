@@ -121,4 +121,8 @@
   <button type="submit" class="btn btn-primary btn-sm btn-block">
     Proses Sekarang
   </button>
+  <div wire:loading wire:target="storeLaundry" class="la-ball-clip-rotate-multiple la-dark la-sm">
+      <div></div>
+      <div></div>
+  </div>
 </form>

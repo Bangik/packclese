@@ -133,15 +133,18 @@ class JenisPaket extends Component
       'payment_url' => "COD",
     ]);
 
+    $origins = RajaOngkir::kota()->dariProvinsi($this->provinsi1)->find($this->origin);
+    $destinations = RajaOngkir::kota()->dariProvinsi($this->provinsi2)->find($this->destination);
+
     DetailTransaction::create([
       'transaction_id' => $transaksi->id,
       'service_id' => $this->idService,
       'address' => $this->address,
       'address_detail' => $this->address2,
-      'origin' => $this->origin,
-      'destination' => $this->destination,
+      'origin' => $origins['type']." ".$origins['city_name'],
+      'destination' => $destinations['type']." ".$destinations['city_name'],
       'weight' => $this->weight,
-      'courier' => $this->courier,
+      'courier' => $this->courier." ".$this->layananCourier2,
       'extra' => $this->ongkir,
       'voucher_code' => $this->potongan,
       'subtotal' => $this->subtotal,
