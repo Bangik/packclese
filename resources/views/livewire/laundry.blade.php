@@ -58,13 +58,15 @@
             </div>
           </div>
           <div class="mb-3">
-            <p class="stars">
+            {{-- <p class="stars">
               <span class="bi bi-star-fill"></span>
               <span class="bi bi-star-fill"></span>
               <span class="bi bi-star-fill"></span>
               <span class="bi bi-star-fill"></span>
               <span class="bi bi-star-fill muted"></span>
-            </p>
+            </p> --}}
+            <input type="hidden" value="5" id="ratingme" name="ratingme" />
+
             {!!$laundry[0]->description!!}
           </div>
           <div class="pt-5">

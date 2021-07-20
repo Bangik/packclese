@@ -29,7 +29,7 @@ class Laundry extends Component
     $laundryPaginate = $laundry2->Komentar()->where('comment_id', null)->orderBy('created_at', 'desc')->paginate(3);
     $this->service_id = $laundry2->id;
 
-    return view('livewire.laundry', compact('laundry', 'laundryPaginate'))->extends('layouts.app');
+    return view('livewire.laundry', compact('laundry', 'laundryPaginate','laundry2'))->extends('layouts.app');
   }
 
   public function saveComment()

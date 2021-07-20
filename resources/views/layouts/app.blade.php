@@ -27,6 +27,9 @@
     <link href="{{asset('SoftLand/assets/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/loading.css')}}" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"  href="{{asset('rating/rating.css')}}"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     @livewireStyles
   </head>
@@ -81,6 +84,17 @@
 
     <!-- Template Main JS File -->
     <script src="{{asset('SoftLand/assets/js/main.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="{{asset('rating/rating_review.js')}}"></script>
+    <script type="text/javascript">
+   $(function(){
+      $('#ratingme').rating();
+
+      // $( "a" ).click(function(){
+      //  alert($('#ratingme').val());
+      // });
+   });
+    </script>
     @yield('js')
     @livewireScripts
   </body>
