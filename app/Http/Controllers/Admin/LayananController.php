@@ -30,7 +30,6 @@ class LayananController extends Controller
       'name' => 'required|max:100',
       'jenisservice_id' => 'required',
       'description' => 'required',
-      'rate' => 'required',
       'price' => 'required',
       'picturePath.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
     ]);
@@ -39,7 +38,6 @@ class LayananController extends Controller
       'name' => $Request->name,
       'jenisservice_id' => $Request->jenisservice_id,
       'description' => $Request->description,
-      'rate' => $Request->rate,
       'price' => $Request->price,
     ]);
 
@@ -74,7 +72,6 @@ class LayananController extends Controller
       'name' => 'required|max:255',
       'jenisservice_id' => 'required',
       'description' => 'required',
-      'rate' => 'required',
       'price' => 'required',
       'picturePath.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
     ]);
@@ -83,7 +80,6 @@ class LayananController extends Controller
       'name' => $Request->name,
       'jenisservice_id' => $Request->jenisservice_id,
       'description' => $Request->description,
-      'rate' => $Request->rate,
       'price' => $Request->price,
     ]);
 

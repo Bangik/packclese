@@ -18,7 +18,6 @@
               <th>Nama</th>
               <th>JenisLayanan</th>
               <th>Deskripsi</th>
-              <th>Rate</th>
               <th>Price</th>
               <th>Aksi</th>
             </tr>
@@ -29,7 +28,6 @@
               <td>{{$Layanans->name}}</td>
               <td>{{$Layanans->jenisServices->jenis}}</td>
               <td>{!!Str::limit($Layanans->description, '50')!!}</td>
-              <td>{{$Layanans->rate}}</td>
               <td>{{$Layanans->price}}</td>
               <td>
                 <a href="{{route('Restore-Layanan', ['id' => $Layanans->id])}}" class="btn btn-m btn-primary"><i class="fas fa-trash-restore"></i></a>

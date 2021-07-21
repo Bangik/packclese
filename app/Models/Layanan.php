@@ -15,7 +15,7 @@ class Layanan extends Model
     use SoftDeletes;
 
     protected $fillable = [
-      'name','jenisservice_id','description','price','picturePath'
+      'name','jenisservice_id','description','price'
     ];
 
     protected $dates = ['deleted_at'];

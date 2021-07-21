@@ -40,16 +40,6 @@
           </div>
 
           <div class="form-group">
-            <label for="rate">Rating</label>
-            <input type="text" name="rate" class="form-control @error('rate') is-invalid @enderror" value="{{ old('rate') }}" placeholder="Rate Layanan">
-              @error('rate')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-              @enderror
-          </div>
-
-          <div class="form-group">
             <label for="harga">Harga</label>
             <input type="number" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}" placeholder="Harga Layanan">
               @error('price')
