@@ -66,7 +66,7 @@
               <span class="bi bi-star-fill muted"></span>
             </p> --}}
             <input type="hidden" value="{{$jenis_service->rate}}" id="ratingme" name="ratingme" />
-            <a href="#"><i class="far fa-edit"></i></a>
+            {{-- <a href="#" wire:click="selectItem({{$jenis_service->id}}, 'Laundry')"><i class="far fa-edit"></i></a> --}}
             {!!$laundry[0]->description!!}
           </div>
           <div class="pt-5">
@@ -138,3 +138,20 @@
     </div>
   </section>
 </main>
+{{-- <!-- Modal -->
+<div class="modal fade" id="updaterating_laundry" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Change Laundry Rating</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" value="{{$jenis_service->rate}}" id="ratingme" name="ratingme" />
+              <button wire:click="save" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div> --}}

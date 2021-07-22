@@ -95,6 +95,42 @@
       // });
    });
     </script>
+    <script>
+
+
+        window.addEventListener('closeModal', event => {
+            $("#updaterating_laundry").modal('hide');
+        })
+
+        window.addEventListener('openModal', event => {
+            $("#updaterating_laundry").modal('show');
+        })
+
+        window.addEventListener('closeModal_bersih', event => {
+            $("#updaterating_bersih").modal('hide');
+        })
+
+        window.addEventListener('openModal_bersih', event => {
+            $("#updaterating_bersih").modal('show');
+        })
+
+        window.addEventListener('closeModal_paket', event => {
+            $("#updaterating_paket").modal('hide');
+        })
+
+        window.addEventListener('openModal_paket', event => {
+            $("#updaterating_paket").modal('show');
+        })
+
+        window.addEventListener('closeModal_titip', event => {
+            $("#updaterating_titip").modal('hide');
+        })
+
+        window.addEventListener('openModal_titip', event => {
+            $("#updaterating_titip").modal('show');
+        })
+
+    </script>
     @yield('js')
     @livewireScripts
   </body>

@@ -59,7 +59,7 @@
           </div>
           <div class="mb-3">
             <input type="hidden" value="{{$jenis_service->rate}}" id="ratingme" name="ratingme" />
-            <a href="#"><i class="far fa-edit"></i></a>
+            {{-- <a href="#" wire:click="selectItem({{ $jenis_service->id }}, 'Titip')"><i class="far fa-edit"></i></a> --}}
             {!!$titip[0]->description!!}
           </div>
           <div class="pt-5">
@@ -131,3 +131,20 @@
     </div>
   </section>
 </main>
+{{-- <!-- Modal -->
+<div class="modal fade" id="updaterating_titip" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Change Titip Rating</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <button wire:click="titip" class="btn btn-primary">Titip</button>
+
+            </div>
+        </div>
+    </div>
+</div> --}}

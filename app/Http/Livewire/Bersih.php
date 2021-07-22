@@ -19,6 +19,10 @@ class Bersih extends Component
   public $service_id;
   public $total_rate;
 
+  protected $listeners = [
+      'refreshParent' => '$refresh','fileChoosen'
+  ];
+  
   public function render()
   {
     $bersih = DB::table('services')
@@ -46,6 +50,18 @@ class Bersih extends Component
     return view('livewire.bersih', compact('bersih', 'bersihPaginate','jenis_service'))->extends('layouts.app');
   }
 
+  public function selectItem($itemId, $action)
+  {
+      $this->selectedItem = $itemId;
+      $this->selectedAction = $action;
+
+      if ($action == 'Bersih') {
+        $this->emit('getModelId', $this->selectedItem);
+        $this->emit('getActionId', $this->selectedAction);
+        $this->dispatchBrowserEvent('openModal_bersih');;
+
+      }
+  }
   public function saveComment()
   {
     $this->validate([

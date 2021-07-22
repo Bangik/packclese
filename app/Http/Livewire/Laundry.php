@@ -19,6 +19,10 @@ class Laundry extends Component
   public $service_id;
   public $total_rate;
 
+  protected $listeners = [
+      'refreshParent' => '$refresh','fileChoosen'
+  ];
+  
   public function render()
   {
     $laundry = DB::table('services')
@@ -43,6 +47,19 @@ class Laundry extends Component
     $this->service_id = $laundry2->id;
 
     return view('livewire.laundry', compact('laundry', 'laundryPaginate','laundry2','jenis_service'))->extends('layouts.app');
+  }
+
+  public function selectItem($itemId, $action)
+  {
+      $this->selectedItem = $itemId;
+      $this->selectedAction = $action;
+
+      if ($action == 'Laundry') {
+        $this->emit('getModelId', $this->selectedItem);
+        $this->emit('getActionId', $this->selectedAction);
+        $this->dispatchBrowserEvent('openModal');;
+
+      }
   }
 
   public function saveComment()

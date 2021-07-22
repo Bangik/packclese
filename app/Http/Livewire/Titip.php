@@ -19,6 +19,10 @@ class Titip extends Component
   public $service_id;
   public $total_rate;
 
+  protected $listeners = [
+      'refreshParent' => '$refresh','fileChoosen'
+  ];
+
   public function render()
   {
     $titip = DB::table('services')
@@ -45,6 +49,28 @@ class Titip extends Component
     $this->service_id = $titip2->id;
 
     return view('livewire.titip', compact('titip', 'titipPaginate','jenis_service'))->extends('layouts.app');
+  }
+
+  public function selectItem($itemId, $action)
+  {
+      $this->selectedItem = $itemId;
+      $this->selectedAction = $action;
+
+      if ($action == 'Titip') {
+        $this->emit('getModelId', $this->selectedItem);
+        $this->emit('getActionId', $this->selectedAction);
+        $this->dispatchBrowserEvent('openModal_titip');;
+
+      }
+  }
+
+  public function titip()
+  {
+
+      // $this->emit('refreshParent');
+      // $this->dispatchBrowserEvent('closeModal_titip');
+      // $this->dispatchBrowserEvent('save_berhasil');
+      return view('livewire.profile');
   }
 
   public function saveComment()

@@ -19,6 +19,10 @@ class Paket extends Component
   public $service_id;
   public $total_rate;
 
+  protected $listeners = [
+      'refreshParent' => '$refresh','fileChoosen'
+  ];
+  
   public function render()
   {
     $paket = DB::table('services')
@@ -44,6 +48,19 @@ class Paket extends Component
     $this->service_id = $paket2->id;
 
     return view('livewire.paket', compact('paket', 'paketPaginate','jenis_service'))->extends('layouts.app');
+  }
+
+  public function selectItem($itemId, $action)
+  {
+      $this->selectedItem = $itemId;
+      $this->selectedAction = $action;
+
+      if ($action == 'Paket') {
+        $this->emit('getModelId', $this->selectedItem);
+        $this->emit('getActionId', $this->selectedAction);
+        $this->dispatchBrowserEvent('openModal_paket');;
+
+      }
   }
 
   public function saveComment()
