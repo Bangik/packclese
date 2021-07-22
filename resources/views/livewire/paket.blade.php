@@ -59,7 +59,7 @@
           </div>
           <div class="mb-3">
             <input type="hidden" value="{{$jenis_service->rate}}" id="ratingme" name="ratingme" />
-            {{-- <a href="#" wire:click="selectItem({{ $jenis_service->id }}, 'Paket')"><i class="far fa-edit"></i></a> --}}
+            <a href="#hallo" id="rate-paket"><i class="far fa-edit"></i></a>
             {!!$paket[0]->description!!}
           </div>
           <div class="pt-5">
@@ -131,21 +131,29 @@
     </div>
   </section>
 </main>
-
-{{-- <!-- Modal -->
-<div class="modal fade" id="updaterating_paket" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel">Change Paket Rating</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-              <input type="hidden" value="{{$jenis_service->rate}}" id="ratingme" name="ratingme" />
-              <button wire:click="save" class="btn btn-primary">Save</button>
-            </div>
-        </div>
+<!-- Modal -->
+<div id="updaterating_paket" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Beri Rating</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Tempat</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
-</div> --}}
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#rate-paket").click(function(){
+    $('#updaterating_paket').modal('show');
+  });
+});
+</script>

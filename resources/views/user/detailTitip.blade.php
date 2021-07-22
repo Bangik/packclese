@@ -75,6 +75,10 @@
                     <th class="table-primary text-dark">Status</th>
                     <td>{{$transaction->status}}</td>
                   </tr>
+                  <tr>
+                    <th class="table-primary text-dark">Rate</th>
+                    <td><a href="#hallo" id="rate-titip">Rate</a></td>
+                  </tr>
                 </table>
               </div>
               <div class="table-responsive mt-3">
@@ -114,4 +118,31 @@
     </div>
   </section>
 </main>
+<!-- Modal -->
+<div id="detail_titip" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Beri Rating</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" name="titip" class="form-control" id="titip" required>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#rate-titip").click(function(){
+    $('#detail_titip').modal('show');
+  });
+});
+</script>
 @endsection
