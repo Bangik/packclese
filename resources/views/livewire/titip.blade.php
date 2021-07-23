@@ -58,8 +58,8 @@
             </div>
           </div>
           <div class="mb-3">
-            <input type="hidden" value="{{$jenis_service->rate}}" id="ratingme" name="ratingme" />
-            <a href="#hallo" id="rate-titip"><i class="far fa-edit"></i></a>
+            <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="2" data-readonly/>
+          <a href="#" id="rate-titip"><i class="far fa-edit"></i></a>
             {!!$titip[0]->description!!}
           </div>
           <div class="pt-5">
@@ -140,7 +140,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Tempat</p>
+        <p>Tempaat</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

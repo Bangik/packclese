@@ -65,7 +65,7 @@
               <span class="bi bi-star-fill"></span>
               <span class="bi bi-star-fill muted"></span>
             </p> --}}
-            <input type="hidden" value="{{$jenis_service->rate}}" id="ratingme" name="ratingme" />
+            <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="2" data-readonly/>
             <a href="#hallo" id="rate-laundry"><i class="far fa-edit"></i></a>
             {!!$laundry[0]->description!!}
           </div>

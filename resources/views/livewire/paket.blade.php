@@ -58,7 +58,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <input type="hidden" value="{{$jenis_service->rate}}" id="ratingme" name="ratingme" />
+            <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="2" data-readonly/>
             <a href="#hallo" id="rate-paket"><i class="far fa-edit"></i></a>
             {!!$paket[0]->description!!}
           </div>
