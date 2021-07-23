@@ -121,13 +121,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="#" method="post" enctype="multipart/form-data">
-      <input type="number" value="1" name="input_ratinglaundry" id="Demo" class="rating" data-clearable="remove"/>
-    </form>
+
+        <form action="{{route('rating_laundry')}}" method="post">
+          @csrf
+          <input type="number" value="1" name="input_ratinglaundry" id="Demo" class="rating" data-clearable="remove"/>
     </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
       </div>
     </div>
   </div>

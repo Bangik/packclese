@@ -41,14 +41,14 @@ class TransactionHistoryController extends Controller
 
   public function rating_laundry(Request $request){
 
-    $this->validate($Request,[
+    $this->validate($request,[
       'input_ratinglaundry' => 'required',
     ]);
 
     $Rating = Rating::create([
       'user_id' => Auth::user()->id,
       'jenisservice_id' => 1,
-      'rate' => $Request->input_ratinglaundry,
+      'rate' => $request->input_ratinglaundry,
     ]);
 
   }
