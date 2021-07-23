@@ -58,7 +58,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="2" data-readonly/>
+            <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="{{round($jenis_service->rate)}}" data-readonly/>
             <a href="#hallo" id="rate-bersih"><i class="far fa-edit"></i></a>
             {!!$bersih[0]->description!!}
           </div>
