@@ -34,6 +34,7 @@ class Titip extends Component
 
     $avgRate = Rating::where('jenisservice_id',4)->avg('rate');
     $titip2 = Layanan::where('jenisservice_id', 4)->first();
+    $Rates = Rating::where('jenisservice_id',4)->count('id');
 
     $jenis_service = JenisLayanan::where('id', '4')->first();
 
@@ -44,7 +45,7 @@ class Titip extends Component
     $titipPaginate = $titip2->Komentar()->where('comment_id', null)->orderBy('created_at', 'desc')->paginate(3);
     $this->service_id = $titip2->id;
 
-    return view('livewire.titip', compact('titip', 'titipPaginate','jenis_service'))->extends('layouts.app');
+    return view('livewire.titip', compact('titip', 'titipPaginate','jenis_service','Rates'))->extends('layouts.app');
   }
 
   public function selectItem($itemId, $action)

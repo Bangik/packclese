@@ -58,22 +58,10 @@
             </div>
           </div>
           <div class="mb-3">
-<<<<<<< HEAD
-            {{-- <p class="stars">
-              <span class="bi bi-star-fill"></span>
-              <span class="bi bi-star-fill"></span>
-              <span class="bi bi-star-fill"></span>
-              <span class="bi bi-star-fill"></span>
-              <span class="bi bi-star-fill muted"></span>
-            </p> --}}
-            <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="{{round($jenis_service->rate)}}" data-readonly/>
-            <a href="#hallo" id="rate-laundry"><i class="far fa-edit"></i></a>
-=======
-            <div class="input-group">
+              <div class="input-group">
               <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="{{round($jenis_service->rate)}}" data-readonly/>
-              <span style="margin-left:3px;">{{$jenis_service->rate}}</span>
+              <span style="margin-left:3px;">{{round($jenis_service->rate,2)}}({{$Rates}})</span>
             </div>
->>>>>>> 81773e7571c663d71c2433251cc5db4143f2c3d5
             {!!$laundry[0]->description!!}
           </div>
           <div class="pt-5">

@@ -122,7 +122,11 @@
       </div>
       <div class="modal-body">
         <form class="beriRate">
-          <input type="number" value="1" name="input_ratinglaundry" id="Demo" class="rating" data-clearable="remove"/>
+          @if (count($Rates) == 0)
+            <input type="number" value="0" name="input_ratinglaundry" id="Demo" class="rating" data-clearable="remove"/>
+          @else
+            <input type="number" value="{!!$Rates[0]->rate!!}" name="input_ratinglaundry" id="Demo" class="rating" data-clearable="remove"/>
+          @endif
         </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

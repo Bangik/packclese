@@ -34,6 +34,7 @@ class Laundry extends Component
 
     $avgRate = Rating::where('jenisservice_id',1)->avg('rate');
     $laundry2 = Layanan::where('jenisservice_id', 1)->first();
+    $Rates = Rating::where('jenisservice_id',1)->count('id');
 
     $jenis_service = JenisLayanan::where('id', '1')->first();
 
@@ -43,7 +44,7 @@ class Laundry extends Component
     $laundryPaginate = $laundry2->Komentar()->where('comment_id', null)->orderBy('created_at', 'desc')->paginate(3);
     $this->service_id = $laundry2->id;
 
-    return view('livewire.laundry', compact('laundry', 'laundryPaginate','laundry2','jenis_service'))->extends('layouts.app');
+    return view('livewire.laundry', compact('laundry', 'laundryPaginate','laundry2','jenis_service','Rates'))->extends('layouts.app');
   }
 
   public function selectItem($itemId, $action)

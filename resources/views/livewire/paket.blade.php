@@ -58,11 +58,9 @@
             </div>
           </div>
           <div class="mb-3">
-            <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="{{round($jenis_service->rate)}}" data-readonly/>
-            <a href="#hallo" id="rate-paket"><i class="far fa-edit"></i></a>
             <div class="input-group">
               <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="{{round($jenis_service->rate)}}" data-readonly/>
-              <span style="margin-left:3px;">{{$jenis_service->rate}}</span>
+              <span style="margin-left:3px;">{{round($jenis_service->rate,2)}}({{$Rates}})</span>
               </div>
             {!!$paket[0]->description!!}
           </div>

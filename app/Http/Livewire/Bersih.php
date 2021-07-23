@@ -34,6 +34,7 @@ class Bersih extends Component
 
     $avgRate = Rating::where('jenisservice_id',2)->avg('rate');
     $bersih2 = Layanan::where('jenisservice_id', 2)->first();
+    $Rates = Rating::where('jenisservice_id',2)->count('id');
 
     $jenis_service = JenisLayanan::where('id', '2')->first();
 
@@ -43,7 +44,7 @@ class Bersih extends Component
     $bersihPaginate = $bersih2->Komentar()->where('comment_id', null)->orderBy('created_at', 'desc')->paginate(3);
     $this->service_id = $bersih2->id;
 
-    return view('livewire.bersih', compact('bersih', 'bersihPaginate','jenis_service'))->extends('layouts.app');
+    return view('livewire.bersih', compact('bersih', 'bersihPaginate','jenis_service','Rates'))->extends('layouts.app');
   }
 
   public function selectItem($itemId, $action)

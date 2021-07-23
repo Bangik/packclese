@@ -34,6 +34,7 @@ class Paket extends Component
 
     $avgRate = Rating::where('jenisservice_id',3)->avg('rate');
     $paket2 = Layanan::where('jenisservice_id', 3)->first();
+    $Rates = Rating::where('jenisservice_id',3)->count('id');
 
     $jenis_service = JenisLayanan::where('id', '3')->first();
 
@@ -43,7 +44,7 @@ class Paket extends Component
     $paketPaginate = $paket2->Komentar()->where('comment_id', null)->orderBy('created_at', 'desc')->paginate(3);
     $this->service_id = $paket2->id;
 
-    return view('livewire.paket', compact('paket', 'paketPaginate','jenis_service'))->extends('layouts.app');
+    return view('livewire.paket', compact('paket', 'paketPaginate','jenis_service','Rates'))->extends('layouts.app');
   }
 
   public function selectItem($itemId, $action)
