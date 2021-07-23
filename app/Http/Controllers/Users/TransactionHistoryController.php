@@ -38,20 +38,18 @@ class TransactionHistoryController extends Controller
       return view('user.detailTitip', compact(['transaction', 'detailTransactions']));
     }
   }
-  // 
-  // public function rating_laundry(Request $request){
-  //
-  //   // $this->validate($Request,[
-  //   //   'input_ratinglaundry' => 'required',
-  //   // ]);
-  //   //
-  //   // $Rating = Rating::create([
-  //   //   'user_id' => Auth::user()->id,
-  //   //   'jenisservice_id' => 1,
-  //   //   'rate' => $Request->input_ratinglaundry,
-  //   // ]);
-  //
-  //   // $this->dispatchBrowserEvent('closeModal_rt_laundry');
-  //     alert('hallo');
-  // }
+
+  public function rating_laundry(Request $request){
+
+    $this->validate($Request,[
+      'input_ratinglaundry' => 'required',
+    ]);
+
+    $Rating = Rating::create([
+      'user_id' => Auth::user()->id,
+      'jenisservice_id' => 1,
+      'rate' => $Request->input_ratinglaundry,
+    ]);
+
+  }
 }

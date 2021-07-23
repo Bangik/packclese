@@ -88,6 +88,7 @@
     <script src="{{asset('bs4/build/bootstrap4-rating-input.min.js')}}"></script>
     <script src="{{asset('bs4/src/bootstrap4-rating-input.js')}}"></script>
     <script src="https://use.fontawesome.com/5ac93d4ca8.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script type="text/javascript">
    $(function(){
@@ -138,6 +139,13 @@
         //     $("#detail_laundry").modal('hide');
         // })
 
+    </script>
+    <script>
+    $(document).ready(function(){
+      $("#rate-laundry").click(function(){
+        $('#detail_laundry').modal('show');
+      });
+    });
     </script>
     @yield('js')
     @livewireScripts

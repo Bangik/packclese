@@ -121,8 +121,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="#" method="post">
-          {{csrf_field()}}
+        <form action="#" method="post" enctype="multipart/form-data">
       <input type="number" value="1" name="input_ratinglaundry" id="Demo" class="rating" data-clearable="remove"/>
     </form>
     </div>
@@ -134,12 +133,4 @@
   </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("#rate-laundry").click(function(){
-    $('#detail_laundry').modal('show');
-  });
-});
-</script>
 @endsection
