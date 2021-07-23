@@ -30,7 +30,6 @@
     <link rel="stylesheet" type="text/css"  href="{{asset('rating/rating.css')}}"/>
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
     @livewireStyles
   </head>
   <body>
@@ -86,6 +85,10 @@
     <script src="{{asset('SoftLand/assets/js/main.js')}}"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="{{asset('rating/rating_review.js')}}"></script>
+    <script src="{{asset('bs4/build/bootstrap4-rating-input.min.js')}}"></script>
+    <script src="{{asset('bs4/src/bootstrap4-rating-input.js')}}"></script>
+    <script src="https://use.fontawesome.com/5ac93d4ca8.js"></script>
+
     <script type="text/javascript">
    $(function(){
       $('#ratingme').rating();
@@ -129,6 +132,11 @@
         window.addEventListener('openModal_titip', event => {
             $("#updaterating_titip").modal('show');
         })
+
+        //Close Modal Rating Di Riwayat Transaksi
+        // window.addEventListener('closeModal_rt_laundry', event => {
+        //     $("#detail_laundry").modal('hide');
+        // })
 
     </script>
     @yield('js')

@@ -73,7 +73,7 @@
                   </tr>
                   <tr>
                     <th class="table-primary text-dark">Rate</th>
-                    <td><a href="#hallo" id="rate-laundry">Rate</a></td>
+                    <td><a id="rate-laundry">Rate</a></td>
                   </tr>
                 </table>
               </div>
@@ -121,11 +121,14 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <input type="text" name="laundry" class="form-control" id="laundry" required>
-      </div>
+        <form action="#" method="post">
+          {{csrf_field()}}
+      <input type="number" value="1" name="input_ratinglaundry" id="Demo" class="rating" data-clearable="remove"/>
+    </form>
+    </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

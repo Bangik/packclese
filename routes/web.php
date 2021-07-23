@@ -81,6 +81,8 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/profile/riwayat-transaksi', [App\Http\Controllers\Users\TransactionHistoryController::class, 'index'])->name('riwayat-transaksi');
   Route::get('/profile/detail-riwayat-transaksi/{id}', [App\Http\Controllers\Users\TransactionHistoryController::class, 'detail'])->name('detail-riwayat-transaksi');
 
+  // Route::post('/profile/detail-riwayat-transaksi/laundry', [App\Http\Controllers\Users\TransactionHistoryController::class, 'rating_laundry'])->name('rating_laundry');
+
   //Route Transaksi Layanan
   Route::get('/laundry-in-aja', App\Http\Livewire\Laundry::class)->name('laundry');
   Route::get('/bersihin-yuk', App\Http\Livewire\Bersih::class)->name('bersih');
