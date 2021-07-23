@@ -27,15 +27,17 @@ class TransactionHistoryController extends Controller
   {
     $transaction = Transaction::where('id', $id)->first();
     $detailTransactions = DetailTransaction::where('transaction_id', $id)->first();
+    $rates = Rating::where('user_id', Auth::user()->id)->where('transaction_id', $id)->get();
 
     if ($detailTransactions->service->jenisservice_id == 1) {
-      return view('user.detailLaundry', compact(['transaction', 'detailTransactions']));
+      return view('user.detailLaundry', compact(['transaction', 'detailTransactions', 'rates']));
     }elseif ($detailTransactions->service->jenisservice_id == 2) {
-      return view('user.detailBersih', compact(['transaction', 'detailTransactions']));
+      return view('user.detailBersih', compact(['transaction', 'detailTransactions', 'rates']));
     }elseif ($detailTransactions->service->jenisservice_id == 3) {
-      return view('user.detailPaket', compact(['transaction', 'detailTransactions']));
+      // dd($rates);
+      return view('user.detailPaket', compact(['transaction', 'detailTransactions', 'rates']));
     }elseif ($detailTransactions->service->jenisservice_id == 4) {
-      return view('user.detailTitip', compact(['transaction', 'detailTransactions']));
+      return view('user.detailTitip', compact(['transaction', 'detailTransactions', 'rates']));
     }
   }
 
@@ -45,13 +47,23 @@ class TransactionHistoryController extends Controller
       'rate' => 'required',
     ]);
 
-    $Rating = Rating::create([
-      'user_id' => Auth::user()->id,
-      'jenisservice_id' => $request->id,
-      'rate' => $request->rate,
-    ]);
+    if ($request->idRate != 0) {
+      Rating::where('id', $request->idRate)->update([
+        'rate' => $request->rate,
+      ]);
 
-    $rate = $request->rate;
-    return $rate;
+      $rate = $request->rate;
+      return $rate;
+    }else {
+      $Rating = Rating::create([
+        'user_id' => Auth::user()->id,
+        'jenisservice_id' => $request->id,
+        'rate' => $request->rate,
+        'transaction_id' => $request->transactionId,
+      ]);
+
+      $rate = $request->rate;
+      return $rate;
+    }
   }
 }

@@ -18,27 +18,32 @@ class RatingSeeder extends Seeder
 
     DB::table('ratings')->insert([
 
-      'id' => 1,
       'user_id' => '1',
       'jenisservice_id' => 1,
-      'rate' => '4',
+      'rate' => '5',
       'created_at' => Carbon::now()->format('Y-m-d H:i:s')
     ]);
 
     DB::table('ratings')->insert([
 
-      'id' => 2,
       'user_id' => '2',
-      'jenisservice_id' => 1,
-      'rate' => '4.5',
+      'jenisservice_id' => 2,
+      'rate' => '5',
       'created_at' => Carbon::now()->format('Y-m-d H:i:s')
     ]);
 
     DB::table('ratings')->insert([
 
-      'id' => 3,
       'user_id' => '3',
-      'jenisservice_id' => 1,
+      'jenisservice_id' => 3,
+      'rate' => '5',
+      'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+    ]);
+
+    DB::table('ratings')->insert([
+
+      'user_id' => '3',
+      'jenisservice_id' => 4,
       'rate' => '5',
       'created_at' => Carbon::now()->format('Y-m-d H:i:s')
     ]);
