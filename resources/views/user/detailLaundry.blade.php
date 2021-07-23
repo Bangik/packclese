@@ -72,8 +72,8 @@
                     <td>{{$transaction->status}}</td>
                   </tr>
                   <tr>
-                    <th class="table-primary text-dark">Rate</th>
-                    <td><a id="rate-laundry">Rate</a></td>
+                    <th class="table-primary text-dark">Beri Nilai</th>
+                    <td><a id="rate-laundry" style="cursor:pointer">Rate</a></td>
                   </tr>
                 </table>
               </div>
@@ -121,11 +121,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-
-        <form action="{{route('rating_laundry')}}" method="post">
-          @csrf
+        <form class="beriRate">
           <input type="number" value="1" name="input_ratinglaundry" id="Demo" class="rating" data-clearable="remove"/>
-    </div>
+        </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
@@ -135,4 +133,43 @@
   </div>
 </div>
 
+@endsection
+
+@section('js')
+<script type="text/javascript">
+  window.addEventListener('closeModal', event => {
+      $("#updaterating_laundry").modal('hide');
+  });
+
+  window.addEventListener('openModal', event => {
+      $("#updaterating_laundry").modal('show');
+  });
+
+  $(document).ready(function(){
+    $("#rate-laundry").click(function(){
+      $('#detail_laundry').modal('show');
+    });
+
+    $('.beriRate').submit(function(e){
+      e.preventDefault();
+      let id = {{$detailTransactions->service->jenisservice_id}};
+      let rate = $('.rating').val();
+      $.ajax({
+        headers: {
+          'X-CSRF-TOKEN': '{{csrf_token()}}'
+        },
+        type : 'POST',
+        url : '{{route('rate-layanan')}}',
+        data : {
+          id : id,
+          rate : rate
+        },
+        success : function(rate){
+          $('#rate-laundry').text(rate);
+          $('#detail_laundry').modal('hide');
+        }
+      });
+    });
+  });
+</script>
 @endsection

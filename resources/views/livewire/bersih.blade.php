@@ -60,6 +60,10 @@
           <div class="mb-3">
             <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="{{round($jenis_service->rate)}}" data-readonly/>
             <a href="#hallo" id="rate-bersih"><i class="far fa-edit"></i></a>
+            <div class="input-group">
+              <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="{{round($jenis_service->rate)}}" data-readonly/>
+              <span style="margin-left:3px;">{{$jenis_service->rate}}</span>
+              </div>
             {!!$bersih[0]->description!!}
           </div>
           <div class="pt-5">

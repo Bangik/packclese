@@ -87,65 +87,23 @@
     <script src="{{asset('rating/rating_review.js')}}"></script>
     <script src="{{asset('bs4/build/bootstrap4-rating-input.min.js')}}"></script>
     <script src="{{asset('bs4/src/bootstrap4-rating-input.js')}}"></script>
-    <script src="https://use.fontawesome.com/5ac93d4ca8.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script type="text/javascript">
-   $(function(){
-      $('#ratingme').rating();
+     $(function(){
+        $('#ratingme').rating();
 
-      // $( "a" ).click(function(){
-      //  alert($('#ratingme').val());
-      // });
-   });
+        // $( "a" ).click(function(){
+        //  alert($('#ratingme').val());
+        // });
+     });
     </script>
-    <script>
-
-
-        window.addEventListener('closeModal', event => {
-            $("#updaterating_laundry").modal('hide');
-        })
-
-        window.addEventListener('openModal', event => {
-            $("#updaterating_laundry").modal('show');
-        })
-
-        window.addEventListener('closeModal_bersih', event => {
-            $("#updaterating_bersih").modal('hide');
-        })
-
-        window.addEventListener('openModal_bersih', event => {
-            $("#updaterating_bersih").modal('show');
-        })
-
-        window.addEventListener('closeModal_paket', event => {
-            $("#updaterating_paket").modal('hide');
-        })
-
-        window.addEventListener('openModal_paket', event => {
-            $("#updaterating_paket").modal('show');
-        })
-
-        window.addEventListener('closeModal_titip', event => {
-            $("#updaterating_titip").modal('hide');
-        })
-
-        window.addEventListener('openModal_titip', event => {
-            $("#updaterating_titip").modal('show');
-        })
-
+    <script>  
         //Close Modal Rating Di Riwayat Transaksi
         // window.addEventListener('closeModal_rt_laundry', event => {
         //     $("#detail_laundry").modal('hide');
         // })
 
-    </script>
-    <script>
-    $(document).ready(function(){
-      $("#rate-laundry").click(function(){
-        $('#detail_laundry').modal('show');
-      });
-    });
     </script>
     @yield('js')
     @livewireScripts
