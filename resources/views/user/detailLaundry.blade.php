@@ -136,9 +136,13 @@
       <div class="modal-body">
         <form class="beriRate">
           @if(count($rates) != 0)
+          ada
           <input type="hidden" class="idRate" value="{{$rates[0]->id}}">
+          <input type="number" value="{{$rates[0]->rate}}" id="Demo" class="rating" data-clearable="remove"/>
           @else
+          tidak ada
           <input type="hidden" class="idRate" value="0">
+          <input type="number" value="0" id="Demo" class="rating" data-clearable="remove"/>
           @endif
         </div>
       <div class="modal-footer">
@@ -185,8 +189,9 @@
           rate : rate,
           transactionId : transactionId
         },
-        success : function(rate){
+        success : function(response){
           $('#rate-laundry').text(rate);
+          $('.idRate').val(response[0].id)
           $('#detail_laundry').modal('hide');
         }
       });

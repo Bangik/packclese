@@ -184,9 +184,10 @@
           rate : rate,
           transactionId : transactionId
         },
-        success : function(rate){
-          $('#rate-bersih').text(rate);
-          $('#detail_bersih').modal('hide');
+        success : function(response){
+          $('#rate-laundry').text(rate);
+          $('.idRate').val(response[0].id)
+          $('#detail_laundry').modal('hide');
         }
       });
     });

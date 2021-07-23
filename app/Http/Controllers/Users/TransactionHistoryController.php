@@ -11,6 +11,8 @@ use App\Models\Rating;
 
 class TransactionHistoryController extends Controller
 {
+  protected $listeners = ['refreshProducts' => '$refresh'];
+
   public function __construct()
   {
     $this->middleware('auth');
@@ -62,8 +64,7 @@ class TransactionHistoryController extends Controller
         'transaction_id' => $request->transactionId,
       ]);
 
-      $rate = $request->rate;
-      return $rate;
+      return array($Rating);
     }
   }
 }
