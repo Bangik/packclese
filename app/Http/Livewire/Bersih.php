@@ -22,7 +22,7 @@ class Bersih extends Component
   protected $listeners = [
       'refreshParent' => '$refresh','fileChoosen'
   ];
-  
+
   public function render()
   {
     $bersih = DB::table('services')
@@ -32,16 +32,12 @@ class Bersih extends Component
     ->where('services.jenisservice_id', '=', 2)
     ->get();
 
-    $rate1 = Rating::where('jenisservice_id',2)->sum('rate');
-    $jum_rate = Rating::where('jenisservice_id',2)->count('id');
-
+    $avgRate = Rating::where('jenisservice_id',2)->avg('rate');
     $bersih2 = Layanan::where('jenisservice_id', 2)->first();
-
-    $total_rate = $rate1 / $jum_rate;
 
     $jenis_service = JenisLayanan::where('id', '2')->first();
 
-    $jenis_service->rate = $total_rate;
+    $jenis_service->rate = $avgRate;
     $jenis_service->save();
 
     $bersihPaginate = $bersih2->Komentar()->where('comment_id', null)->orderBy('created_at', 'desc')->paginate(3);

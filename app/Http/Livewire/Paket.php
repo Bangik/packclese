@@ -22,7 +22,7 @@ class Paket extends Component
   protected $listeners = [
       'refreshParent' => '$refresh','fileChoosen'
   ];
-  
+
   public function render()
   {
     $paket = DB::table('services')
@@ -32,16 +32,12 @@ class Paket extends Component
     ->where('services.jenisservice_id', '=', 3)
     ->get();
 
-    $rate1 = Rating::where('jenisservice_id',3)->sum('rate');
-    $jum_rate = Rating::where('jenisservice_id',3)->count('id');
-
+    $avgRate = Rating::where('jenisservice_id',3)->avg('rate');
     $paket2 = Layanan::where('jenisservice_id', 3)->first();
-
-    $total_rate = $rate1 / $jum_rate;
 
     $jenis_service = JenisLayanan::where('id', '3')->first();
 
-    $jenis_service->rate = $total_rate;
+    $jenis_service->rate = $avgRate;
     $jenis_service->save();
 
     $paketPaginate = $paket2->Komentar()->where('comment_id', null)->orderBy('created_at', 'desc')->paginate(3);

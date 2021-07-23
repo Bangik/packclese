@@ -32,16 +32,12 @@ class Titip extends Component
     ->where('services.jenisservice_id', '=', 4)
     ->get();
 
-    $rate1 = Rating::where('jenisservice_id',4)->sum('rate');
-    $jum_rate = Rating::where('jenisservice_id',4)->count('id');
-
+    $avgRate = Rating::where('jenisservice_id',4)->avg('rate');
     $titip2 = Layanan::where('jenisservice_id', 4)->first();
-
-    $total_rate = $rate1 / $jum_rate;
 
     $jenis_service = JenisLayanan::where('id', '4')->first();
 
-    $jenis_service->rate = $total_rate;
+    $jenis_service->rate = $avgRate;
     $jenis_service->save();
 
 

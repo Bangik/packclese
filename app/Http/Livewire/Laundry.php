@@ -22,7 +22,7 @@ class Laundry extends Component
   protected $listeners = [
       'refreshParent' => '$refresh','fileChoosen'
   ];
-  
+
   public function render()
   {
     $laundry = DB::table('services')
@@ -32,15 +32,12 @@ class Laundry extends Component
     ->where('services.jenisservice_id', '=', 1)
     ->get();
 
-    $rate1 = Rating::where('jenisservice_id',1)->sum('rate');
-    $jum_rate = Rating::where('jenisservice_id',1)->count('id');
+    $avgRate = Rating::where('jenisservice_id',1)->avg('rate');
     $laundry2 = Layanan::where('jenisservice_id', 1)->first();
-
-    $total_rate = $rate1 / $jum_rate;
 
     $jenis_service = JenisLayanan::where('id', '1')->first();
 
-    $jenis_service->rate = $total_rate;
+    $jenis_service->rate = $avgRate;
     $jenis_service->save();
 
     $laundryPaginate = $laundry2->Komentar()->where('comment_id', null)->orderBy('created_at', 'desc')->paginate(3);
