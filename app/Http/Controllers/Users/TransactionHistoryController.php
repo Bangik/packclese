@@ -39,17 +39,19 @@ class TransactionHistoryController extends Controller
     }
   }
 
-  public function rating_laundry(Request $request){
+  public function rateLayanan(Request $request){
 
     $this->validate($request,[
-      'input_ratinglaundry' => 'required',
+      'rate' => 'required',
     ]);
 
     $Rating = Rating::create([
       'user_id' => Auth::user()->id,
-      'jenisservice_id' => 1,
-      'rate' => $request->input_ratinglaundry,
+      'jenisservice_id' => $request->id,
+      'rate' => $request->rate,
     ]);
 
+    $rate = $request->rate;
+    return $rate;
   }
 }

@@ -58,15 +58,10 @@
             </div>
           </div>
           <div class="mb-3">
-            {{-- <p class="stars">
-              <span class="bi bi-star-fill"></span>
-              <span class="bi bi-star-fill"></span>
-              <span class="bi bi-star-fill"></span>
-              <span class="bi bi-star-fill"></span>
-              <span class="bi bi-star-fill muted"></span>
-            </p> --}}
-            <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="2" data-readonly/>
-            <a href="#hallo" id="rate-laundry"><i class="far fa-edit"></i></a>
+            <div class="input-group">
+              <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="{{round($jenis_service->rate)}}" data-readonly/>
+              <span style="margin-left:3px;">{{$jenis_service->rate}}</span>
+            </div>
             {!!$laundry[0]->description!!}
           </div>
           <div class="pt-5">

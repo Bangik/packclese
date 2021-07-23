@@ -77,7 +77,7 @@
                   </tr>
                   <tr>
                     <th class="table-primary text-dark">Rate</th>
-                    <td><a href="#hallo" id="rate-titip">Rate</a></td>
+                    <td><a style="cursor:pointer" id="rate-titip">Rate</a></td>
                   </tr>
                 </table>
               </div>
@@ -126,23 +126,55 @@
         <h5 class="modal-title">Beri Rating</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <input type="text" name="titip" class="form-control" id="titip" required>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      <form class="beriRate">
+        <div class="modal-body">
+            <input type="number" value="1" id="Demo" class="rating" data-clearable="remove"/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
+@endsection
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("#rate-titip").click(function(){
-    $('#detail_titip').modal('show');
+@section('js')
+<script type="text/javascript">
+  window.addEventListener('closeModal_titip', event => {
+      $("#updaterating_titip").modal('hide');
   });
-});
+
+  window.addEventListener('openModal_titip', event => {
+      $("#updaterating_titip").modal('show');
+  });
+
+  $(document).ready(function(){
+    $("#rate-titip").click(function(){
+      $('#detail_titip').modal('show');
+    });
+
+    $('.beriRate').submit(function(e){
+      e.preventDefault();
+      let id = {{$detailTransactions->service->jenisservice_id}};
+      let rate = $('.rating').val();
+      $.ajax({
+        headers: {
+          'X-CSRF-TOKEN': '{{csrf_token()}}'
+        },
+        type : 'POST',
+        url : '{{route('rate-layanan')}}',
+        data : {
+          id : id,
+          rate : rate
+        },
+        success : function(rate){
+          $('#rate-titip').text(rate);
+          $('#detail_titip').modal('hide');
+        }
+      });
+    });
+  });
 </script>
 @endsection

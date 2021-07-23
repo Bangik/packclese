@@ -80,7 +80,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/profile/setting', App\Http\Livewire\SettingUser::class)->name('setting-user');
   Route::get('/profile/riwayat-transaksi', [App\Http\Controllers\Users\TransactionHistoryController::class, 'index'])->name('riwayat-transaksi');
   Route::get('/profile/detail-riwayat-transaksi/{id}', [App\Http\Controllers\Users\TransactionHistoryController::class, 'detail'])->name('detail-riwayat-transaksi');
-  Route::post('/laundry/rate', [App\Http\Controllers\Users\TransactionHistoryController::class, 'rating_laundry'])->name('rating_laundry');
+  Route::post('/laundry/rate', [App\Http\Controllers\Users\TransactionHistoryController::class, 'rateLayanan'])->name('rate-layanan');
 
   //Route Transaksi Layanan
   Route::get('/laundry-in-aja', App\Http\Livewire\Laundry::class)->name('laundry');
