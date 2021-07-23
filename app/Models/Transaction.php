@@ -30,6 +30,11 @@ class Transaction extends Model
     return $this->belongsTo('App\Models\User');
   }
 
+  public function rating()
+  {
+    return $this->hasMany('App\Models\Rating');
+  }
+
   public static function getReport($layanan, $date1, $date2)
   {
     $transactions = DB::table('transactions')

@@ -12,7 +12,7 @@ class Rating extends Model
     use HasFactory;
 
     protected $fillable = [
-      'user_id','jenisservice_id','rate'
+      'user_id','jenisservice_id','transaction_id','rate'
     ];
 
     public function Service(){
@@ -21,6 +21,11 @@ class Rating extends Model
 
     public function User(){
       return $this->belongsTo('App\Models\User');
+    }
+
+    public function transaction()
+    {
+      return $this->belongsTo('App\Models\Transaction');
     }
 
 }

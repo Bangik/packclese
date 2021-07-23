@@ -42,6 +42,10 @@
               <div class="table-responsive">
                 <table class="table table-bordered" width="100%" cellspacing="0">
                   <tr>
+                    <th class="table-primary text-dark" width="35%">ID Transaksi</th>
+                    <td width="65%">{{$detailTransactions->transaction_id}}</td>
+                  </tr>
+                  <tr>
                     <th class="table-primary text-dark" width="35%">Tanggal Transaksi</th>
                     <td width="65%">{{date('l, d M Y - H.i', strtotime($detailTransactions->created_at))}}</td>
                   </tr>
@@ -71,10 +75,19 @@
                     <th class="table-primary text-dark">Status</th>
                     <td>{{$transaction->status}}</td>
                   </tr>
-                  <tr>
-                    <th class="table-primary text-dark">Beri Nilai</th>
-                    <td><a id="rate-laundry" style="cursor:pointer">Rate</a></td>
-                  </tr>
+                  @if($transaction->status == "SUCCESS")
+                    @if(count($rates) != 0)
+                      <tr>
+                        <th class="table-primary text-dark">Beri Nilai</th>
+                        <td> <a style="cursor:pointer" id="rate-laundry">{{$rates[0]->rate}}</a></td>
+                      </tr>
+                    @else
+                    <tr>
+                      <th class="table-primary text-dark">Beri Nilai</th>
+                      <td><a style="cursor:pointer" id="rate-laundry">Rate</a></td>
+                    </tr>
+                    @endif
+                  @endif
                 </table>
               </div>
               <div class="table-responsive mt-3">
@@ -122,10 +135,10 @@
       </div>
       <div class="modal-body">
         <form class="beriRate">
-          @if (count($Rates) == 0)
-            <input type="number" value="0" name="input_ratinglaundry" id="Demo" class="rating" data-clearable="remove"/>
+          @if(count($rates) != 0)
+          <input type="hidden" class="idRate" value="{{$rates[0]->id}}">
           @else
-            <input type="number" value="{!!$Rates[0]->rate!!}" name="input_ratinglaundry" id="Demo" class="rating" data-clearable="remove"/>
+          <input type="hidden" class="idRate" value="0">
           @endif
         </div>
       <div class="modal-footer">
@@ -158,6 +171,8 @@
       e.preventDefault();
       let id = {{$detailTransactions->service->jenisservice_id}};
       let rate = $('.rating').val();
+      let idRate = $('.idRate').val();
+      let transactionId = {{$detailTransactions->transaction_id}}
       $.ajax({
         headers: {
           'X-CSRF-TOKEN': '{{csrf_token()}}'
@@ -166,7 +181,9 @@
         url : '{{route('rate-layanan')}}',
         data : {
           id : id,
-          rate : rate
+          idRate : idRate,
+          rate : rate,
+          transactionId : transactionId
         },
         success : function(rate){
           $('#rate-laundry').text(rate);

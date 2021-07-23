@@ -58,7 +58,7 @@
             </div>
           </div>
           <div class="mb-3">
-              <div class="input-group">
+            <div class="input-group">
               <input type="number" name="inputName" id="rating-readonly" class="rating" data-clearable="remove" value="{{round($jenis_service->rate)}}" data-readonly/>
               <span style="margin-left:3px;">{{round($jenis_service->rate,2)}}({{$Rates}})</span>
             </div>
