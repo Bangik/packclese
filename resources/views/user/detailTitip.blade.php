@@ -193,9 +193,9 @@
           transactionId : transactionId
         },
         success : function(response){
-          $('#rate-laundry').text(rate);
+          $('#rate-titip').text(rate);
           $('.idRate').val(response[0].id)
-          $('#detail_laundry').modal('hide');
+          $('#detail_titip').modal('hide');
         }
       });
     });
