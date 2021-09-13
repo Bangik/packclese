@@ -176,7 +176,7 @@
           <h2>Coba Aplikasi Sekarang</h2>
         </div>
         <div class="col-md-5 text-center text-md-end">
-          <p> <a href="#" class="btn d-inline-flex align-items-center"><i class="bx bxl-play-store"></i><span>Google play</span></a></p>
+          <p> <a href="https://drive.google.com/drive/folders/1nrR6lInu59_xoBl03bhCMaQG5SWMWeBF?usp=sharing" target="_blank" class="btn d-inline-flex align-items-center"><i class="bx bxl-play-store"></i><span>Google play</span></a></p>
         </div>
       </div>
     </div>

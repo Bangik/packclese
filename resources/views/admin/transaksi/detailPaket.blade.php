@@ -9,14 +9,9 @@
   <div class="card shadow mb-4">
     <div class="card-header py-3 py-3 d-flex flex-row align-items-center justify-content-between">
       <h6 class="m-0 font-weight-bold text-primary">Detail Transaksi</h6>
-      <div class="dropdown no-arrow">
-        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item cetak" href="#">Cetak Detail Transaksi</a>
-          <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#status">Ubah Status</a>
-        </div>
+      <div class="d-none d-sm-inline-block">
+        <a class="btn btn-sm btn-primary shadow-sm cetak" href="#"><i class="fas fa-chart-line fa-sm text-white-50"></i> Cetak Detail Transaksi</a>
+        <a class="btn btn-sm btn-primary shadow-sm" href="#"  data-toggle="modal" data-target="#status"><i class="fas fa-chart-line fa-sm text-white-50"></i> Ubah Status</a>
       </div>
     </div>
     <div class="card-body" id="card">

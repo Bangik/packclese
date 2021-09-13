@@ -29,7 +29,18 @@
 </head>
 
 <body>
-
+  <!-- Loader animation start   -->
+  <div class="loader">
+      <div class="preload-animation">
+          <!-- <div class="preload-image">
+              <center><img src="{{asset('img/logo.png')}}" alt=""></center>
+          </div> -->
+          <div class="loading-bar">
+              <div class="blue-bar"></div>
+          </div>
+      </div>
+  </div>
+  <!-- end of Loader animation -->
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     @include('layouts.user.navbar')
@@ -115,6 +126,12 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('SoftLand/assets/js/main.js')}}"></script>
+  <script type="text/javascript">
+    window.addEventListener("load", function () {
+      const loader = document.querySelector(".loader");
+      loader.className += " hidden"; // class "loader hidden"
+    });
+  </script>
 
 </body>
 

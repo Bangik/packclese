@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('titless', 'Packlese - Riwayat Transaksi')
+@section('titless', 'Packlese - Hubungi Kami')
 @section('content')
   <main id="main">
 
